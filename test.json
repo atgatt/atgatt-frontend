@@ -1,0 +1,20 @@
+{
+ "start": 0,
+ "limit": 10,
+ "success": true,
+ "data": [{
+     "location": [32.123, -32.456],
+     "crashImageUrl": "https://picsum.photos/200/300/?random",
+     "crashVideoUrl": "https://randomyoutube.net/watch",
+     "crashedGearImageUrl": "https://picsum.photos/200/300/?random",
+     "vehicles": [
+        {"type": "car", "make": "Ferrari", "model": "Testarossa", "year": "1986", "death": true},
+        {"type": "motorcycle", "make": "Honda", "model": "CBR300R", "year": "2016", "death": false}
+      ],
+     "speedInMph": "65.5",
+     "gear": [
+         {"amazonProductId": "A12341QC", "make": "Shoei", "model": "RF-SR"},
+         {"amazonProductId": "A45681QB", "make": "Alpinestars", "model": "GP Plus"}
+      ]
+ }]
+}
