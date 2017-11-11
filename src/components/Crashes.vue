@@ -19,8 +19,10 @@ export default {
     }
   },
   mounted () {
-    console.log('crashes mounted!')
-    this.isLoaded = true
+    setTimeout(() => {
+      this.isLoaded = true
+      this.$Progress.finish()
+    }, 1000)
   }
 }
 </script>
