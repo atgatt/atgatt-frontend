@@ -19,10 +19,7 @@ Vue.component('nav-bar', NavBar)
 Vue.component('nav-item', NavItem)
 
 // Register extensions to Vue itself
-Vue.use(VueProgressBar, {
-  thickness: '5px',
-  location: 'top'
-})
+Vue.use(VueProgressBar)
 // Start Vue
 /* eslint-disable no-new */
 new Vue({
