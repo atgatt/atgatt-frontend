@@ -5,24 +5,84 @@
         </div>
         <div class="card-body">
             <div class="row card-row">
-                <div class="col-2 overall-rating">
-                    <h1>{{product.score}}%</h1>
-                    <span class="score-text">safety score</span> 
-                    <i v-on:click="showHelp" class="fa fa-info-circle"/>
+                <div class="col col-xl-3 overall-rating">
+                    <div class="row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-8">
+                            <h1 class="score">{{product.score}}%</h1>
+                        </div>
+                    </div>
+                    <div class="row score-text-row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-8">
+                            <span class="score-text">safety score</span><i v-on:click="showHelp" class="fa fa-info-circle"/>
+                        </div>
+                    </div>
+                    <div class="row certifications-row">
+                        <div class="col-6 align-self-center">
+                            <ul class="fa-ul">
+                                <li v-if="product.certifications.SHARP">
+                                    <i class="fa-li fa fa-check cert" />
+                                    <span class="badge badge-success">
+                                        SHARP - {{product.certifications.SHARP.stars}} stars
+                                    </span>
+                                </li>
+                                <li v-else>
+                                    <i class="fa-li fa fa-times cert-missing" />
+                                    <span class="badge badge-danger">
+                                        SHARP
+                                    </span>
+                                </li>
+
+                                <li v-if="product.certifications.ECE">
+                                    <i class="fa-li fa fa-check cert" />
+                                    <span class="badge badge-success">
+                                        ECE 22.05
+                                    </span>
+                                </li>
+                                <li v-else>
+                                    <i class="fa-li fa fa-times cert-missing" />
+                                    <span class="badge badge-danger">
+                                        ECE 22.05
+                                    </span>
+                                </li>
+
+                                <li v-if="product.certifications.SNELL">
+                                    <i class="fa-li fa fa-check cert" />
+                                    <span class="badge badge-success">
+                                        SNELL M2015
+                                    </span>
+                                </li>
+                                <li v-else>
+                                    <i class="fa-li fa fa-times cert-missing" />
+                                    <span class="badge badge-danger">
+                                        SNELL M2015
+                                    </span>
+                                </li>
+
+                                <li v-if="product.certifications.DOT">
+                                    <i class="fa-li fa fa-check cert" />
+                                    <span class="badge badge-success">
+                                        DOT
+                                    </span>
+                                </li>
+                                <li v-else>
+                                    <i class="fa-li fa fa-times cert-missing" />
+                                    <span class="badge badge-danger">
+                                        DOT
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6 align-self-center">
+                            <img width="100%" height="100%" v-bind:src="product.imageUrl"></img>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-2">
-                    <img width="100%" height="100%" v-bind:src="product.imageUrl"></img>
-                </div>
-                <div class="col-6">
+                <div class="col col-xl-9">
                     Certifications:
-                    <ul>
-                        <li v-if="product.certifications.SHARP">
-                            SHARP: {{product.certifications.SHARP.stars}} stars
-                        </li>
-                        <li v-if="product.certifications.ECE">ECE</li>
-                        <li v-if="product.certifications.SNELL">SNELL</li>
-                        <li v-if="product.certifications.DOT">DOT</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -47,17 +107,28 @@ export default {
     margin-bottom: 0.5rem;
 }
 
-.overall-rating {
-    display: flex;
+.centered-content {
     align-items: center;
     justify-content: center;
+}
+
+.overall-rating {
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.score {
+    padding-left: 0.5rem;
 }
 
 .score-text {
     padding-left: 0.5rem;
     font-size: small;
+}
+
+.score-text-row {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
 }
 
 i.fa-info-circle {
@@ -68,5 +139,13 @@ i.fa-info-circle {
 
 .card-row {
     padding-left: 0.4rem;
+}
+
+.cert {
+    color: #28a745;
+}
+
+.cert-missing {
+    color: #dc3545;
 }
 </style>
