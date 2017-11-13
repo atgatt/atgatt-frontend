@@ -1,11 +1,11 @@
 <template>
-  <div>
-      <span v-if="isLoaded">
-        Loaded!
-      </span>
-      <span v-else>
-        Loading...
-      </span>
+  <div class="row">
+    <div class="col">
+      sidebar
+    </div>
+    <div class="col">
+      results
+    </div>
   </div>
 </template>
 

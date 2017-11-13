@@ -5,6 +5,7 @@ import VueProgressBar from 'vue-progressbar'
 import App from './App'
 import NavBar from './components/layout/NavBar.vue'
 import NavItem from './components/layout/NavItem.vue'
+import ProductCard from './components/ProductCard.vue'
 import router from './router'
 
 import '../node_modules/jquery/dist/jquery.slim.min'
@@ -17,9 +18,11 @@ Vue.config.productionTip = false
 // Register global components
 Vue.component('nav-bar', NavBar)
 Vue.component('nav-item', NavItem)
+Vue.component('product-card', ProductCard)
 
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)
+
 // Start Vue
 /* eslint-disable no-new */
 new Vue({
