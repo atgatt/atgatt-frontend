@@ -12,6 +12,7 @@ export default {
   created () {
     this.$Progress.start()
     this.$router.beforeEach((to, from, next) => {
+      document.title = `CrashTested - ${to.name}`
       if (to.meta.progress !== undefined) {
         let meta = to.meta.progress
         this.$Progress.parseMeta(meta)

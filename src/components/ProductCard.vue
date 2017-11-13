@@ -19,7 +19,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .product-card {
-    width: 50rem;
     margin-bottom: 0.5rem;
 }
 </style>
