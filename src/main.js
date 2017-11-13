@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import VueProgressBar from 'vue-progressbar'
 import App from './App'
+
 import NavBar from './components/layout/NavBar.vue'
 import NavItem from './components/layout/NavItem.vue'
+import Footer from './components/layout/Footer.vue'
+
 import ProductCard from './components/ProductCard.vue'
 import router from './router'
 
@@ -18,6 +21,7 @@ Vue.config.productionTip = false
 // Register global components
 Vue.component('nav-bar', NavBar)
 Vue.component('nav-item', NavItem)
+Vue.component('app-footer', Footer)
 Vue.component('product-card', ProductCard)
 
 // Register extensions to Vue itself

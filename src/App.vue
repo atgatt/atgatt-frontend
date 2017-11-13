@@ -2,6 +2,7 @@
   <div id="app">
     <nav-bar />
     <router-view />
+    <app-footer />
     <vue-progress-bar />
   </div>
 </template>

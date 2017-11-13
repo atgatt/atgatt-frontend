@@ -39,13 +39,14 @@ export default {
         'amazonProductId': 'A12341QC',
         'manufacturer': 'Shoei',
         'model': 'RF-SR',
-        'imageUrl': 'https://picsum.photos/200/200/?random',
+        'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
         'priceInUsd': '399.99',
         'certifications': {
           'SNELL': {},
           'ECE': {},
           'DOT': {}
-        }
+        },
+        'score': '76'
       },
       {
         'uid': 'def',
@@ -54,16 +55,17 @@ export default {
         'amazonProductId': 'A45561QB',
         'manufacturer': 'Shoei',
         'model': 'RF-1200',
-        'imageUrl': 'https://picsum.photos/200/200/?random',
+        'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
         'priceInUsd': '499.99',
         'certifications': {
           'SHARP': {
-            'rating': '4'
+            'stars': '4'
           },
           'SNELL': {},
           'ECE': {},
           'DOT': {}
-        }
+        },
+        'score': '70'
       }]
 
       this.$Progress.finish()
