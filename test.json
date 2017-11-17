@@ -39,8 +39,7 @@
             "model": "Testarossa", 
             "year": "1986", 
             "deaths": 0
-        },        
-    }
+        }
 }
 // Crash gear: /api/v1/crashes/{uid}/gear
 
@@ -70,9 +69,39 @@
     }]
 }
 
-// Search GET
+// Search: /api/v1/search
+Request
 {
     "start": 0,
     "limit": 10,
     "query": "Shoei RF-SR"
+}
+
+Response
+{
+    "success": true,
+    "data": [
+        {
+            "amazonProductId": "A12341QC", 
+            "manufacturer": "Shoei", 
+            "model": "RF-SR", 
+            "imageUrl": "https://picsum.photos/200/300/?random",
+            "priceInUsd": "399.99",
+            "certifications": {
+                "SHARP": {
+                    "rating": "5"
+                },
+                "SNELL": [{
+                    "version": "M2015"
+                }]
+            }
+        },
+        {
+            "amazonProductId": "A12341QC", 
+            "manufacturer": "Arai", 
+            "model": "Signet-X", 
+            "imageUrl": "https://picsum.photos/200/300/?random",
+            "priceInUsd": "699.99",
+        }
+    ]
 }
