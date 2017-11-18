@@ -5,9 +5,14 @@
         <div class="sidebar">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <label for="manufacturer">Manufacturer</label>
+              <input type="text" class="form-control" id="manufacturer" placeholder="Enter a manufacturer">
             </div>
+            <div class="form-group">
+              <label for="manufacturer">Model</label>
+              <input type="text" class="form-control" id="model" placeholder="Enter a model">
+            </div>
+            <button class="form-control">Reset</button>
           </form>
         </div>
       </div>
