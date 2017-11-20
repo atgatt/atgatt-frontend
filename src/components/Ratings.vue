@@ -12,18 +12,19 @@
               <label for="manufacturer">Model</label>
               <input type="text" class="form-control" id="model" placeholder="Enter a model">
             </div>
-            <button class="form-control">Reset</button>
           </form>
+          <button class="btn btn-primary btn-block">Apply</button>
+          <button class="btn btn-secondary btn-block">Reset</button>
         </div>
       </div>
       <div v-if="results.length" class="col-9 product-results">
         <div v-for="result in results" v-bind:key="result.uid">
           <product-card v-bind:product="result" />
         </div>
-        <button type="button" class="btn btn-primary">Load more...</button>
       </div>
       <div v-else class="col-9 product-results">
-        <span>There are no products that match your current set of filters.</span>
+        <span v-if="isLoaded">There are no products that match your current set of filters.</span>
+        <span v-else>Loading...</span>
       </div>
     </div>
   </div>
@@ -31,10 +32,11 @@
 
 <script>
 export default {
-  name: 'Products',
+  name: 'Ratings',
   data () {
     return {
-      results: []
+      results: [],
+      isLoaded: false
     }
   },
   mounted () {
@@ -64,15 +66,57 @@ export default {
         'priceInUsd': '499.99',
         'certifications': {
           'SHARP': {
-            'stars': '4'
+            'ratingType': 'stars',
+            'ratingValue': '4'
           },
           'SNELL': {},
           'ECE': {},
           'DOT': {}
         },
         'score': '70'
+      },
+      {
+        'uid': 'ghi',
+        'type': 'helmet',
+        'subtype': 'fullface',
+        'amazonProductId': 'A45561QB',
+        'manufacturer': 'Shoei',
+        'model': 'RF-1100',
+        'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
+        'priceInUsd': '259.99',
+        'certifications': {
+          'SHARP': {
+            'ratingType': 'stars',
+            'ratingValue': '3'
+          },
+          'SNELL': {},
+          'ECE': {},
+          'DOT': {}
+        },
+        'score': '65'
+      },
+      {
+        'uid': 'jkl',
+        'type': 'helmet',
+        'subtype': 'fullface',
+        'amazonProductId': 'A45561QB',
+        'manufacturer': 'Shoei',
+        'model': 'Qwest',
+        'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
+        'priceInUsd': '299.99',
+        'certifications': {
+          'SHARP': {
+            'ratingType': 'stars',
+            'ratingValue': '5'
+          },
+          'SNELL': {},
+          'ECE': {},
+          'DOT': {}
+        },
+        'score': '80'
       }]
 
+      this.isLoaded = true
       this.$Progress.finish()
     }, 500)
   }
@@ -86,7 +130,7 @@ export default {
   padding-top: 0.5rem;
 }
 
-.product-results { 
+.product-results {
   padding-top: 0.5rem;
 }
 </style>

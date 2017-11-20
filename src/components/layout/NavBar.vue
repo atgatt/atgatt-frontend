@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-          <nav-item route="/products" text="Products" />
+          <nav-item route="/ratings" text="Ratings" />
           <nav-item route="/about" text="About" />
       </ul>
     </div>

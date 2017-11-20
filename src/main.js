@@ -9,6 +9,7 @@ import NavItem from './components/layout/NavItem.vue'
 import Footer from './components/layout/Footer.vue'
 
 import ProductCard from './components/ProductCard.vue'
+import ProductCertificationBadge from './components/ProductCertificationBadge.vue'
 import router from './router'
 
 import '../node_modules/jquery/dist/jquery.slim.min'
@@ -23,6 +24,7 @@ Vue.component('nav-bar', NavBar)
 Vue.component('nav-item', NavItem)
 Vue.component('app-footer', Footer)
 Vue.component('product-card', ProductCard)
+Vue.component('product-certification-badge', ProductCertificationBadge)
 
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)
