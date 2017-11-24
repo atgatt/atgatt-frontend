@@ -10,6 +10,7 @@ import Footer from './components/layout/Footer.vue'
 
 import ProductCard from './components/ProductCard.vue'
 import ProductCertificationBadge from './components/ProductCertificationBadge.vue'
+import SharpImpactZone from './components/SharpImpactZone.vue'
 import router from './router'
 
 import '../node_modules/jquery/dist/jquery.slim.min'
@@ -25,6 +26,7 @@ Vue.component('nav-item', NavItem)
 Vue.component('app-footer', Footer)
 Vue.component('product-card', ProductCard)
 Vue.component('product-certification-badge', ProductCertificationBadge)
+Vue.component('sharp-impact-zone', SharpImpactZone)
 
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)

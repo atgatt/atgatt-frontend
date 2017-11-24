@@ -12,9 +12,9 @@
               <label for="manufacturer">Model</label>
               <input type="text" class="form-control" id="model" placeholder="Enter a model">
             </div>
+            <button class="btn btn-primary btn-block">Apply</button>
+            <button class="btn btn-secondary btn-block">Reset</button>
           </form>
-          <button class="btn btn-primary btn-block">Apply</button>
-          <button class="btn btn-secondary btn-block">Reset</button>
         </div>
       </div>
       <div v-if="results.length" class="col-9 product-results">
@@ -67,7 +67,16 @@ export default {
         'certifications': {
           'SHARP': {
             'ratingType': 'stars',
-            'ratingValue': '4'
+            'ratingValue': '4',
+            'impactZoneRatings': {
+              'left': 5,
+              'right': 4,
+              'top': {
+                'front': 0,
+                'rear': 5
+              },
+              'rear': 3
+            }
           },
           'SNELL': {},
           'ECE': {},
@@ -87,7 +96,16 @@ export default {
         'certifications': {
           'SHARP': {
             'ratingType': 'stars',
-            'ratingValue': '3'
+            'ratingValue': '3',
+            'impactZoneRatings': {
+              'left': 5,
+              'right': 4,
+              'top': {
+                'front': 3,
+                'rear': 2
+              },
+              'rear': 1
+            }
           },
           'SNELL': {},
           'ECE': {},
@@ -102,12 +120,21 @@ export default {
         'amazonProductId': 'A45561QB',
         'manufacturer': 'Shoei',
         'model': 'Qwest',
-        'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
+        'imageUrl': 'https://sharp.dft.gov.uk/wp-content/uploads/2017/03/shoei-xr-1100-150x150.jpg',
         'priceInUsd': '299.99',
         'certifications': {
           'SHARP': {
             'ratingType': 'stars',
-            'ratingValue': '5'
+            'ratingValue': '5',
+            'impactZoneRatings': {
+              'left': 5,
+              'right': 4,
+              'top': {
+                'front': 0,
+                'rear': 5
+              },
+              'rear': 3
+            }
           },
           'SNELL': {},
           'ECE': {},

@@ -12,16 +12,41 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-3 align-self-center">
-          <ul class="fa-ul">
+        <div class="col align-self-center">
+          <img class="product-image" width="200" height="200" v-bind:src="product.imageUrl"></img>
+        </div>
+        <div class="col align-self-center">
+          <ul name="certifications-list" class="fa-ul">
+            <label for="certifications-list">Certifications:</label>
             <product-certification-badge v-bind:certification="product.certifications.SHARP" certificationName="SHARP" />
             <product-certification-badge v-bind:certification="product.certifications.SNELL" certificationName="SNELL" />
             <product-certification-badge v-bind:certification="product.certifications.ECE" certificationName="ECE" />
             <product-certification-badge v-bind:certification="product.certifications.DOT" certificationName="DOT" />
           </ul>
         </div>
-        <div class="col-9 align-self-center">
-          <img width="200" height="200" v-bind:src="product.imageUrl"></img>
+        <div class="col align-self-center">
+          <sharp-impact-zone
+            v-bind:certification="product.certifications.SHARP"
+            zoneId="left"
+          />
+        </div>
+        <div class="col align-self-center">
+          <sharp-impact-zone
+            v-bind:certification="product.certifications.SHARP"
+            zoneId="right"
+          />
+        </div>
+        <div class="col align-self-center">
+          <sharp-impact-zone
+            v-bind:certification="product.certifications.SHARP"
+            zoneId="top"
+          />
+        </div>
+        <div class="col align-self-center">
+          <sharp-impact-zone
+            v-bind:certification="product.certifications.SHARP"
+            zoneId="rear"
+          />
         </div>
       </div>
     </div>
@@ -47,6 +72,10 @@ export default {
   margin-bottom: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 1rem;
+}
+
+.product-image {
   padding: 1rem;
 }
 
