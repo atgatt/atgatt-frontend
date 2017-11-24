@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="row">
-      <div class="col centered-text-col">
+      <div class="col impact-zone-text">
         <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
         <i v-if="!this.certification" class="fa fa-question fa-5x"/>
       </div>
     </div>
     <div class="row">
-      <div class="col centered-text-col">
-        <span>{{zoneText}}</span>
+      <div class="col impact-zone-text">
+        <span>{{zoneText}} <i class="fa fa-info-circle" /></span>
       </div>
     </div>
   </div>
@@ -46,7 +46,8 @@ export default {
   max-height: 200px;
 }
 
-.centered-text-col {
+.impact-zone-text {
   text-align: center;
+  font-size: small
 }
 </style>

@@ -25,6 +25,9 @@ export default {
 }
 </script>
 
+<!-- global styles for the entire app -->
 <style>
-
+i.fa-info-circle {
+  color: skyblue;
+}
 </style>

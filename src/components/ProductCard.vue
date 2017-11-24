@@ -39,13 +39,13 @@
         <div class="col align-self-center">
           <sharp-impact-zone
             v-bind:certification="product.certifications.SHARP"
-            zoneId="top"
+            zoneId="rear"
           />
         </div>
         <div class="col align-self-center">
           <sharp-impact-zone
             v-bind:certification="product.certifications.SHARP"
-            zoneId="rear"
+            zoneId="top"
           />
         </div>
       </div>
@@ -104,7 +104,6 @@ export default {
 
 i.fa-info-circle {
   padding-left: 0.2rem;
-  color: skyblue;
   cursor: pointer;
 }
 
