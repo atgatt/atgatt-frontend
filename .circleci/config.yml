@@ -23,4 +23,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run unit
       - run: npm run build
-      - run: aws s3 sync ./dist s3://crashtested-frontend-staging/ --delete
+      - run: aws s3 sync ./dist s3://staging.crashtested.co/ --delete
