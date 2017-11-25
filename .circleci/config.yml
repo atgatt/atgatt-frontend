@@ -1,10 +1,6 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
-  build:
+  deploy_staging:
     docker:
       - image: circleci/node:8.9-browsers
     working_directory: ~/repo
@@ -23,4 +19,22 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run unit
       - run: npm run build
-      - run: aws s3 sync ./dist s3://staging.crashtested.co/ --delete --region us-west-2
+      - run: aws s3 sync ./dist s3://staging.crashtested.co/ --delete --region us-west-2 --exclude ".environment/*"
+  promote_staging_to_prod:
+    docker:
+      - image: circleci/node:8.9-browsers
+    steps:
+      - run: sudo apt-get -y -qq install awscli
+      - run: aws s3 sync s3://staging.crashtested.co/ s3://crashtested.co/ --delete --region us-west-2 --exclude ".environment/*"
+workflows:
+  version: 2
+  promote_to_prod:
+    jobs:
+      - deploy_staging
+      - hold:
+          type: approval
+          requires:
+            - deploy_staging
+      - promote_staging_to_prod:
+          requires:
+            - hold
