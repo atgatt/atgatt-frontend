@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer app-footer">
+    <footer class="footer">
       <span class="text-muted">© 2017 CrashTested. Portions of the product data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>, except where otherwise stated.</span>
     </footer>
 </template>
@@ -10,17 +10,8 @@ export default {
 }
 </script>
 
-<style>
-body {
-    margin-bottom: 60px; /* Margin bottom by footer height */
-}
-
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-.app-footer {
+<style scoped>
+.footer {
     bottom: 0;
     width: 100%;
     height: 60px; /* Set the fixed height of the footer here */
