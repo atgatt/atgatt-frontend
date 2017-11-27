@@ -5,7 +5,7 @@
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small></h4>
       </div>
       <div class="col buy-btn-col my-auto">
-        <a href="#" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy for ${{product.priceInUsd}}</strong></a>
+        <a href="#" target="_blank" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy for ${{product.priceInUsd}}</strong></a>
       </div>
     </div>
     <div class="row product-body">
