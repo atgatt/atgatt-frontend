@@ -1,9 +1,11 @@
 <template>
   <div class="product-card">
     <div class="row product-header">
-      <div class="col">
-        <span class="manufacturer">{{product.manufacturer}}</span>
-        <span>{{product.model}}</span>
+      <div class="col my-auto">
+        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small></h4>
+      </div>
+      <div class="col buy-btn-col my-auto">
+        <a href="#" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy for ${{product.priceInUsd}}</strong></a>
       </div>
     </div>
     <div class="row product-body">
@@ -56,6 +58,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.buy-btn-col {
+  text-align: right;
+}
 .product-card {
   margin-bottom: 0.5rem;
   border: 1px solid #ccc;
