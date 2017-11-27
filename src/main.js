@@ -4,9 +4,10 @@ import Vue from 'vue'
 import VueProgressBar from 'vue-progressbar'
 import App from './App'
 
-import NavBar from './components/layout/NavBar.vue'
-import NavItem from './components/layout/NavItem.vue'
-import Footer from './components/layout/Footer.vue'
+import NavBar from './components/common/layout/NavBar.vue'
+import NavItem from './components/common/layout/NavItem.vue'
+import Footer from './components/common/layout/Footer.vue'
+import Modal from './components/common/Modal.vue'
 
 import ProductCard from './components/ProductCard.vue'
 import ProductCertificationBadge from './components/ProductCertificationBadge.vue'
@@ -27,6 +28,7 @@ Vue.component('app-footer', Footer)
 Vue.component('product-card', ProductCard)
 Vue.component('product-certification-badge', ProductCertificationBadge)
 Vue.component('sharp-impact-zone', SharpImpactZone)
+Vue.component('modal', Modal)
 
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)

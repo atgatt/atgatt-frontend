@@ -29,6 +29,7 @@ export default {
 <style>
 i.fa-info-circle {
   color: skyblue;
+  cursor: pointer;
 }
 
 body {
