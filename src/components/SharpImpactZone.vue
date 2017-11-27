@@ -13,7 +13,7 @@
     </div>
     <modal v-if="isModalVisible" v-on:close="toggleHelpModal">
       <h1 slot="header">{{capitalizedZoneId}} Impact Zone</h1>
-      <p slot="body">
+      <p v-if="this.certification" slot="body">
         The color in the {{zoneId}} impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulatino scenario as tested by <a href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">SHARP</a>.
         Below is a chart explaining the different colors used in each zone:
         <br /><br />
@@ -22,6 +22,9 @@
         <br /><br />
         <span v-if="isTopZone">NOTE: There are actually <strong>two</strong> sub-zones for top side impacts: front and rear. Therefore, there are two different ratings for this overall zone.</span>
         Click <a href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">here</a> to learn further details about how these ratings were calculated.
+      </p>
+      <p v-else slot="body">
+        The {{zoneId}} impact zone rating is unknown because this helmet has not yet been rated by <a href="https://sharp.dft.gov.uk">SHARP</a>.
       </p>
     </modal>
   </div>
