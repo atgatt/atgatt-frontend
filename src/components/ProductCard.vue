@@ -62,7 +62,7 @@ export default {
   text-align: right;
 }
 .product-card {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding-left: 1rem;
