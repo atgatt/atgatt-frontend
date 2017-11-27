@@ -31,13 +31,4 @@ i.fa-info-circle {
   color: skyblue;
   cursor: pointer;
 }
-
-body {
-  margin-bottom: 60px; /* Margin bottom by footer height */
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
 </style>
