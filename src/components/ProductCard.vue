@@ -79,6 +79,7 @@ export default {
 
 .product-body {
   background-color: white;
+  padding: 1rem;
 }
 
 .product-image {
