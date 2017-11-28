@@ -90,7 +90,7 @@ export default {
         rear: 0
       }
       this.minPrice = 0
-      this.maxPrice = 0
+      this.maxPrice = null
 
       this.applyFilters()
     }
