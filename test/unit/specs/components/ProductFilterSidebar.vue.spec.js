@@ -59,8 +59,6 @@ describe('ProductFilterSidebar', () => {
     instance.resetFilters()
 
     expect(eventEmitted).to.be.true
-    console.log(instance.$data)
-    console.log(expectedDefaultFilters)
     expect(instance.$data).to.deep.equal(expectedDefaultFilters)
   })
 })
