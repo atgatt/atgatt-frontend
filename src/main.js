@@ -9,6 +9,7 @@ import NavItem from './components/common/layout/NavItem.vue'
 import Footer from './components/common/layout/Footer.vue'
 import Modal from './components/common/Modal.vue'
 
+import ProductFilterSidebar from './components/ProductFilterSidebar.vue'
 import ProductCard from './components/ProductCard.vue'
 import ProductCertificationBadge from './components/ProductCertificationBadge.vue'
 import SharpImpactZone from './components/SharpImpactZone.vue'
@@ -29,6 +30,7 @@ Vue.component('product-card', ProductCard)
 Vue.component('product-certification-badge', ProductCertificationBadge)
 Vue.component('sharp-impact-zone', SharpImpactZone)
 Vue.component('modal', Modal)
+Vue.component('product-filter-sidebar', ProductFilterSidebar)
 
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)

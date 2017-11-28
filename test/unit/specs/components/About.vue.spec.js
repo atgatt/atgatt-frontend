@@ -7,7 +7,7 @@ describe('About', () => {
     assert.equal(typeof About.mounted, 'function')
   })
   // Mount an instance and inspect the render output
-  it('renders without errors', () => {
+  it('completes the progress bar when it finishes loading', () => {
     const Ctor = Vue.extend(About)
     var finished = false
     const instance = new Ctor()
