@@ -1,14 +1,16 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col impact-zone-text">
-        <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
-        <i v-else class="fa fa-question fa-5x"/>
+    <div class="impact-zone" v-on:click="toggleHelpModal">
+      <div class="row">
+        <div class="col impact-zone-text">
+          <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
+          <i v-else class="fa fa-question fa-5x"/>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col impact-zone-text">
-        <span>{{zoneText}} <i v-on:click="toggleHelpModal" class="fa fa-info-circle" /></span>
+      <div class="row">
+        <div class="col impact-zone-text">
+          <span>{{zoneText}} <i class="fa fa-info-circle" /></span>
+        </div>
       </div>
     </div>
     <modal v-if="isModalVisible" v-on:close="toggleHelpModal">
@@ -80,5 +82,9 @@ export default {
 .impact-zone-text {
   text-align: center;
   font-size: small
+}
+
+.impact-zone {
+  cursor: pointer;
 }
 </style>

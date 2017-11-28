@@ -102,5 +102,7 @@ export default {
 </script>
 
 <style scoped>
-
+.form-check-label {
+  padding-left: 1.15rem;
+}
 </style>

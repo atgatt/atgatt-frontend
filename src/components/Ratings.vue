@@ -141,7 +141,6 @@ export default {
       return promise
     },
     onFiltersChangedAsync: async function (filters) {
-      console.log('Got filter changed event: ', filters)
       this.isLoaded = false
       this.results = []
       this.$Progress.start()
