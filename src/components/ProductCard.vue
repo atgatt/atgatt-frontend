@@ -9,11 +9,11 @@
       </div>
     </div>
     <div class="row product-body">
-      <div class="col align-self-center">
+      <div class="col-4 col-lg align-self-center">
         <img class="product-image" width="200" height="200" v-bind:src="product.imageUrl"></img>
       </div>
-      <div class="col align-self-center">
-        <ul name="certifications-list" class="fa-ul">
+      <div class="col-8 col-lg align-self-center">
+        <ul name="certifications-list" class="fa-ul certifications-list">
           <label for="certifications-list">Certifications:</label>
           <product-certification-badge v-bind:certification="product.certifications.SHARP" certificationName="SHARP" />
           <product-certification-badge v-bind:certification="product.certifications.SNELL" certificationName="SNELL" />
@@ -21,25 +21,25 @@
           <product-certification-badge v-bind:certification="product.certifications.DOT" certificationName="DOT" />
         </ul>
       </div>
-      <div class="col align-self-center">
+      <div class="col-3 col-lg align-self-center">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="left"
         />
       </div>
-      <div class="col align-self-center">
+      <div class="col-3 col-lg align-self-center">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="right"
         />
       </div>
-      <div class="col align-self-center">
+      <div class="col-3 col-lg align-self-center">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="rear"
         />
       </div>
-      <div class="col align-self-center">
+      <div class="col-3 col-lg align-self-center">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="top"
