@@ -81,7 +81,6 @@ export default {
 
 .impact-zone-text {
   text-align: center;
-  font-size: small
 }
 
 .impact-zone {
