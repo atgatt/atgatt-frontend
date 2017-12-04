@@ -1,64 +1,51 @@
-// Import Vue and the component being tested
-import Vue from 'vue'
 import ProductFilterSidebar from '../../../../src/components/ProductFilterSidebar.vue'
-describe('ProductFilterSidebar', () => {
-  const expectedDefaultFilters = {
-    manufacturer: null,
-    model: null,
-    certifications: {
-      SHARP: false,
-      SNELL: false,
-      ECE: false,
-      DOT: false
-    },
-    impactZoneMinimums: {
-      left: 0,
-      right: 0,
-      top: {
-        front: 0,
-        rear: 0
-      },
-      rear: 0
-    },
-    minPrice: 0,
-    maxPrice: null
-  }
+import { shallow } from 'vue-test-utils'
 
-  // Inspect the raw component options
-  it('has a mounted hook', () => {
-    assert.equal(typeof ProductFilterSidebar.mounted, 'function')
-  })
-  // Mount an instance and inspect the render output
-  it('emits a filtersChanged event when it finishes loading', () => {
-    const Ctor = Vue.extend(ProductFilterSidebar)
-    const instance = new Ctor()
-    let eventEmitted = false
-    instance.$emit = function (key, value) {
-      if (key === 'filtersChanged') {
-        eventEmitted = true
-      }
-    }
-    instance.$mount()
-    expect(eventEmitted).to.be.true
-    expect(instance.$data).to.deep.equal(expectedDefaultFilters)
+const expectedInitialFilters = {
+  manufacturer: null,
+  model: null,
+  certifications: {
+    SHARP: false,
+    SNELL: false,
+    ECE: false,
+    DOT: false
+  },
+  minimumSHARPStars: 1,
+  impactZoneMinimums: {
+    left: 1,
+    right: 1,
+    top: {
+      front: 1,
+      rear: 1
+    },
+    rear: 1
+  },
+  priceRangeInUSD: [0, 10000]
+}
+
+describe('ProductFilterSidebar.vue', () => {
+  let wrapper = null
+  let component = null
+
+  beforeEach(() => {
+    wrapper = shallow(ProductFilterSidebar)
+    component = wrapper.vm
   })
 
-  it('resets filters to the default values when reset is called', () => {
-    const Ctor = Vue.extend(ProductFilterSidebar)
-    const instance = new Ctor()
-    let eventEmitted = false
-    instance.$mount()
-    instance.minPrice = 69.1337
-    expect(instance.$data).to.not.deep.equal(expectedDefaultFilters)
+  it('should emit a filtersChanged event when it finishes loading', () => {
+    component.$mount()
+    expect(wrapper.emitted().filtersChanged).toBeTruthy()
+    expect(component.filters).toEqual(expectedInitialFilters)
+  })
 
-    instance.$emit = function (key, value) {
-      if (key === 'filtersChanged') {
-        eventEmitted = true
-      }
-    }
-    instance.resetFilters()
-
-    expect(eventEmitted).to.be.true
-    expect(instance.$data).to.deep.equal(expectedDefaultFilters)
+  it('should reset filters to the default values when resetFilters() is called', (next) => {
+    component.filters.minPrice = 69.1337
+    expect(component.filters).not.toEqual(expectedInitialFilters)
+    component.resetFilters()
+    component.$nextTick(() => {
+      expect(component.filters).toEqual(expectedInitialFilters)
+      expect(wrapper.emitted().filtersChanged).toBeTruthy()
+      next()
+    })
   })
 })

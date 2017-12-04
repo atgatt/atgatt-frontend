@@ -17,7 +17,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run unit
+      - run: npm test
       - run: npm run build
       - run: aws s3 sync ./dist s3://staging.crashtested.co/ --delete --region us-west-2 --exclude ".environment/*"
   promote_staging_to_prod:

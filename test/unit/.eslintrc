@@ -1,14 +1,7 @@
 {
-  "env": {
-    "mocha": true,
-    "jasmine": true
+  "env": { 
+    "jest": true
   },
-  "globals": {
-    "expect": true,
-    "sinon": true,
-    "assert": true
-  },
-  "rules": {
-    "no-unused-expressions": "off"
+  "globals": { 
   }
 }
