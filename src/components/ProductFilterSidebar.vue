@@ -12,6 +12,10 @@
         <label for="manufacturer">Model</label>
         <input type="text" class="form-control" v-model="filters.model" id="model" placeholder="Start typing a model..." v-on:keyup="applyFilters">
       </div>
+      <div class="form-group">
+        <label for="rear-impact-zone-rating-slider">Price Range</label>
+        <vue-slider ref="slider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
+      </div>
       <h5>
         Certifications
       </h5>
@@ -22,8 +26,8 @@
           </label>
         </div>
         <div class="form-group">
-          <vue-slider ref="slider" id="min-sharp-stars-slider" v-bind="SHARPSliderOptions" v-model="filters.minimumSHARPStars"></vue-slider>
           <label for="min-sharp-stars-slider">Minimum Number of SHARP Stars</label>
+          <vue-slider ref="slider" id="min-sharp-stars-slider" v-bind="SHARPSliderOptions" v-model="filters.minimumSHARPStars"></vue-slider>
         </div>
         <div class="form-check">
           <label class="form-check-label">
@@ -45,24 +49,24 @@
         Minimum Impact Zone Ratings
       </h5>
       <div class="form-group">
-        <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.left"></vue-slider>
         <label for="left-impact-zone-rating-slider">Left</label>
+        <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.left"></vue-slider>
       </div>
       <div class="form-group">
-        <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.right"></vue-slider>
         <label for="right-impact-zone-rating-slider">Right</label>
+        <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.right"></vue-slider>
       </div>
       <div class="form-group">
-        <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.rear"></vue-slider>
         <label for="rear-impact-zone-rating-slider">Rear</label>
+        <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.rear"></vue-slider>
       </div>
       <div class="form-group">
-        <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.top.front"></vue-slider>
         <label for="rear-impact-zone-rating-slider">Top: Front</label>
+        <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.top.front"></vue-slider>
       </div>
       <div class="form-group">
-        <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.top.rear"></vue-slider>
         <label for="rear-impact-zone-rating-slider">Top: Rear</label>
+        <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.top.rear"></vue-slider>
       </div>
       <div class="row">
         <div class="col">
@@ -103,6 +107,14 @@ function getDefaultData () {
       max: 5,
       tooltip: 'hover'
     },
+    usdPriceRangeSliderOptions: {
+      min: 0,
+      max: 10000,
+      tooltip: 'hover',
+      formatter: function (value) {
+        return `$${value}`
+      }
+    },
     filters: {
       manufacturer: null,
       model: null,
@@ -122,7 +134,7 @@ function getDefaultData () {
         },
         rear: 1
       },
-      priceRangeInUSD: [0, 10000]
+      usdPriceRange: [0, 10000]
     }
   }
 }
