@@ -96,6 +96,9 @@ function getDefaultData () {
       tooltip: 'never',
       sliderStyle: function (value) {
         const backgroundColorIndex = value === 0 ? 0 : (value - 1)
+        if (backgroundColorIndex > sliderBackgroundColors.length || backgroundColorIndex < 0) {
+          throw new Error('Background color index out of range')
+        }
         const newBackgroundColor = sliderBackgroundColors[backgroundColorIndex]
         return {
           backgroundColor: newBackgroundColor

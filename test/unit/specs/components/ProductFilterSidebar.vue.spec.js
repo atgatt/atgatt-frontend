@@ -20,8 +20,17 @@ const expectedInitialFilters = {
     },
     rear: 1
   },
-  priceRangeInUSD: [0, 10000]
+  usdPriceRange: [0, 10000]
 }
+
+const expectedSliderBackgroundColors = [
+  '#303030',
+  '#CC3628',
+  '#703D29',
+  '#ED9500',
+  '#FCEB00',
+  '#489B27'
+]
 
 describe('ProductFilterSidebar.vue', () => {
   let wrapper = null
@@ -47,5 +56,32 @@ describe('ProductFilterSidebar.vue', () => {
       expect(wrapper.emitted().filtersChanged).toBeTruthy()
       next()
     })
+  })
+
+  it('should format the price range label in USD', () => {
+    const labelText = component.$data.usdPriceRangeSliderOptions.formatter('some text')
+    expect(labelText).toBe('$some text')
+  })
+
+  it('should format impact zones with the first color when the index is <= 0', () => {
+    const backgroundColorObj = component.$data.impactZoneSliderOptions.sliderStyle(0)
+    expect(backgroundColorObj.backgroundColor).toBe(expectedSliderBackgroundColors[0])
+  })
+
+  it('should format impact zones with the correct color when the index is positive', () => {
+    let backgroundColorObj = component.$data.impactZoneSliderOptions.sliderStyle(3)
+    expect(backgroundColorObj.backgroundColor).toBe(expectedSliderBackgroundColors[2])
+  })
+
+  it('should throw an error when the selected index is greater than the length of the colors array', () => {
+    expect(() => {
+      component.$data.impactZoneSliderOptions.sliderStyle(12)
+    }).toThrow()
+  })
+
+  it('should throw an error when the selected index is less than 0', () => {
+    expect(() => {
+      component.$data.impactZoneSliderOptions.sliderStyle(-1)
+    }).toThrow()
   })
 })
