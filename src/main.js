@@ -20,6 +20,8 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 
+import http from 'axios'
+
 Vue.config.productionTip = false
 
 // Register global components
@@ -35,11 +37,28 @@ Vue.component('product-filter-sidebar', ProductFilterSidebar)
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)
 
-// Start Vue
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+function startVue (environment) {
+  Vue.use({
+    install: function (Vue, options) {
+      Vue.prototype.$environment = environment
+    }
+  })
+
+  /* eslint-disable no-new */
+  new Vue({
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: { App }
+  })
+}
+
+// Try to fetch environment settings, then start Vue
+http.get('/.environment/environment.json').then(response => {
+  startVue(response.data)
+}).catch(() => {
+  console.warn('Could not determine environment; assuming local dev environment')
+  startVue({
+    apiBaseUrl: '/api-proxy'
+  })
 })

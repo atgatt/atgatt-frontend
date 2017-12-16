@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import http from 'axios'
 export default {
   name: 'Ratings',
   data () {
@@ -29,116 +30,9 @@ export default {
     }
   },
   methods: {
-    fetchDataAsync: async function () {
-      const promise = new Promise((resolve, reject) => {
-        let results = []
-        setTimeout(() => {
-          results = [{
-            'uid': 'abc',
-            'amazonProductId': 'A12341QC',
-            'manufacturer': 'Shoei',
-            'model': 'RF-SR',
-            'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
-            'priceInUsd': '399.99',
-            'certifications': {
-              'SNELL': {},
-              'ECE': {},
-              'DOT': {}
-            },
-            'score': '76'
-          },
-          {
-            'uid': 'def',
-            'type': 'helmet',
-            'subtype': 'fullface',
-            'amazonProductId': 'A45561QB',
-            'manufacturer': 'Shoei',
-            'model': 'RF-1200',
-            'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
-            'priceInUsd': '499.99',
-            'certifications': {
-              'SHARP': {
-                'ratingType': 'stars',
-                'ratingValue': '4',
-                'impactZoneRatings': {
-                  'left': 5,
-                  'right': 4,
-                  'top': {
-                    'front': 0,
-                    'rear': 5
-                  },
-                  'rear': 3
-                }
-              },
-              'SNELL': {},
-              'ECE': {},
-              'DOT': {}
-            },
-            'score': '70'
-          },
-          {
-            'uid': 'ghi',
-            'type': 'helmet',
-            'subtype': 'fullface',
-            'amazonProductId': 'A45561QB',
-            'manufacturer': 'Shoei',
-            'model': 'RF-1100',
-            'imageUrl': 'https://www.shoei-helmets.com/pub/media/catalog/product/cache/1/image/700x560/e9c3970ab036de70892d86c6d221abfe/x/-/x-fourteen-white_2_2.png',
-            'priceInUsd': '259.99',
-            'certifications': {
-              'SHARP': {
-                'ratingType': 'stars',
-                'ratingValue': '3',
-                'impactZoneRatings': {
-                  'left': 5,
-                  'right': 4,
-                  'top': {
-                    'front': 3,
-                    'rear': 2
-                  },
-                  'rear': 1
-                }
-              },
-              'SNELL': {},
-              'ECE': {},
-              'DOT': {}
-            },
-            'score': '65'
-          },
-          {
-            'uid': 'jkl',
-            'type': 'helmet',
-            'subtype': 'fullface',
-            'amazonProductId': 'A45561QB',
-            'manufacturer': 'Shoei',
-            'model': 'Qwest',
-            'imageUrl': 'https://sharp.dft.gov.uk/wp-content/uploads/2017/03/shoei-xr-1100-150x150.jpg',
-            'priceInUsd': '299.99',
-            'certifications': {
-              'SHARP': {
-                'ratingType': 'stars',
-                'ratingValue': '5',
-                'impactZoneRatings': {
-                  'left': 5,
-                  'right': 4,
-                  'top': {
-                    'front': 0,
-                    'rear': 5
-                  },
-                  'rear': 3
-                }
-              },
-              'SNELL': {},
-              'ECE': {},
-              'DOT': {}
-            },
-            'score': '80'
-          }]
-
-          resolve(results)
-        }, 500)
-      })
-      return promise
+    fetchDataAsync: async function (filters) {
+      const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, filters)
+      return JSON.parse(response.data)
     },
     onFiltersChangedAsync: async function (filters) {
       this.isLoaded = false
@@ -146,11 +40,12 @@ export default {
       this.$Progress.start()
 
       try {
-        this.results = await this.fetchDataAsync()
+        this.results = await this.fetchDataAsync(filters)
+        console.log('got data from server: ', this.results)
         this.isLoaded = true
         this.$Progress.finish()
       } catch (err) {
-        console.err('Got an exception while loading data: ', err)
+        console.error('Got an exception while loading data: ', err)
         this.isLoaded = true
         this.results = []
       }
