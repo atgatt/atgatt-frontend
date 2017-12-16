@@ -41,7 +41,6 @@ export default {
 
       try {
         this.results = await this.fetchDataAsync(filters)
-        console.log('got data from server: ', this.results)
         this.isLoaded = true
         this.$Progress.finish()
       } catch (err) {
