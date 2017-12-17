@@ -10,7 +10,7 @@
     </div>
     <div class="row product-body">
       <div class="col-4 col-lg align-self-center">
-        <img class="product-image" width="200" height="200" v-bind:src="product.imageUrl"></img>
+        <img class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
       </div>
       <div class="col-8 col-lg align-self-center">
         <ul name="certifications-list" class="fa-ul certifications-list">

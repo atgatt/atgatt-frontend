@@ -20,7 +20,7 @@
         Below is a chart explaining the different colors used in each zone:
         <br /><br />
         <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
-        <img src="/static/impact-zones-key.jpg"></img>
+        <img src="/static/impact-zones-key.jpg"/>
         <br /><br />
         <span v-if="isTopZone">NOTE: There are actually <strong>two</strong> sub-zones for top side impacts: front and rear. Therefore, there are two different ratings for this overall zone.</span>
         Click <a href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">here</a> to learn further details about how these ratings were calculated.
