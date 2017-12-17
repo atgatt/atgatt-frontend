@@ -38,12 +38,12 @@ export default {
       const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, request)
       return JSON.parse(response.data)
     },
-    onFiltersChangedAsync: async function (filterSidebarModel) {
+    onFiltersChangedAsync: async function (filters) {
       this.isLoaded = false
       this.$Progress.start()
 
       try {
-        this.results = await this.fetchDataAsync(filterSidebarModel.filters)
+        this.results = await this.fetchDataAsync(filters)
       } catch (err) {
         console.error('Got an exception while loading data: ', err)
         this.results = []

@@ -160,8 +160,7 @@ export default {
   },
   methods: {
     applyFilters () {
-      this.$emit('filtersChanged', this.$data)
-      window.scrollTo(0, 0)
+      this.$emit('filtersChanged', this.filters)
     },
     resetFilters () {
       Object.assign(this.$data, getDefaultData())
