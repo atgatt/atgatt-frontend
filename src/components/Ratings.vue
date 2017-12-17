@@ -31,23 +31,26 @@ export default {
   },
   methods: {
     fetchDataAsync: async function (filters) {
-      const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, filters)
+      const request = Object.assign({}, filters)
+      request.start = this.start
+      request.limit = this.limit
+
+      const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, request)
       return JSON.parse(response.data)
     },
-    onFiltersChangedAsync: async function (filters) {
+    onFiltersChangedAsync: async function (filterSidebarModel) {
       this.isLoaded = false
-      this.results = []
       this.$Progress.start()
 
       try {
-        this.results = await this.fetchDataAsync(filters)
-        this.isLoaded = true
-        this.$Progress.finish()
+        this.results = await this.fetchDataAsync(filterSidebarModel.filters)
       } catch (err) {
         console.error('Got an exception while loading data: ', err)
-        this.isLoaded = true
         this.results = []
       }
+
+      this.$Progress.finish()
+      this.isLoaded = true
     }
   }
 }
