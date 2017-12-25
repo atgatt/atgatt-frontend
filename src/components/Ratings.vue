@@ -5,7 +5,7 @@
         <product-filter-sidebar v-on:filtersChanged="onFiltersChangedAsync" />
       </div>
       <div v-if="results.length" class="col-9 product-results">
-        <div v-for="result in results" v-bind:key="result.uid">
+        <div v-for="result in results" v-bind:key="result.uuid">
           <product-card v-bind:product="result" />
         </div>
       </div>

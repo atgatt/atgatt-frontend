@@ -3,8 +3,8 @@
         <i class="fa-li fa fa-check cert" />
         <span class="badge badge-success">
             {{certificationName}}
-            <span v-if="certification.ratingType">
-              - {{certification.ratingValue}} {{certification.ratingType}}
+            <span v-if="certification.stars">
+              - {{certification.stars}} stars
             </span>
         </span>
     </li>
