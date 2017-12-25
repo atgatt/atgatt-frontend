@@ -36,7 +36,7 @@ export default {
       request.limit = this.limit
 
       const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, request)
-      return JSON.parse(response.data)
+      return response.data
     },
     onFiltersChangedAsync: async function (filters) {
       this.isLoaded = false
