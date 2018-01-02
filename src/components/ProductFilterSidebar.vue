@@ -6,11 +6,11 @@
       </h5>
       <div class="form-group">
         <label for="manufacturer">Manufacturer</label>
-        <input type="text" class="form-control" v-model="filters.manufacturer" id="manufacturer" placeholder="Start typing a manufacturer..." v-on:keyup="applyFilters">
+        <input type="text" class="form-control" v-model="filters.manufacturer" id="manufacturer" placeholder="Start typing a manufacturer...">
       </div>
       <div class="form-group">
         <label for="manufacturer">Model</label>
-        <input type="text" class="form-control" v-model="filters.model" id="model" placeholder="Start typing a model..." v-on:keyup="applyFilters">
+        <input type="text" class="form-control" v-model="filters.model" id="model" placeholder="Start typing a model...">
       </div>
       <div class="form-group">
         <label for="rear-impact-zone-rating-slider">Price Range</label>
@@ -22,12 +22,12 @@
       <div class="form-group">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.certifications.SHARP" type="checkbox" id="sharp-checkbox"> SHARP
+            <input class="form-check-input" v-on:change="toggleSHARP" type="checkbox" id="sharp-checkbox"> SHARP
           </label>
         </div>
-        <div class="form-group">
+        <div v-if="filters.certifications.SHARP" class="form-group">
           <label for="min-sharp-stars-slider">Minimum Number of SHARP Stars</label>
-          <vue-slider ref="slider" id="min-sharp-stars-slider" v-bind="SHARPSliderOptions" v-model="filters.minimumSHARPStars"></vue-slider>
+          <vue-slider ref="slider" id="min-sharp-stars-slider" v-bind="SHARPSliderOptions" v-model="filters.certifications.SHARP.stars"></vue-slider>
         </div>
         <div class="form-check">
           <label class="form-check-label">
@@ -45,28 +45,30 @@
           </label>
         </div>
       </div>
-      <h5>
-        Minimum Impact Zone Ratings
-      </h5>
-      <div class="form-group">
-        <label for="left-impact-zone-rating-slider">Left</label>
-        <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.left"></vue-slider>
-      </div>
-      <div class="form-group">
-        <label for="right-impact-zone-rating-slider">Right</label>
-        <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.right"></vue-slider>
-      </div>
-      <div class="form-group">
-        <label for="rear-impact-zone-rating-slider">Rear</label>
-        <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.rear"></vue-slider>
-      </div>
-      <div class="form-group">
-        <label for="rear-impact-zone-rating-slider">Top: Front</label>
-        <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.top.front"></vue-slider>
-      </div>
-      <div class="form-group">
-        <label for="rear-impact-zone-rating-slider">Top: Rear</label>
-        <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.impactZoneMinimums.top.rear"></vue-slider>
+      <div v-if="filters.certifications.SHARP">
+        <h5>
+          Minimum Impact Zone Ratings
+        </h5>
+        <div class="form-group">
+          <label for="left-impact-zone-rating-slider">Left</label>
+          <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.left"></vue-slider>
+        </div>
+        <div class="form-group">
+          <label for="right-impact-zone-rating-slider">Right</label>
+          <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.right"></vue-slider>
+        </div>
+        <div class="form-group">
+          <label for="rear-impact-zone-rating-slider">Rear</label>
+          <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.rear"></vue-slider>
+        </div>
+        <div class="form-group">
+          <label for="rear-impact-zone-rating-slider">Top: Front</label>
+          <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.front"></vue-slider>
+        </div>
+        <div class="form-group">
+          <label for="rear-impact-zone-rating-slider">Top: Rear</label>
+          <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.rear"></vue-slider>
+        </div>
       </div>
       <div class="row">
         <div class="col">
@@ -112,7 +114,7 @@ function getDefaultData () {
     },
     usdPriceRangeSliderOptions: {
       min: 0,
-      max: 10000,
+      max: 2000,
       tooltip: 'hover',
       formatter: function (value) {
         return `$${value}`
@@ -122,22 +124,15 @@ function getDefaultData () {
       manufacturer: null,
       model: null,
       certifications: {
-        SHARP: false,
+        SHARP: null,
         SNELL: false,
         ECE: false,
         DOT: false
       },
-      minimumSHARPStars: 1,
-      impactZoneMinimums: {
-        left: 1,
-        right: 1,
-        top: {
-          front: 1,
-          rear: 1
-        },
-        rear: 1
-      },
-      usdPriceRange: [0, 10000]
+      usdPriceRange: [0, 2000],
+      order: {
+        field: 'id'
+      }
     }
   }
 }
@@ -164,6 +159,22 @@ export default {
     },
     resetFilters () {
       Object.assign(this.$data, getDefaultData())
+    },
+    toggleSHARP () {
+      this.filters.certifications.SHARP = this.filters.certifications.SHARP ? null : {
+        stars: 1,
+        impactZoneMinimums: {
+          left: 1,
+          right: 1,
+          top: {
+            front: 1,
+            rear: 1
+          },
+          rear: 1
+        }
+      }
+
+      console.log('now: ', this.filters.certifications.SHARP)
     }
   },
   mounted () {
