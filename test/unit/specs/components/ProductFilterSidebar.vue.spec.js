@@ -5,22 +5,15 @@ const expectedInitialFilters = {
   manufacturer: null,
   model: null,
   certifications: {
-    SHARP: false,
+    SHARP: null,
     SNELL: false,
     ECE: false,
     DOT: false
   },
-  minimumSHARPStars: 1,
-  impactZoneMinimums: {
-    left: 1,
-    right: 1,
-    top: {
-      front: 1,
-      rear: 1
-    },
-    rear: 1
-  },
-  usdPriceRange: [0, 10000]
+  usdPriceRange: [0, 2000],
+  order: {
+    field: 'id'
+  }
 }
 
 const expectedSliderBackgroundColors = [

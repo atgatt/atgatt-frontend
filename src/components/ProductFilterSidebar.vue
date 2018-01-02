@@ -17,12 +17,12 @@
         <vue-slider ref="slider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
       </div>
       <h5>
-        Certifications
+        Required Certifications
       </h5>
       <div class="form-group">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-on:change="toggleSHARP" type="checkbox" id="sharp-checkbox"> SHARP
+            <input class="form-check-input" v-model="isSHARPChecked" type="checkbox" id="sharp-checkbox"> SHARP
           </label>
         </div>
         <div v-if="filters.certifications.SHARP" class="form-group">
@@ -120,6 +120,7 @@ function getDefaultData () {
         return `$${value}`
       }
     },
+    isSHARPChecked: false,
     filters: {
       manufacturer: null,
       model: null,
@@ -151,6 +152,11 @@ export default {
         this.applyFilters()
       },
       deep: true
+    },
+    isSHARPChecked: {
+      handler (val) {
+        this.toggleSHARP(val)
+      }
     }
   },
   methods: {
@@ -160,8 +166,8 @@ export default {
     resetFilters () {
       Object.assign(this.$data, getDefaultData())
     },
-    toggleSHARP () {
-      this.filters.certifications.SHARP = this.filters.certifications.SHARP ? null : {
+    toggleSHARP (isEnabled) {
+      this.filters.certifications.SHARP = !isEnabled ? null : {
         stars: 1,
         impactZoneMinimums: {
           left: 1,
@@ -173,8 +179,6 @@ export default {
           rear: 1
         }
       }
-
-      console.log('now: ', this.filters.certifications.SHARP)
     }
   },
   mounted () {
