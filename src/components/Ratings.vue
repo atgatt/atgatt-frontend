@@ -5,6 +5,28 @@
         <product-filter-sidebar v-on:filtersChanged="onFiltersChangedAsync" />
       </div>
       <div v-if="results.length" class="col-9 product-results">
+        <div class="row">
+          <div class="col-3">
+            <div class="form-group">
+              <label for="sortBy">Sort By:</label>
+              <select v-model="order.field" id="orderByField" class="form-control">
+                <option value="document->>'priceInUsd'">Price</option>
+                <option value="document->>'manufacturer'">Manufacturer</option>
+                <option value="document->>'model'">Model</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6"></div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="orderByDirection">Direction:</label>
+              <select v-model="order.descending" id="orderByDirection" class="form-control">
+                <option value="false">Ascending</option>
+                <option value="true">Descending</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <div v-for="result in results" v-bind:key="result.uuid">
           <product-card v-bind:product="result" />
         </div>
@@ -31,7 +53,19 @@ export default {
       start: 0,
       limit: 10,
       currFilters: null,
-      hasMore: true
+      hasMore: true,
+      order: {
+        field: 'document->>\'priceInUsd\'',
+        descending: false
+      }
+    }
+  },
+  watch: {
+    order: {
+      async handler (val) {
+        await this.onFiltersChangedAsync(this.currFilters)
+      },
+      deep: true
     }
   },
   methods: {
@@ -41,11 +75,16 @@ export default {
       request.start = this.start
       request.limit = this.limit
 
+      const order = Object.assign({}, this.order)
+      order.descending = order.descending === 'true'
+      request.order = order
+
       const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, request)
       return response.data
     },
     onFiltersChangedAsync: async function (filters) {
       this.isLoaded = false
+      this.hasMore = true
       this.$Progress.start()
       this.start = 0
       try {

@@ -26,8 +26,28 @@
           </label>
         </div>
         <div v-if="filters.certifications.SHARP" class="form-group">
-          <label for="min-sharp-stars-slider">Minimum Number of SHARP Stars</label>
+          <label for="min-sharp-stars-slider">Number of SHARP Stars</label>
           <vue-slider ref="slider" id="min-sharp-stars-slider" v-bind="SHARPSliderOptions" v-model="filters.certifications.SHARP.stars"></vue-slider>
+          <div class="form-group">
+            <label for="left-impact-zone-rating-slider">Left Impact Rating</label>
+            <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.left"></vue-slider>
+          </div>
+          <div class="form-group">
+            <label for="right-impact-zone-rating-slider">Right Impact Rating</label>
+            <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.right"></vue-slider>
+          </div>
+          <div class="form-group">
+            <label for="rear-impact-zone-rating-slider">Rear Impact Rating</label>
+            <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.rear"></vue-slider>
+          </div>
+          <div class="form-group">
+            <label for="rear-impact-zone-rating-slider">Top-Front Impact Rating</label>
+            <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.front"></vue-slider>
+          </div>
+          <div class="form-group">
+            <label for="rear-impact-zone-rating-slider">Top-Rear Impact Rating</label>
+            <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.rear"></vue-slider>
+          </div>
         </div>
         <div class="form-check">
           <label class="form-check-label">
@@ -43,31 +63,6 @@
           <label class="form-check-label">
             <input class="form-check-input" v-model="filters.certifications.DOT" type="checkbox" id="dot-checkbox"> DOT
           </label>
-        </div>
-      </div>
-      <div v-if="filters.certifications.SHARP">
-        <h5>
-          Minimum Impact Zone Ratings
-        </h5>
-        <div class="form-group">
-          <label for="left-impact-zone-rating-slider">Left</label>
-          <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.left"></vue-slider>
-        </div>
-        <div class="form-group">
-          <label for="right-impact-zone-rating-slider">Right</label>
-          <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.right"></vue-slider>
-        </div>
-        <div class="form-group">
-          <label for="rear-impact-zone-rating-slider">Rear</label>
-          <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.rear"></vue-slider>
-        </div>
-        <div class="form-group">
-          <label for="rear-impact-zone-rating-slider">Top: Front</label>
-          <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.front"></vue-slider>
-        </div>
-        <div class="form-group">
-          <label for="rear-impact-zone-rating-slider">Top: Rear</label>
-          <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.rear"></vue-slider>
         </div>
       </div>
       <div class="row">
