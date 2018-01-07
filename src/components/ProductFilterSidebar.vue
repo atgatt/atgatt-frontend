@@ -13,6 +13,10 @@
         <input type="text" class="form-control" v-model="filters.model" id="model" placeholder="Start typing a model...">
       </div>
       <div class="form-group">
+        <label for="type">Type</label>
+        <multiselect v-model="filters.subtypes" v-bind:options="subtypeMultiselectOptions" v-bind:multiple="true" track-by="id" label="name" placeholder="Select one or more types..."></multiselect>
+      </div>
+      <div class="form-group">
         <label for="rear-impact-zone-rating-slider">Price Range</label>
         <vue-slider ref="slider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
       </div>
@@ -76,6 +80,8 @@
 
 <script>
 import vueSlider from 'vue-slider-component'
+import Multiselect from 'vue-multiselect'
+
 const sliderBackgroundColors = [
   '#303030',
   '#CC3628',
@@ -87,6 +93,10 @@ const sliderBackgroundColors = [
 
 function getDefaultData () {
   return {
+    subtypeMultiselectOptions: [
+      {id: 'fullface', name: 'Full Face'},
+      {id: 'system', name: 'System'}
+    ],
     impactZoneSliderOptions: {
       min: 1,
       max: 6,
@@ -117,6 +127,7 @@ function getDefaultData () {
     },
     isSHARPChecked: false,
     filters: {
+      subtypes: [],
       manufacturer: null,
       model: null,
       certifications: {
@@ -136,7 +147,8 @@ function getDefaultData () {
 export default {
   name: 'ProductFilterSidebar',
   components: {
-    vueSlider
+    vueSlider,
+    Multiselect
   },
   data () {
     return getDefaultData()
@@ -185,5 +197,10 @@ export default {
 <style scoped>
 .form-check-label {
   padding-left: 1.15rem;
+}
+
+.multiselect {
+  z-index: 4;
+  font-size: inherit;
 }
 </style>

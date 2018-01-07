@@ -21,6 +21,7 @@
     "jquery": "^3.2.1",
     "popper.js": "^1.13.0",
     "vue": "^2.5.13",
+    "vue-multiselect": "^2.0.8",
     "vue-progressbar": "^0.7.3",
     "vue-router": "^3.0.1",
     "vue-slider-component": "^2.4.7"

@@ -4,6 +4,7 @@ import { shallow } from 'vue-test-utils'
 const expectedInitialFilters = {
   manufacturer: null,
   model: null,
+  subtypes: [],
   certifications: {
     SHARP: null,
     SNELL: false,
