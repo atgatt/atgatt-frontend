@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueProgressBar from 'vue-progressbar'
+import VueSelect from 'vue-select'
 import App from './App'
 
 import NavBar from './components/common/layout/NavBar.vue'
@@ -17,15 +18,15 @@ import router from './router'
 
 import '../node_modules/jquery/dist/jquery.slim.min'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
-import '../node_modules/vue-multiselect/dist/vue-multiselect.min.css'
 
 import http from 'axios'
 
 Vue.config.productionTip = false
 
 // Register global components
+Vue.component('v-select', VueSelect)
 Vue.component('nav-bar', NavBar)
 Vue.component('nav-item', NavItem)
 Vue.component('app-footer', Footer)

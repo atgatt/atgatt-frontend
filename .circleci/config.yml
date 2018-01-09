@@ -20,12 +20,20 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: aws s3 sync ./dist s3://staging.crashtested.co/ --delete --region us-west-2 --exclude ".environment/*"
+      - run: mkdir -p workspace/artifacts
+      - run: cp -R ./dist workspace/artifacts
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - artifacts
   promote_staging_to_prod:
     docker:
       - image: circleci/node:8.9-browsers
     steps:
+      - attach_workspace:
+          at: workspace
       - run: sudo apt-get -y -qq install awscli
-      - run: aws s3 sync s3://staging.crashtested.co/ s3://crashtested.co/ --delete --region us-west-2 --exclude ".environment/*"
+      - run: aws s3 sync ./workspace/artifacts/dist s3://crashtested.co/ --delete --region us-west-2 --exclude ".environment/*"
 workflows:
   version: 2
   promote_to_prod:

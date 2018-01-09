@@ -74,7 +74,7 @@ export default {
       const request = Object.assign({}, filters)
       request.start = this.start
       request.limit = this.limit
-      request.subtypes = request.subtypes.map(subtype => subtype.id)
+      request.subtypes = request.subtypes.map(subtype => subtype.value)
 
       const order = Object.assign({}, this.order)
       order.descending = order.descending === 'true'
