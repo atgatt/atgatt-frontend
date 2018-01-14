@@ -97,11 +97,11 @@ function getDefaultData () {
       {value: 'modular', label: 'Modular'}
     ],
     impactZoneSliderOptions: {
-      min: 1,
-      max: 6,
+      min: 0,
+      max: 5,
       tooltip: 'never',
       sliderStyle: function (value) {
-        const backgroundColorIndex = value === 0 ? 0 : (value - 1)
+        const backgroundColorIndex = value === 0 ? 0 : value
         if (backgroundColorIndex > sliderBackgroundColors.length || backgroundColorIndex < 0) {
           throw new Error('Background color index out of range')
         }
@@ -175,13 +175,13 @@ export default {
       this.filters.certifications.SHARP = !isEnabled ? null : {
         stars: 1,
         impactZoneMinimums: {
-          left: 1,
-          right: 1,
+          left: 0,
+          right: 0,
           top: {
-            front: 1,
-            rear: 1
+            front: 0,
+            rear: 0
           },
-          rear: 1
+          rear: 0
         }
       }
     }

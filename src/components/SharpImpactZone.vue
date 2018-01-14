@@ -48,7 +48,7 @@ export default {
         if (!this.isTopZone) {
           return `/static/${this.zoneId}-${rating}.jpg`
         }
-        return `/static/${this.zoneId}-${rating.front}-${rating.rear}.jpg`
+        return `/static/${this.zoneId}-${rating.rear}-${rating.front}.jpg`
       }
       return null
     },

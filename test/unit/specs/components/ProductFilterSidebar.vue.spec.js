@@ -41,6 +41,20 @@ describe('ProductFilterSidebar.vue', () => {
     expect(component.filters).toEqual(expectedInitialFilters)
   })
 
+  it('should set all of the SHARP impact zone ratings to zero and stars to 1 when toggleSHARP(true) is called', () => {
+    component.$mount()
+    component.toggleSHARP(true)
+    expect(component.filters).not.toEqual(expectedInitialFilters)
+    expect(component.filters.certifications.SHARP).toEqual({'impactZoneMinimums': {'left': 0, 'rear': 0, 'right': 0, 'top': {'front': 0, 'rear': 0}}, 'stars': 1})
+  })
+
+  it('should set the SHARP filter object back to null when toggleSHARP(false) is called', () => {
+    component.$mount()
+    component.toggleSHARP(true)
+    component.toggleSHARP(false)
+    expect(component.filters).toEqual(expectedInitialFilters)
+  })
+
   it('should reset filters to the default values when resetFilters() is called', (next) => {
     component.filters.minPrice = 69.1337
     expect(component.filters).not.toEqual(expectedInitialFilters)
@@ -57,13 +71,13 @@ describe('ProductFilterSidebar.vue', () => {
     expect(labelText).toBe('$some text')
   })
 
-  it('should format impact zones with the first color when the index is <= 0', () => {
-    const backgroundColorObj = component.$data.impactZoneSliderOptions.sliderStyle(0)
+  it('should format impact zones with the first color when the index is 0', () => {
+    let backgroundColorObj = component.$data.impactZoneSliderOptions.sliderStyle(0)
     expect(backgroundColorObj.backgroundColor).toBe(expectedSliderBackgroundColors[0])
   })
 
   it('should format impact zones with the correct color when the index is positive', () => {
-    let backgroundColorObj = component.$data.impactZoneSliderOptions.sliderStyle(3)
+    let backgroundColorObj = component.$data.impactZoneSliderOptions.sliderStyle(2)
     expect(backgroundColorObj.backgroundColor).toBe(expectedSliderBackgroundColors[2])
   })
 
