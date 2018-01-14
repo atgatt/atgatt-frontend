@@ -1,12 +1,17 @@
 <template>
     <footer class="footer">
-      <span class="text-muted">© 2017 CrashTested. Portions of the product data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>, except where otherwise stated.</span>
+      <span class="text-muted">© {{currentYear}} CrashTested. Portions of the product data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>, except where otherwise stated.</span>
     </footer>
 </template>
 
 <script>
 export default {
-  name: 'nav-bar'
+  name: 'nav-bar',
+  computed: {
+    currentYear: function () {
+      return new Date().getFullYear()
+    }
+  }
 }
 </script>
 
