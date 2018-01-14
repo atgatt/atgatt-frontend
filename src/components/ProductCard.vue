@@ -2,7 +2,7 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col my-auto">
-        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small></h4>
+        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> (also known as the {{product.modelAlias}})</small></h4>
       </div>
       <div class="col buy-btn-col my-auto">
         <a href="#" target="_blank" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy for ${{product.priceInUsd}}</strong></a>
