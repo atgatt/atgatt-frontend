@@ -1,5 +1,5 @@
 import Home from '../../../../src/components/Home.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 
 describe('Home.vue', () => {
   it('should complete the progress bar when it finishes loading', () => {

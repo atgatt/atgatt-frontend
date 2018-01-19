@@ -1,5 +1,5 @@
 import NotFound from '../../../../src/components/NotFound.vue'
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 
 describe('NotFound.vue', () => {
   it('should complete the progress bar when it finishes loading', () => {

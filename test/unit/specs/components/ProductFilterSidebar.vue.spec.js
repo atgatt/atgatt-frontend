@@ -1,5 +1,5 @@
 import ProductFilterSidebar from '../../../../src/components/ProductFilterSidebar.vue'
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 
 const expectedInitialFilters = {
   manufacturer: null,
