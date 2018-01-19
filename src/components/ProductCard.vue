@@ -14,7 +14,7 @@
       </div>
       <div class="col-8 col-lg align-self-center">
         <ul name="certifications-list" class="fa-ul certifications-list">
-          <label for="certifications-list">Certifications:</label>
+          <label class="certifications-label" for="certifications-list">Certifications:</label>
           <product-certification-badge v-bind:certification="product.certifications.SHARP" certificationName="SHARP" />
           <product-certification-badge v-bind:certification="product.certifications.SNELL" certificationName="SNELL" />
           <product-certification-badge v-bind:certification="product.certifications.ECE" certificationName="ECE" />
@@ -107,5 +107,9 @@ export default {
 
 .card-row {
   padding-left: 0.4rem;
+}
+
+.certifications-label {
+  font-size: larger;
 }
 </style>
