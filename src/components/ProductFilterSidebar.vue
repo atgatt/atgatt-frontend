@@ -80,6 +80,7 @@
 
 <script>
 import vueSlider from 'vue-slider-component'
+import formatCurrency from '../lib/currency'
 
 const sliderBackgroundColors = [
   '#303030',
@@ -118,10 +119,10 @@ function getDefaultData () {
     },
     usdPriceRangeSliderOptions: {
       min: 0,
-      max: 2000,
+      max: 200000,
       tooltip: 'hover',
       formatter: function (value) {
-        return `$${value}`
+        return formatCurrency(parseInt(value / 100.0))
       }
     },
     isSHARPChecked: false,
@@ -135,7 +136,7 @@ function getDefaultData () {
         ECE: false,
         DOT: false
       },
-      usdPriceRange: [0, 2000],
+      usdPriceRange: [0, 200000],
       order: {
         field: 'id'
       }

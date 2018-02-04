@@ -10,7 +10,7 @@
             <div class="form-group">
               <label for="sortBy">Sort By:</label>
               <select v-model="order.field" id="orderByField" class="form-control">
-                <option value="document->>'priceInUsd'">Price</option>
+                <option value="document->>'priceInUsdMultiple'">Price</option>
                 <option value="document->>'manufacturer'">Manufacturer</option>
                 <option value="document->>'model'">Model</option>
               </select>
@@ -55,7 +55,7 @@ export default {
       currFilters: null,
       hasMore: true,
       order: {
-        field: 'document->>\'priceInUsd\'',
+        field: 'document->>\'priceInUsdMultiple\'',
         descending: false
       }
     }

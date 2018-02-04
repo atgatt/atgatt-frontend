@@ -5,7 +5,7 @@
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> (also known as the {{product.modelAlias}})</small></h4>
       </div>
       <div class="col buy-btn-col my-auto">
-        <a href="#" target="_blank" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy for ${{product.priceInUsd}}</strong></a>
+        <a href="#" target="_blank" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
       </div>
     </div>
     <div class="row product-body">
@@ -50,9 +50,24 @@
 </template>
 
 <script>
+import formatCurrency from '../lib/currency'
 export default {
   name: 'ProductCard',
-  props: ['product']
+  props: ['product'],
+  computed: {
+    formattedPrice: function () {
+      const priceInUsd = this.product.priceInUsdMultiple / 100.0
+      return priceInUsd > 0 ? formatCurrency(priceInUsd) : 'a mystery price!'
+    },
+
+    priceInUsd: function () {
+      return this.product.priceInUsdMultiple / 100.0
+    },
+
+    hasPrice: function () {
+      return this.priceInUsd() >= 0
+    }
+  }
 }
 </script>
 
