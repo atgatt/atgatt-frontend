@@ -11,7 +11,7 @@ const expectedInitialFilters = {
     ECE: false,
     DOT: false
   },
-  usdPriceRange: [0, 2000],
+  usdPriceRange: [0, 200000],
   order: {
     field: 'id'
   }
@@ -67,8 +67,11 @@ describe('ProductFilterSidebar.vue', () => {
   })
 
   it('should format the price range label in USD', () => {
-    const labelText = component.$data.usdPriceRangeSliderOptions.formatter('some text')
-    expect(labelText).toBe('$some text')
+    let labelText = component.$data.usdPriceRangeSliderOptions.formatter('352')
+    expect(labelText).toBe('$3.00')
+
+    labelText = component.$data.usdPriceRangeSliderOptions.formatter('35000')
+    expect(labelText).toBe('$350.00')
   })
 
   it('should format impact zones with the first color when the index is 0', () => {
