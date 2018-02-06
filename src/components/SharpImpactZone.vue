@@ -22,6 +22,61 @@
         <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
         <img src="/static/impact-zones-key.jpg"/>
         <br /><br />
+        <table class="table table-bordered table-condensed">
+          <thead>
+            <th>Color</th>
+            <th>Peak Brain Acceleration</th>
+          </thead>
+          <tbody>
+          <tr>
+            <th>
+              Green
+            </th>
+            <td>
+              275g
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Yellow
+            </th>
+            <td>
+              300g
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Orange
+            </th>
+            <td>
+              400g
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Brown
+            </th>
+            <td>
+              420g
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Red
+            </th>
+            <td>
+              500g
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Black
+            </th>
+            <td>
+              More than 500g
+            </td>
+          </tr>
+        </tbody></table>
         <span v-if="isTopZone">NOTE: There are actually <strong>two</strong> sub-zones for top side impacts: front and rear. Therefore, there are two different ratings for this overall zone.</span>
         Click <a href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">here</a> to learn further details about how these ratings were calculated.
       </p>

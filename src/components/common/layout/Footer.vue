@@ -1,6 +1,10 @@
 <template>
     <footer class="footer">
       <span class="text-muted">© {{currentYear}} CrashTested. Portions of the product data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>, except where otherwise stated.</span>
+      <br/>
+      <router-link v-bind:to="'about'">About</router-link> —
+      <router-link v-bind:to="'about'">Terms of Service</router-link> —
+      <router-link v-bind:to="'about'">Privacy Policy</router-link>
     </footer>
 </template>
 

@@ -10,16 +10,23 @@
     </div>
     <div class="row product-body">
       <div class="col-4 col-lg align-self-center">
-        <img class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
+        <img v-if="product.imageUrl" class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
+        <i v-else class="fa fa-question fa-5x missing-product-image"/>
       </div>
       <div class="col-8 col-lg align-self-center">
         <ul name="certifications-list" class="fa-ul certifications-list">
           <label class="certifications-label" for="certifications-list">Certifications:</label>
           <product-certification-badge v-bind:certification="product.certifications.SHARP" certificationName="SHARP" />
-          <product-certification-badge v-bind:certification="product.certifications.SNELL" certificationName="SNELL" />
           <product-certification-badge v-bind:certification="product.certifications.ECE" certificationName="ECE" />
+          <product-certification-badge v-bind:certification="product.certifications.SNELL" certificationName="SNELL" />
           <product-certification-badge v-bind:certification="product.certifications.DOT" certificationName="DOT" />
         </ul>
+      </div>
+      <div class="col-3 col-lg align-self-center">
+        <sharp-impact-zone
+          v-bind:certification="product.certifications.SHARP"
+          zoneId="top"
+        />
       </div>
       <div class="col-3 col-lg align-self-center">
         <sharp-impact-zone
@@ -37,12 +44,6 @@
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="rear"
-        />
-      </div>
-      <div class="col-3 col-lg align-self-center">
-        <sharp-impact-zone
-          v-bind:certification="product.certifications.SHARP"
-          zoneId="top"
         />
       </div>
     </div>
@@ -97,7 +98,7 @@ export default {
   padding: 1rem;
 }
 
-.product-image {
+.product-image, .missing-product-image {
   padding: 1rem;
   border-radius: 20%;
 }

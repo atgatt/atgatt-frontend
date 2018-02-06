@@ -4,7 +4,7 @@
         <span class="badge badge-success">
             {{certificationName}}
             <span v-if="certification.stars">
-              - {{certification.stars}} stars
+              - {{certification.stars}} Stars
             </span>
         </span>
     </li>
