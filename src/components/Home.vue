@@ -1,12 +1,12 @@
 <template>
   <div class="jumbotron">
-    <h1 class="display-3">Unsure if your motorcycle gear is safe?</h1>
-    <p class="lead">Don't fear, CrashTested is here!</p>
+    <h1 class="display-3">Motorcycle crashes are either sad stories or epic tales.</h1>
+    <p class="lead">Which would you like to star in?</p>
     <hr class="my-4">
-    <p>We built CrashTested because safety standards for motorcycle gear are confusing and often meaningless. Instead of scouring the internet, looking for clues as to which standards your gear is held to, just click below to get accurate and up-to-date information about your favorite motorcycle gear!</p>
+    <p>If you're the "epic tale" kind of person, you're in the right place. We built CrashTested to be the most comprehensive, safe, and trusted source of motorcycle safety data on the internet.</p>
     <p class="lead">
       <router-link to="/ratings" class="btn btn-primary btn-lg" role="button">View Ratings</router-link>
-      <router-link to="/about" class="btn btn-secondary btn-lg" role="button">Learn More</router-link>
+      <router-link to="/about" class="btn btn-secondary btn-lg" role="button">About Us</router-link>
     </p>
   </div>
 </template>
