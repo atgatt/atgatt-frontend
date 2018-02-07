@@ -1,10 +1,13 @@
 <template>
     <footer class="footer">
-      <span class="text-muted">© {{currentYear}} CrashTested. Portions of the product data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>, except where otherwise stated.</span>
-      <br/>
-      <router-link v-bind:to="'about'">About</router-link> —
-      <router-link v-bind:to="'about'">Terms of Service</router-link> —
-      <router-link v-bind:to="'about'">Privacy Policy</router-link>
+      <div>
+        <span class="text-muted">© {{currentYear}} CrashTested. Portions of the product data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>.</span>
+      </div>
+      <div>
+        <router-link v-bind:to="'about'">About</router-link> —
+        <router-link v-bind:to="'about'">Terms of Service</router-link> —
+        <router-link v-bind:to="'about'">Privacy Policy</router-link>
+      </div>
     </footer>
 </template>
 
@@ -23,7 +26,7 @@ export default {
 .footer {
     bottom: 0;
     width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
+    height: 80px; /* Set the fixed height of the footer here */
     background-color: #f5f5f5;
     position: absolute;
     text-align: center;
