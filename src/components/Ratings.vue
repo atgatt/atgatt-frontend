@@ -21,8 +21,8 @@
             <div class="form-group">
               <label for="orderByDirection">Direction:</label>
               <select v-model="order.descending" id="orderByDirection" class="form-control">
-                <option value="false">Ascending</option>
-                <option value="true">Descending</option>
+                <option value="false">Lowest First</option>
+                <option value="true">Highest First</option>
               </select>
             </div>
           </div>
