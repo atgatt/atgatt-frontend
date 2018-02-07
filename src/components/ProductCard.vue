@@ -5,7 +5,7 @@
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> (also known as the {{product.modelAlias}})</small></h4>
       </div>
       <div class="col buy-btn-col my-auto">
-        <a href="#" target="_blank" class="btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
+        <a href="#" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
       </div>
     </div>
     <div class="row product-body">
@@ -129,11 +129,34 @@ export default {
   font-size: larger;
 }
 
-.btn-success {
+.buy-product-btn {
   background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   border-color: lightslategray;
   color: #111;
   font-weight: 100;
+}
+
+.buy-product-btn:hover {
+  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  color: initial;
+  font-weight: 100;
+}
+
+.buy-product-btn:focus, .buy-product-btn.focus {
+  box-shadow: 0 0 0 0.2rem #f0c14b;
+}
+
+.buy-product-btn:not(:disabled):not(.disabled):active, .buy-product-btn:not(:disabled):not(.disabled).active,
+.show > .buy-product-btn.dropdown-toggle {
+  color: #111;
+  background-color: #f7dfa5;
+  border-color: #f0c14b;
+}
+
+.buy-product-btn:not(:disabled):not(.disabled):active:focus, .buy-product-btn:not(:disabled):not(.disabled).active:focus,
+.show > .buy-product-btn.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #f0c14b;
 }
 </style>
