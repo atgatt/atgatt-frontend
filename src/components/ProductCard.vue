@@ -128,4 +128,12 @@ export default {
 .certifications-label {
   font-size: larger;
 }
+
+.btn-success {
+  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  border-color: lightslategray;
+  color: #111;
+  font-weight: 100;
+}
 </style>
