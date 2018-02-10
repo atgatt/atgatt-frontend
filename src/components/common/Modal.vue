@@ -58,7 +58,7 @@ export default {
 
 .modal-container {
   width: 80%;
-  height: 80%;
+  max-height: 90%;
   overflow-y: auto;
   margin: 0px auto;
   padding: 20px 30px;
