@@ -8,6 +8,9 @@
             <slot name="header">
               default header - override me by using the slot property
             </slot>
+            <button class="btn btn-primary modal-default-button" @click="$emit('close')">
+                <i class="fa fa-times"></i>
+            </button>
           </div>
 
           <div class="modal-body">
@@ -55,8 +58,10 @@ export default {
 
 .modal-container {
   width: 80%;
+  height: 80%;
+  overflow-y: auto;
   margin: 0px auto;
-  padding: 10px 15px;
+  padding: 20px 30px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -74,6 +79,7 @@ export default {
 
 .modal-default-button {
   float: right;
+  cursor: pointer;
 }
 
 /*
