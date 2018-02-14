@@ -39,13 +39,19 @@ Vue.component('product-filter-sidebar', ProductFilterSidebar)
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)
 
-function startVue (environment) {
+function startApp (environment) {
+  // Initialize analytics
+  // eslint-disable-next-line
+  amplitude.getInstance().init(environment.amplitudeAPIKey)
+
+  // Set up environment variables middleware
   Vue.use({
     install: function (Vue, options) {
       Vue.prototype.$environment = environment
     }
   })
 
+  // Have Vue render the app
   /* eslint-disable no-new */
   new Vue({
     el: '#app',
@@ -55,12 +61,13 @@ function startVue (environment) {
   })
 }
 
-// Try to fetch environment settings, then start Vue
+// Try to fetch environment settings, then start the app
 http.get('/.environment/environment.json').then(response => {
-  startVue(response.data)
+  startApp(response.data)
 }).catch(() => {
   console.warn('Could not determine environment; assuming local dev environment')
-  startVue({
-    apiBaseUrl: '/api-proxy'
+  startApp({
+    apiBaseUrl: '/api-proxy',
+    amplitudeAPIKey: '487025f65c0f02ce86dc6df875b01d24'
   })
 })

@@ -4,7 +4,7 @@
       <div class="col my-auto">
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> (also known as the {{product.modelAlias}})</small></h4>
       </div>
-      <div class="col buy-btn-col my-auto">
+      <div v-on:click="trackBuyButtonClick" class="col buy-btn-col my-auto">
         <a href="#" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
       </div>
     </div>
@@ -67,6 +67,17 @@ export default {
 
     hasPrice: function () {
       return this.priceInUsd() >= 0
+    }
+  },
+  methods: {
+    trackBuyButtonClick: function () {
+      // eslint-disable-next-line
+      amplitude.getInstance().logEvent('buyButtonClicked', {
+        'uuid': this.product.uuid,
+        'manufacturer': this.product.manufacturer,
+        'model': this.product.model,
+        'priceInUsdMultiple': this.product.priceInUsdMultiple
+      })
     }
   }
 }
