@@ -5,7 +5,8 @@
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> (also known as the {{product.modelAlias}})</small></h4>
       </div>
       <div v-on:click="trackBuyButtonClick" class="col buy-btn-col my-auto">
-        <a href="#" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
+        <a v-bind:href="formattedBuyURL" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
+        <img src="//ir-na.amazon-adsystem.com/e/ir?t=crashtested-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
       </div>
     </div>
     <div class="row product-body">
@@ -61,16 +62,21 @@ export default {
       return priceInUsd > 0 ? formatCurrency(priceInUsd) : 'a mystery price!'
     },
 
-    priceInUsd: function () {
-      return this.product.priceInUsdMultiple / 100.0
-    },
+    formattedBuyURL: function () {
+      const buyUrl = this.product.buyUrl
+      if (buyUrl) {
+        return buyUrl
+      }
 
-    hasPrice: function () {
-      return this.priceInUsd() >= 0
+      const manufacturer = this.product.manufacturer
+      const model = this.product.model
+
+      return `https://www.amazon.com/gp/search?ie=UTF8&tag=crashtested-20&linkCode=ur2&linkId=2a2896b54f76421e38228d42e244bfbb&camp=1789&creative=9325&index=automotive&keywords=${manufacturer} ${model}`
     }
   },
   methods: {
     trackBuyButtonClick: function () {
+      // Amplitude is globally defined, disabling ESLint so that it doesn't complain about an unknown global variable
       // eslint-disable-next-line
       amplitude.getInstance().logEvent('buyButtonClicked', {
         'uuid': this.product.uuid,
