@@ -55,12 +55,12 @@
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.certifications.SNELL" type="checkbox" id="snell-checkbox"> SNELL
+            <input class="form-check-input" v-model="filters.certifications.ECE" type="checkbox" id="ece-checkbox"> ECE
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.certifications.ECE" type="checkbox" id="ece-checkbox"> ECE
+            <input class="form-check-input" v-model="filters.certifications.SNELL" type="checkbox" id="snell-checkbox"> SNELL
           </label>
         </div>
         <div class="form-check">
