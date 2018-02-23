@@ -41,8 +41,12 @@ Vue.use(VueProgressBar)
 
 function startApp (environment) {
   // Initialize analytics
-  // eslint-disable-next-line
-  amplitude.getInstance().init(environment.amplitudeAPIKey)
+  try {
+    // eslint-disable-next-line
+    amplitude.getInstance().init(environment.amplitudeAPIKey)
+  } catch (e) {
+    console.error('Failed to initialize amplitude: ', e)
+  }
 
   // Set up environment variables middleware
   Vue.use({
