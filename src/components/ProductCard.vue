@@ -71,14 +71,14 @@
                 Our safety score is a weighted average of the crash test scores obtained from SHARP combined with the certifications obtained from SNELL, DOT, and ECE.
                 Specifically, we weight each certification as follows: <br/><br/>
                 <code>
-                  Safety Score = 0.15 * ECE + 0.05 * DOT +  0.3 * SNELL + 0.5 * (SHARP-Left-Percentage * 0.20 + SHARP-Right-Percentage * 0.20 + SHARP-TopFront-Percentage * 0.20 + SHARP-TopRear-Percentage * 0.20 + SHARP-Rear-Percentage * 0.20)
+                  Safety Score = 0.10 * ECE + 0.08 * DOT +  0.02 * SNELL + 0.8 * (SHARP-Left-Percentage * 0.20 + SHARP-Right-Percentage * 0.20 + SHARP-TopFront-Percentage * 0.20 + SHARP-TopRear-Percentage * 0.20 + SHARP-Rear-Percentage * 0.20)
                 </code>
                 <br />
                 <br />
                 <ul>
                   <li>ECE / DOT/ SNELL are assigned a score of 1 if said certification exists, and 0 if it does not.</li>
                   <li>SHARP Percentages are calculated by dividing the raw score for each impact zone (which is a value from 0 to 5) by the maximum score (i.e. Raw-Score / 5)</li>
-                  <li>SHARP is weighted the highest due to differences in testing methodology that we believe are beneficial to the rider. SNELL is weighted heavily for similar reasons. See the pane below for more information.</li>
+                  <li>SHARP is weighted the highest due to differences in testing methodology that we believe are beneficial to the rider. SNELL is weighted higher than DOT or ECE for similar reasons. See the pane below for more information.</li>
                 </ul>
               </div>
             </div>
@@ -98,7 +98,7 @@
                 <br/>
                 <ul>
                   <li>
-                    <b>SHARP</b> certifications are independently conducted certifications meant for the European market, and their testing caters to speeds encountered on European roads. Helmets rated by SHARP are given a score from 1-5 Stars, but this metric should be ignored since the actual crash test ratings can vary between helmets with the same star rating. In other words, two "5 Star" helmets are not necessarily alike. Despite these facts, we believe that Americans should strongly consider the crash data that SHARP produces for each helmet. This is because SHARP buys and tests their helmets directly off the shelf and provides the most detailed helmet ratings available, including specific crash test data and color-coded impact scores for each test. In addition, many helmets sold in North America are exactly the same as their European counterparts and happen to be rated by SHARP too, so their data is relevant regardless of where you live in these cases.
+                    <b>SHARP</b> certifications are independently conducted certifications meant for the European market, and their testing caters to crashes encountered on European roads (based off the findings in the <a href="https://ec.europa.eu/transport/road_safety/sites/roadsafety/files/pdf/projects_sources/cost327_final_report.pdf">COST-327 report</a>). Helmets rated by SHARP are given a score from 1-5 Stars, but this metric can be misleading since the actual crash test ratings can vary between helmets with the same star rating. In other words, two "5 Star" helmets are not necessarily alike. Despite these facts, we believe that Americans should strongly consider the crash data that SHARP produces for each helmet. This is because SHARP buys and tests their helmets directly off the shelf and provides the most detailed helmet ratings available, including specific crash test data and color-coded impact scores for each test. In addition, many helmets sold in North America are exactly the same as their European counterparts and happen to be rated by SHARP too, so their data is relevant regardless of where you live in these cases.
                   </li>
                   <br/>
                   <li>
