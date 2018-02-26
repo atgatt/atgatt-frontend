@@ -3,7 +3,7 @@
     <div class="row product-header">
       <div class="col my-auto">
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
-        <i>{{product.safetyPercentage}}% Safety Score <i v-on:click="toggleRatingsModal" class="fa fa-info-circle" /></i>
+        <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <i v-on:click="toggleRatingsModal" class="fa fa-info-circle" /></i>
       </div>
       <div v-on:click="trackBuyButtonClick" class="col buy-btn-col my-auto">
         <a v-bind:href="formattedBuyURL" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
@@ -55,7 +55,7 @@
       <h1 slot="header">Safety Score and Certification Details</h1>
       <div slot="body">
         <div class="alert alert-warning" role="alert">
-          Warning: We've recently been notified that some helmet manufacturers claim to use slightly different internal head shapes for their helmets in each region. Said helmets may or may not be marketed under the same manufacturer and model, and these differences in head shapes may or may not lead to the "same" helmet performing differently in a crash scenario depending on which region you buy the helmet in. In essence, note that there are pros and cons to each certification in terms of how testing is conducted, and no single certification can be perfect. For maximum safety, we believe it's best to diversify and buy a helmet that has <b>all</b> of the well-known certifications (SHARP, ECE, SNELL, and DOT).
+          Warning: We've recently been notified that some helmet manufacturers claim to use slightly different internal head shapes for their helmets in each region. Said helmets may or may not be marketed under the same manufacturer and model, and these differences in head shapes may or may not lead to the "same" helmet performing differently in a crash scenario depending on which region you buy the helmet in. In essence, note that there are pros and cons to each certification in terms of how testing is conducted, and no single certification can be perfect. Bottom line: for maximum safety, we believe it's best to diversify and buy a helmet that has <b>all</b> of the well-known certifications (SHARP, ECE, SNELL, and DOT).
         </div>
         <div id="ratings-accordion" role="tablist">
           <div class="card">
@@ -78,7 +78,7 @@
                 <ul>
                   <li>ECE / DOT/ SNELL are assigned a score of 1 if said certification exists, and 0 if it does not.</li>
                   <li>SHARP Percentages are calculated by dividing the raw score for each impact zone (which is a value from 0 to 5) by the maximum score (i.e. Raw-Score / 5)</li>
-                  <li>SHARP is weighted the highest due to differences in testing methodology that we believe are beneficial to the rider. SNELL is weighted heavily for similar reasons. See the details pane below for more information.</li>
+                  <li>SHARP is weighted the highest due to differences in testing methodology that we believe are beneficial to the rider. SNELL is weighted heavily for similar reasons. See the pane below for more information.</li>
                 </ul>
               </div>
             </div>
@@ -98,15 +98,15 @@
                 <br/>
                 <ul>
                   <li>
-                    <b>SHARP certifications</b> are independently conducted certifications meant for the European market, and their testing caters to speeds encountered on European roads. Helmets rated by SHARP are given a score from 1-5 Stars, but this metric should be ignored since the actual crash test ratings can vary between helmets with the same star rating. In other words, two "5 Star" helmets are not necessarily alike. Despite these facts, we believe that Americans should strongly consider the crash data that SHARP produces for each helmet. This is because SHARP buys and tests their helmets directly off the shelf and provides the most detailed helmet ratings available, including specific crash test data and color-coded impact scores for each test. In addition, many helmets sold in North America are exactly the same as their European counterparts and happen to be rated by SHARP too, so their data is relevant regardless of where you live in many cases.
+                    <b>SHARP</b> certifications are independently conducted certifications meant for the European market, and their testing caters to speeds encountered on European roads. Helmets rated by SHARP are given a score from 1-5 Stars, but this metric should be ignored since the actual crash test ratings can vary between helmets with the same star rating. In other words, two "5 Star" helmets are not necessarily alike. Despite these facts, we believe that Americans should strongly consider the crash data that SHARP produces for each helmet. This is because SHARP buys and tests their helmets directly off the shelf and provides the most detailed helmet ratings available, including specific crash test data and color-coded impact scores for each test. In addition, many helmets sold in North America are exactly the same as their European counterparts and happen to be rated by SHARP too, so their data is relevant regardless of where you live in these cases.
                   </li>
                   <br/>
                   <li>
-                    <b>SNELL certifications</b> are somewhat alike to SHARP certifications in that they're independently conducted and the testing methodology is similar, but SNELL mostly tests helmets sold in North America with few exceptions. As such, their testing caters to speeds encountered on North American roads. Another important difference compared to SHARP is that SNELL sources their helmets directly from the manufacturer, and as such, these samples may or may not be representative of what you will find on store shelves.
+                    <b>SNELL</b> M2015 certifications are somewhat alike to SHARP certifications in that they're independently conducted and the testing methodology is similar, but SNELL mostly tests helmets sold in North America with few exceptions. As such, their testing caters to speeds encountered on North American roads. Another important difference compared to SHARP is that SNELL sources their helmets directly from the manufacturer, so these samples may or may not be representative of what you will find on store shelves.
                   </li>
                   <br/>
                   <li>
-                    <b>ECE 22.05</b> is the latest standard for motorcycle helmets determined by the Economic Commission for Europe. Usually, track days require a helmet rated by ECE at the bare minimum. This standard is quite similar to DOT, but it is not based on the honor system.
+                    <b>ECE</b> 22.05 is the latest standard for motorcycle helmets determined by the Economic Commission for Europe. Usually, track days require a helmet rated by ECE at the bare minimum. This standard is quite similar to DOT, but it is not based on the honor system.
                   </li>
                   <br/>
                   <li>
@@ -139,7 +139,9 @@ export default {
       const priceInUsd = this.product.priceInUsdMultiple / 100.0
       return priceInUsd > 0 ? formatCurrency(priceInUsd) : 'a mystery price!'
     },
-
+    formattedSubtype: function () {
+      return this.product.subtype.charAt(0).toUpperCase() + this.product.subtype.slice(1)
+    },
     formattedBuyURL: function () {
       const buyUrl = this.product.buyUrl
       if (buyUrl) {
