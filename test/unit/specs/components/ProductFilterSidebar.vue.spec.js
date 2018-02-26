@@ -13,7 +13,8 @@ const expectedInitialFilters = {
   },
   usdPriceRange: [0, 200000],
   order: {
-    field: 'id'
+    field: 'document->>\'safetyPercentage\'',
+    descending: true
   }
 }
 

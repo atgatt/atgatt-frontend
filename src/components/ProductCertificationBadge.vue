@@ -26,10 +26,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .cert {
-    color: #28a745;
+  color: #28a745;
 }
 
 .cert-missing {
-    color: #dc3545;
+  color: #dc3545;
+}
+
+.badge {
+  width: 100%;
 }
 </style>

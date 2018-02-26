@@ -10,6 +10,7 @@
             <div class="form-group">
               <label for="sortBy">Sort By:</label>
               <select v-model="order.field" id="orderByField" class="form-control">
+                <option value="document->>'safetyPercentage'">Safety</option>
                 <option value="document->>'priceInUsdMultiple'">Price</option>
                 <option value="document->>'manufacturer'">Manufacturer</option>
                 <option value="document->>'model'">Model</option>
@@ -55,8 +56,8 @@ export default {
       currFilters: null,
       hasMore: true,
       order: {
-        field: 'document->>\'priceInUsdMultiple\'',
-        descending: false
+        field: 'document->>\'safetyPercentage\'',
+        descending: true
       }
     }
   },
@@ -77,7 +78,9 @@ export default {
       request.subtypes = request.subtypes.map(subtype => subtype.value)
 
       const order = Object.assign({}, this.order)
-      order.descending = order.descending === 'true'
+
+      // TODO: for some reason, when the dropdown is clicked then the value is a string, otherwise its a bool
+      order.descending = order.descending === 'true' || order.descending === true
       request.order = order
 
       const response = await http.post(`${this.$environment.apiBaseUrl}/v1/products/filter`, request)

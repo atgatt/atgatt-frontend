@@ -71,7 +71,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <button type="button" v-on:click="resetFilters" class="btn btn-secondary btn-block"><i class="fa fa-reset"/> Reset</button>
+          <button type="button" v-on:click="resetFilters" class="btn btn-secondary btn-block">Reset</button>
         </div>
       </div>
     </form>
@@ -138,7 +138,8 @@ function getDefaultData () {
       },
       usdPriceRange: [0, 200000],
       order: {
-        field: 'id'
+        field: 'document->>\'safetyPercentage\'',
+        descending: true
       }
     }
   }

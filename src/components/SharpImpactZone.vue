@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col impact-zone-text">
           <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
-          <i v-else class="fa fa-question fa-5x"/>
+          <i v-else class="fa fa-question-circle fa-5x"/>
         </div>
       </div>
       <div class="row">
@@ -15,13 +15,24 @@
     </div>
     <modal v-if="isModalVisible" v-on:close="toggleHelpModal">
       <h1 slot="header">{{capitalizedZoneId}} Impact Zone</h1>
-      <p v-if="this.certification" slot="body">
+      <div v-if="this.certification" slot="body">
         The color in the {{zoneId}} impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulatino scenario as tested by <a target="_blank" href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">SHARP</a>.
         Below is a chart explaining the different colors used in each zone:
         <br /><br />
         <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
         <img src="/static/impact-zones-key.jpg"/>
         <br /><br />
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" role="tab" id="score-info-card">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapse-score-info" role="button" aria-expanded="false" aria-controls="collapse-score-info">
+                  What do the colors in the {{zoneId}} impact zone indicate?
+                </a>
+              </h5>
+            </div>
+            <div id="collapse-score-info" class="collapse" role="tabpanel" aria-labelledby="score-info-card" data-parent="#ratings-accordion">
+              <div class="card-body">
         <table class="table table-bordered table-condensed">
           <thead>
             <th>Color</th>
@@ -79,10 +90,15 @@
         </tbody></table>
         <span v-if="isTopZone">NOTE: There are actually <strong>two</strong> sub-zones for top side impacts: front and rear. Therefore, there are two different ratings for this overall zone.</span>
         Click <a href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">here</a> to learn further details about how these ratings were calculated.
-      </p>
-      <p v-else slot="body">
+
+              </div>
+            </div>
+           </div>
+        </div>
+      </div>
+      <div v-else slot="body">
         The {{zoneId}} impact zone rating is unknown because this helmet has not yet been rated by <a target="_blank" href="https://sharp.dft.gov.uk">SHARP</a>.
-      </p>
+      </div>
     </modal>
   </div>
 </template>
@@ -111,7 +127,7 @@ export default {
       return this.zoneId.charAt(0).toUpperCase() + this.zoneId.slice(1)
     },
     zoneText: function () {
-      return `${this.capitalizedZoneId} impact`
+      return `${this.capitalizedZoneId} Impact`
     },
     isTopZone: function () {
       return this.zoneId === 'top'
@@ -136,6 +152,7 @@ export default {
 
 .impact-zone-text {
   text-align: center;
+  padding: 0;
 }
 
 .impact-zone {
