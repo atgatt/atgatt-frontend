@@ -11,7 +11,7 @@ describe('ProductCard.vue', () => {
     wrapper = shallow(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': {'manufacturer': 'manu', 'model': 'model', 'buyUrl': mockExistingUrl, 'priceInUsdMultiple': 12345, 'certifications': {'SHARP': null}}
+        'product': {'manufacturer': 'manu', 'model': 'model', 'buyUrl': mockExistingUrl, 'priceInUsdMultiple': 12345, 'certifications': {'SHARP': null}, 'subtype': 'modular'}
       }
     })
     component = wrapper.vm
