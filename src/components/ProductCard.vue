@@ -52,7 +52,7 @@
       </div>
     </div>
     <modal v-if="isRatingsModalVisible" v-on:close="toggleRatingsModal">
-      <h1 slot="header">Ratings and Safety Score Details</h1>
+      <h1 slot="header">Safety Score and Certification Details</h1>
       <div slot="body">
         <div class="alert alert-warning" role="alert">
           Warning: We've recently been notified that some helmet manufacturers claim to use slightly different internal head shapes for their helmets in each region. Said helmets may or may not be marketed under the same manufacturer and model, and these differences in head shapes may or may not lead to the "same" helmet performing differently in a crash scenario depending on which region you buy the helmet in. In essence, note that there are pros and cons to each certification in terms of how testing is conducted, and no single certification can be perfect. For maximum safety, we believe it's best to diversify and buy a helmet that has <b>all</b> of the well-known certifications (SHARP, ECE, SNELL, and DOT).
@@ -62,7 +62,7 @@
             <div class="card-header" role="tab" id="score-info-card">
               <h5 class="mb-0">
                 <a class="collapsed" data-toggle="collapse" href="#collapse-score-info" role="button" aria-expanded="false" aria-controls="collapse-score-info">
-                  How our scores are calculated
+                  How are safety scores calculated?
                 </a>
               </h5>
             </div>
@@ -87,14 +87,13 @@
             <div class="card-header" role="tab" id="ratings-info-card">
               <h5 class="mb-0">
                 <a class="collapsed" data-toggle="collapse" href="#collapse-ratings-info" role="button" aria-expanded="false" aria-controls="collapse-ratings-info">
-                  Details about the certifications listed on this website
+                  What do each of the certifications mean for this helmet?
                 </a>
               </h5>
             </div>
             <div id="collapse-ratings-info" class="collapse" role="tabpanel" aria-labelledby="ratings-info-card" data-parent="#ratings-accordion">
               <div class="card-body">
-                The list of ratings represents all the certifications that this helmet has acheived from different organizations.
-                Here are some important notes about each certification from our perspective:
+                This helmet has acheived one or more certifications. Here are some important notes about each certification that we display on this website:
                 <br/>
                 <br/>
                 <ul>
