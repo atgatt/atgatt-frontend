@@ -2,9 +2,11 @@
   <div class="jumbotron">
     <h1 class="display-3">About Us</h1>
     <hr class="my-4">
-    <p>CrashTested was built by a small team of Software Engineers working out of San Diego, California. Click <a href="mailto:hello@crashtested.co">here</a> to contact us.
-    <br>We source our ratings by aggregating data from widely known organizations such as SHARP, SNELL, ECE, and DOT.</p>
-
+    <ul>
+      <li>CrashTested was built by a small team of Software Engineers working out of San Diego, California. Click <a href="mailto:hello@crashtested.co">here</a> to contact us.</li>
+      <li>We source our ratings by aggregating data from widely known organizations that conduct crash tests, such as SHARP, SNELL, ECE, and DOT.</li>
+      <li>We <strong>do not</strong> conduct our own crash tests.</li>
+    </ul>
       <div id="accordion" role="tablist">
       <div class="card">
         <div class="card-header" role="tab" id="terms-of-service-card">
