@@ -69,16 +69,29 @@
             <div id="collapse-score-info" class="collapse" role="tabpanel" aria-labelledby="score-info-card" data-parent="#ratings-accordion">
               <div class="card-body">
                 Our safety score is a weighted average of the crash test scores obtained from SHARP combined with the certifications obtained from SNELL, DOT, and ECE.
-                Specifically, we weight each certification as follows: <br/><br/>
+                Specifically, we weight each certification as follows: <br /><br />
                 <code>
                   Safety Score = 0.10 * ECE + 0.08 * DOT +  0.02 * SNELL + 0.8 * (SHARP-Left-Percentage * 0.20 + SHARP-Right-Percentage * 0.20 + SHARP-TopFront-Percentage * 0.20 + SHARP-TopRear-Percentage * 0.20 + SHARP-Rear-Percentage * 0.20)
                 </code>
                 <br />
                 <br />
+                <label>Notes:</label>
                 <ul>
                   <li>ECE / DOT/ SNELL are assigned a score of 1 if said certification exists, and 0 if it does not.</li>
                   <li>SHARP Percentages are calculated by dividing the raw score for each impact zone (which is a value from 0 to 5) by the maximum score (i.e. Raw-Score / 5)</li>
-                  <li>SHARP is weighted the highest due to differences in testing methodology that we believe are beneficial to the rider. SNELL is weighted higher than DOT or ECE for similar reasons. See the pane below for more information.</li>
+                  <li>SHARP is weighted the highest due to differences in testing methodology that we believe are beneficial to the rider. SNELL is weighted higher than DOT or ECE for similar reasons. See the "What does each certification mean?" pane below for more information.</li>
+                </ul>
+                <label>Caveats:</label><br />
+                <ul>
+                  <li>If SHARP hasn't rated the helmet yet, we adjust the weights as follows:<br /> <br />
+                    <code>
+                      SNELL Weight = 0.65 (up from 0.2) <br />
+                      ECE Weight = 0.1 (up from 0.08) <br />
+                      DOT Weight = 0.05 (up from 0.02) <br />
+                    </code>
+                    <br/>
+                    Note that the above does not add up to 100% on purpose - this is to give the helmet a slight penalty for missing the SHARP certification.
+                  </li>
                 </ul>
               </div>
             </div>
