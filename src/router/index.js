@@ -11,12 +11,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'Safe Motorcycle Helmets',
       component: Home
     },
     {
       path: '/ratings',
-      name: 'Ratings',
+      name: 'Motorcycle Helmet Ratings',
       component: Ratings
     },
     {
