@@ -1,15 +1,19 @@
 <template>
   <div class="home-wrapper">
     <div class="jumbotron">
-      <h1 class="display-3">Motorcycle crashes are either sad stories or epic tales.</h1>
+      <h1 class="display-4"><strong>Motorcycle crashes are either sad stories or epic tales.</strong></h1>
       <p class="lead">Which would you like to star in?</p>
       <hr class="my-4">
-      <p>If you're the "epic tale" kind of person, you're in the right place. We built CrashTested to be the most comprehensive and trusted source of motorcycle safety data on the internet.</p>
+      <p class="lead">If you're the "epic tale" kind of person, you're in the right place. We built CrashTested to be the most comprehensive and trusted source of motorcycle safety data on the internet.</p>
       <p class="lead">
         <router-link to="/ratings" class="btn btn-primary btn-lg" role="button">View Ratings</router-link>
         <router-link to="/about" class="btn btn-secondary btn-lg" role="button">About Us</router-link>
       </p>
+      <br />
+      <p class="lead"><strong>By the way, we've got big things planned. Sign up to be the first to know about our latest features:</strong></p>
+      <email-signup />
     </div>
+
     <img class="hero-image" src="/static/moto-track.jpg" />
   </div>
 </template>

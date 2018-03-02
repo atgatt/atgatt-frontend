@@ -14,6 +14,7 @@ import ProductFilterSidebar from './components/ProductFilterSidebar.vue'
 import ProductCard from './components/ProductCard.vue'
 import ProductCertificationBadge from './components/ProductCertificationBadge.vue'
 import SharpImpactZone from './components/SharpImpactZone.vue'
+import EmailSignup from './components/EmailSignup.vue'
 import router from './router'
 
 import '../node_modules/jquery/dist/jquery.slim.min'
@@ -35,6 +36,7 @@ Vue.component('product-certification-badge', ProductCertificationBadge)
 Vue.component('sharp-impact-zone', SharpImpactZone)
 Vue.component('modal', Modal)
 Vue.component('product-filter-sidebar', ProductFilterSidebar)
+Vue.component('email-signup', EmailSignup)
 
 // Register extensions to Vue itself
 Vue.use(VueProgressBar)
