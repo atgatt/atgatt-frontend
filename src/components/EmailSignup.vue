@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col-4">
-        <div v-if="!hasSignedUp" class="input-group">
-            <input v-if="!isButtonDisabled" v-model="email" type="text" class="form-control" placeholder="Enter your email...">
-            <input v-else v-model="email" type="text" class="form-control disabled" disabled>
-            <span class="input-group-btn">
-              <button v-if="!isButtonDisabled" v-on:click="signUp" class="btn btn-success" type="button">Sign Up</button>
-              <button v-else class="btn btn-success disabled" type="button" disabled>Signing up...</button>
-            </span>
-        </div>
-        <div v-if="error">
-          <small>
-            <i class="fa fa-times error-times"/> <span class="error-message">{{error}}</span>
-          </small>
-        </div>
-        <div v-else-if="hasSignedUp">
-          <i class="fa fa-check success-check"/> Thanks for signing up! We'll notify you when we're planning to release new features.
-        </div>
+  <div class="row">
+    <div class="col-4">
+      <div v-if="!hasSignedUp" class="input-group">
+          <input v-if="!isButtonDisabled" v-model="email" type="text" class="form-control" placeholder="Enter your email...">
+          <input v-else v-model="email" type="text" class="form-control disabled" disabled>
+          <span class="input-group-btn">
+            <button v-if="!isButtonDisabled && !isEmailEmpty" v-on:click="signUp" class="btn btn-success" type="button">Sign Up</button>
+            <button v-else class="btn btn-success disabled" type="button" disabled>Sign Up</button>
+          </span>
+      </div>
+      <div v-if="error">
+        <small>
+          <i class="fa fa-times error-times"/> <span class="error-message">{{error}}</span>
+        </small>
+      </div>
+      <div v-else-if="hasSignedUp">
+        <i class="fa fa-check success-check"/> Thanks for signing up! We'll notify you when we're planning to release new features.
       </div>
     </div>
   </div>
@@ -53,6 +51,11 @@ export default {
 
         this.isButtonDisabled = false
       }
+    }
+  },
+  computed: {
+    isEmailEmpty: function () {
+      return !this.email || (this.email && this.email.trim().length <= 0)
     }
   }
 }
