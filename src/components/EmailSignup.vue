@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-4">
+    <div class="col-12 col-lg-4">
       <div v-if="!hasSignedUp" class="input-group">
           <input v-if="!isButtonDisabled" v-model="email" type="text" class="form-control" placeholder="Enter your email...">
           <input v-else v-model="email" type="text" class="form-control disabled" disabled>

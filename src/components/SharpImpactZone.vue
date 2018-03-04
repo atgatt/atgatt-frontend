@@ -3,23 +3,33 @@
     <div class="impact-zone" v-on:click="toggleHelpModal">
       <div class="row">
         <div class="col impact-zone-text">
-          <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
+          <img v-if="certification" class="impact-zone-image" v-bind:src="url" />
           <i v-else class="fa fa-question-circle fa-5x"/>
         </div>
       </div>
       <div class="row">
         <div class="col impact-zone-text">
-          <span>{{zoneText}} <i class="fa fa-info-circle" /></span>
+          <div class="row">
+            <div class="col">
+              <span class="zone-rating-text" v-if="isTopZone && topZoneRatingText">{{topZoneRatingText[0]}}, {{topZoneRatingText[1]}}</span>
+              <span class="zone-rating-text" v-else>{{zoneRatingText}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span>{{zoneLabelText}} <i class="fa fa-info-circle" /></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <modal v-if="isModalVisible" v-on:close="toggleHelpModal">
       <h1 slot="header">{{capitalizedZoneId}} Impact Zone</h1>
-      <div v-if="this.certification" slot="body">
+      <div v-if="certification" slot="body">
         The color in the {{zoneId}} impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulatino scenario as tested by <a target="_blank" href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">SHARP</a>.
         Below is a chart explaining the different colors used in each zone:
         <br /><br />
-        <img v-if="this.certification" class="impact-zone-image" v-bind:src="url" />
+        <img v-if="certification" class="impact-zone-image" v-bind:src="url" />
         <img src="/static/impact-zones-key.jpg"/>
         <br /><br />
         <div id="accordion">
@@ -27,7 +37,7 @@
             <div class="card-header" role="tab" id="score-info-card">
               <h5 class="mb-0">
                 <a class="collapsed" data-toggle="collapse" href="#collapse-score-info" role="button" aria-expanded="false" aria-controls="collapse-score-info">
-                  What do the colors in the {{zoneId}} impact zone indicate?
+                  What does the score in the {{zoneId}} impact zone indicate?
                 </a>
               </h5>
             </div>
@@ -35,13 +45,13 @@
               <div class="card-body">
         <table class="table table-bordered table-condensed">
           <thead>
-            <th>Color</th>
+            <th>Color (Score)</th>
             <th>Peak Brain Acceleration</th>
           </thead>
           <tbody>
           <tr>
             <th>
-              Green
+              Green (5)
             </th>
             <td>
               275g
@@ -49,7 +59,7 @@
           </tr>
           <tr>
             <th>
-              Yellow
+              Yellow (4)
             </th>
             <td>
               300g
@@ -57,7 +67,7 @@
           </tr>
           <tr>
             <th>
-              Orange
+              Orange (3)
             </th>
             <td>
               400g
@@ -65,7 +75,7 @@
           </tr>
           <tr>
             <th>
-              Brown
+              Brown (2)
             </th>
             <td>
               420g
@@ -73,7 +83,7 @@
           </tr>
           <tr>
             <th>
-              Red
+              Red (1)
             </th>
             <td>
               500g
@@ -81,7 +91,7 @@
           </tr>
           <tr>
             <th>
-              Black
+              Black (0)
             </th>
             <td>
               More than 500g
@@ -126,7 +136,21 @@ export default {
     capitalizedZoneId: function () {
       return this.zoneId.charAt(0).toUpperCase() + this.zoneId.slice(1)
     },
-    zoneText: function () {
+    zoneRatingText: function () {
+      if (this.certification) {
+        const rating = this.certification.impactZoneRatings[this.zoneId]
+        return `${rating}/5`
+      }
+      return null
+    },
+    topZoneRatingText: function () {
+      if (this.certification) {
+        const rating = this.certification.impactZoneRatings[this.zoneId]
+        return [`${rating.front}/5 Front`, `${rating.rear}/5 Rear`]
+      }
+      return null
+    },
+    zoneLabelText: function () {
       return `${this.capitalizedZoneId} Impact`
     },
     isTopZone: function () {
@@ -157,5 +181,10 @@ export default {
 
 .impact-zone {
   cursor: pointer;
+  padding-bottom: 1rem;
+}
+
+.zone-rating-text {
+  font-size: x-small;
 }
 </style>
