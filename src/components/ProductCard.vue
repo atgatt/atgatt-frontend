@@ -164,7 +164,7 @@ export default {
       const manufacturer = this.product.manufacturer
       const model = this.product.model
 
-      return `https://www.amazon.com/gp/search?ie=UTF8&tag=crashtested-20&linkCode=ur2&linkId=2a2896b54f76421e38228d42e244bfbb&camp=1789&creative=9325&index=automotive&keywords=${manufacturer} ${model}`
+      return `https://www.amazon.com/gp/search?ie=UTF8&tag=crashtested-20&linkCode=ur2&linkId=2a2896b54f76421e38228d42e244bfbb&camp=1789&creative=9325&index=aps&keywords=${manufacturer} ${model}`
     }
   },
   methods: {

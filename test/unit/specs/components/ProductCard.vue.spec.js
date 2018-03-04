@@ -5,7 +5,7 @@ describe('ProductCard.vue', () => {
   let wrapper = null
   let component = null
   const mockExistingUrl = 'http://existingurl.com'
-  const expectedAmazonSearchUrl = 'https://www.amazon.com/gp/search?ie=UTF8&tag=crashtested-20&linkCode=ur2&linkId=2a2896b54f76421e38228d42e244bfbb&camp=1789&creative=9325&index=automotive&keywords=manu model'
+  const expectedAmazonSearchUrl = 'https://www.amazon.com/gp/search?ie=UTF8&tag=crashtested-20&linkCode=ur2&linkId=2a2896b54f76421e38228d42e244bfbb&camp=1789&creative=9325&index=aps&keywords=manu model'
 
   beforeEach(() => {
     wrapper = shallow(ProductCard, {
