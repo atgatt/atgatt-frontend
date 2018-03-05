@@ -8,8 +8,8 @@
             <slot name="header">
               default header - override me by using the slot property
             </slot>
-            <button class="btn btn-primary modal-default-button" >
-                <i class="fa fa-times" @click="$emit('close')" />
+            <button class="btn btn-primary modal-default-button" @click="$emit('close')">
+                <i class="fa fa-times" />
             </button>
           </div>
 
