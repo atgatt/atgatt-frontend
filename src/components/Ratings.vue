@@ -4,7 +4,7 @@
       <div class="d-none d-lg-block col-lg-3 product-filter-sidebar">
         <product-filter-sidebar v-on:filtersChanged="onFiltersChangedAsync" />
       </div>
-      <div v-if="results.length" class="col-12 col-lg-9 product-results">
+      <div class="col-12 col-lg-9 product-results">
         <div class="row sort-row">
           <div class="col-4 col-lg-3">
             <div class="form-group">
@@ -38,16 +38,16 @@
           <product-filter-sidebar v-bind:show-filters="showFilters" v-on:filtersChanged="onFiltersChangedAsync" />
         </div>
         <hr class="d-xs-block d-lg-none sort-separator" />
-        <div v-for="result in results" v-bind:key="result.uuid">
+        <div v-if="results.length" v-for="result in results" v-bind:key="result.uuid">
           <product-card v-bind:product="result" />
         </div>
-        <div class="load-more-button">
+        <div v-if="results.length" class="load-more-button">
           <button v-if="hasMore" class="btn btn-info" v-on:click="loadMoreAsync">Load More</button>
         </div>
-      </div>
-      <div v-else class="col-9 product-results">
-        <span v-if="isLoaded">There are no products that match your current set of filters.</span>
-        <span v-else>Loading...</span>
+        <div v-else class="col-12 product-results">
+          <span v-if="isLoaded"><i class="fa fa-warning no-results-icon" /> There are no products that match your current set of filters.</span>
+          <span v-else>Loading...</span>
+        </div>
       </div>
     </div>
   </div>
@@ -142,6 +142,7 @@ export default {
 .sort-separator {
   margin-top: -0.1em;
 }
+
 #toggleFilters {
   width: 100%;
 }
@@ -172,5 +173,9 @@ export default {
   padding-left: 2rem;
   padding-right: 2rem;
   cursor: pointer;
+}
+
+.no-results-icon {
+  color: orange;
 }
 </style>
