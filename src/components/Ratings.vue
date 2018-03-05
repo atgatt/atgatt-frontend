@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-3 product-filter-sidebar">
+      <div class="d-none d-lg-block col-lg-3 product-filter-sidebar">
         <product-filter-sidebar v-on:filtersChanged="onFiltersChangedAsync" />
       </div>
-      <div v-if="results.length" class="col-9 product-results">
-        <div class="row">
-          <div class="col-3">
+      <div v-if="results.length" class="col-12 col-lg-9 product-results">
+        <div class="row sort-row">
+          <div class="col-4 col-lg-3">
             <div class="form-group">
               <label for="sortBy">Sort By:</label>
               <select v-model="order.field" id="orderByField" class="form-control">
@@ -17,8 +17,8 @@
               </select>
             </div>
           </div>
-          <div class="col-6"></div>
-          <div class="col-3">
+          <div class="d-none d-lg-block col-lg-6"></div>
+          <div class="col-4 col-lg-3">
             <div class="form-group">
               <label for="orderByDirection">Direction:</label>
               <select v-model="order.descending" id="orderByDirection" class="form-control">
@@ -27,12 +27,22 @@
               </select>
             </div>
           </div>
+          <div class="col-4 d-lg-none d-xs-block">
+            <div class="form-group">
+              <label for="toggleFilters">Filters:</label>
+              <button id="toggleFilters" v-on:click="toggleFilters" class="btn btn-info"><i class="fa fa-filter" /> {{toggleFiltersText}}</button>
+            </div>
+          </div>
         </div>
+        <div v-show="showFilters" class="d-xs-block d-lg-none product-filter-sidebar">
+          <product-filter-sidebar v-bind:show-filters="showFilters" v-on:filtersChanged="onFiltersChangedAsync" />
+        </div>
+        <hr class="d-xs-block d-lg-none sort-separator" />
         <div v-for="result in results" v-bind:key="result.uuid">
           <product-card v-bind:product="result" />
         </div>
         <div class="load-more-button">
-          <button v-if="hasMore" class="btn btn-primary" v-on:click="loadMoreAsync">Load More</button>
+          <button v-if="hasMore" class="btn btn-info" v-on:click="loadMoreAsync">Load More</button>
         </div>
       </div>
       <div v-else class="col-9 product-results">
@@ -54,6 +64,7 @@ export default {
       start: 0,
       limit: 10,
       currFilters: null,
+      showFilters: false,
       hasMore: true,
       order: {
         field: 'document->>\'safetyPercentage\'',
@@ -67,6 +78,11 @@ export default {
         await this.onFiltersChangedAsync(this.currFilters)
       },
       deep: true
+    }
+  },
+  computed: {
+    toggleFiltersText: function () {
+      return this.showFilters ? 'Hide' : 'Show'
     }
   },
   methods: {
@@ -113,6 +129,9 @@ export default {
       } else {
         this.hasMore = false
       }
+    },
+    toggleFilters: function () {
+      this.showFilters = !this.showFilters
     }
   }
 }
@@ -120,6 +139,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.sort-separator {
+  margin-top: -0.1em;
+}
+#toggleFilters {
+  width: 100%;
+}
+
 .product-results {
   padding-top: 0.5rem;
 }
@@ -127,6 +153,14 @@ export default {
 .product-filter-sidebar {
   border-right: 1px solid #ccc;
   padding-top: 0.5rem;
+}
+
+/* xs through md */
+@media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
+  .product-filter-sidebar {
+    border-right: none;
+    padding-top: 0;
+  }
 }
 
 .load-more-button {

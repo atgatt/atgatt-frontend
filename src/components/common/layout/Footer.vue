@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-      <div>
+      <div class="footer-text">
         <span class="text-muted">© {{currentYear}} CrashTested. Portions of the helmet data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>.</span>
       </div>
       <div>
@@ -24,12 +24,22 @@ export default {
 
 <style scoped>
 .footer {
+    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 80px; /* Set the fixed height of the footer here */
+    height: 80px;
     background-color: #f5f5f5;
-    position: absolute;
     text-align: center;
-    padding-top: 20px;
 }
+
+.footer-text {
+    padding-top: 1em;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .footer-text {
+    padding-top: 0.1em;
+  }
+}
+
 </style>

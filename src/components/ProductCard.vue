@@ -1,50 +1,50 @@
 <template>
   <div class="product-card">
     <div class="row product-header">
-      <div class="col my-auto">
+      <div class="col-12 col-lg my-auto">
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
         <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <i v-on:click="toggleRatingsModal" class="fa fa-info-circle" /></i>
       </div>
-      <div v-on:click="trackBuyButtonClick" class="col buy-btn-col my-auto">
+      <div v-on:click="trackBuyButtonClick" class="col-12 col-lg buy-btn-col my-auto">
         <a v-bind:href="formattedBuyURL" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
         <img src="//ir-na.amazon-adsystem.com/e/ir?t=crashtested-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
       </div>
     </div>
     <div class="row product-body">
-      <div v-on:click="trackBuyButtonClick" class="col-4 col-lg align-self-center">
+      <div v-on:click="trackBuyButtonClick" class="col-12 col-lg align-self-center">
         <a target="_blank" v-bind:href="formattedBuyURL">
           <img v-if="product.imageUrl" class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
           <i v-else class="fa fa-question-circle fa-5x missing-product-image"/>
         </a>
       </div>
-      <div class="col-8 col-lg align-self-center">
+      <div class="col-12 col-lg align-self-center">
         <ul name="certifications-list" class="fa-ul certifications-list">
-          <label class="certifications-label" for="certifications-list">Certifications</label>
+          <label class="certifications-label d-none d-lg-block" for="certifications-list">Certifications</label>
           <product-certification-badge v-bind:certification="product.certifications.SHARP" certificationName="SHARP" />
           <product-certification-badge v-bind:certification="product.certifications.ECE" certificationName="ECE - 22.05" />
           <product-certification-badge v-bind:certification="product.certifications.SNELL" certificationName="SNELL - M2015" />
           <product-certification-badge v-bind:certification="product.certifications.DOT" certificationName="DOT" />
         </ul>
       </div>
-      <div class="col-3 col-lg align-self-center">
+      <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="top"
         />
       </div>
-      <div class="col-3 col-lg align-self-center">
+      <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="left"
         />
       </div>
-      <div class="col-3 col-lg align-self-center">
+      <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="right"
         />
       </div>
-      <div class="col-3 col-lg align-self-center">
+      <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone
           v-bind:certification="product.certifications.SHARP"
           zoneId="rear"
@@ -199,6 +199,11 @@ export default {
 .buy-btn-col {
   text-align: right;
 }
+
+.impact-zone-col {
+  align-self: center;
+}
+
 .product-card {
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -215,9 +220,26 @@ export default {
   padding-bottom: 1rem;
 }
 
+/* xs through md */
+@media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
+  .buy-btn-col {
+    padding-top: 5px;
+    text-align: center;
+  }
+
+  .product-header {
+    text-align: center;
+  }
+
+  .impact-zone-col {
+    align-self: flex-start;
+  }
+}
+
 .product-body {
   background-color: white;
   padding: 1rem;
+  text-align: center;
 }
 
 .product-image, .missing-product-image {

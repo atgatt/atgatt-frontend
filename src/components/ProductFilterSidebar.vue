@@ -1,9 +1,14 @@
 <template>
   <div class="sidebar">
     <form>
-      <h5>
-        General
-      </h5>
+      <div class="row">
+        <div class="col">
+          <h5>General</h5>
+        </div>
+        <div class="col reset-button-col">
+          <button type="button" v-on:click="resetFilters" class="btn btn-sm btn-secondary btn-block"><i class="fa fa-undo"/> Reset Filters</button>
+        </div>
+      </div>
       <div class="form-group">
         <label for="manufacturer">Manufacturer</label>
         <input type="text" class="form-control" v-model="filters.manufacturer" id="manufacturer" placeholder="Start typing a manufacturer...">
@@ -18,7 +23,7 @@
       </div>
       <div class="form-group">
         <label for="rear-impact-zone-rating-slider">Price Range</label>
-        <vue-slider ref="slider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
+        <vue-slider ref="priceslider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
       </div>
       <h5>
         Required Certifications
@@ -69,11 +74,6 @@
           </label>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <button type="button" v-on:click="resetFilters" class="btn btn-secondary btn-block">Reset</button>
-        </div>
-      </div>
     </form>
   </div>
 </template>
@@ -100,7 +100,7 @@ function getDefaultData () {
     impactZoneSliderOptions: {
       min: 0,
       max: 5,
-      tooltip: 'never',
+      tooltip: 'hover',
       sliderStyle: function (value) {
         const backgroundColorIndex = value === 0 ? 0 : value
         if (backgroundColorIndex > sliderBackgroundColors.length || backgroundColorIndex < 0) {
@@ -150,6 +150,7 @@ export default {
   components: {
     vueSlider
   },
+  props: ['showFilters'],
   data () {
     return getDefaultData()
   },
@@ -163,6 +164,14 @@ export default {
     isSHARPChecked: {
       handler (val) {
         this.toggleSHARP(val)
+      }
+    },
+    showFilters: {
+      handler (val) {
+        if (val) {
+          // HACK: workaround for a vue slider component bug - refresh once the component is visible to make sure it has the correct dimensions
+          this.$nextTick(() => this.$refs.priceslider.refresh())
+        }
       }
     }
   },
@@ -201,5 +210,9 @@ export default {
 
 .v-select input {
   padding: .375rem .75rem;
+}
+
+.reset-button-col {
+  text-align: right;
 }
 </style>
