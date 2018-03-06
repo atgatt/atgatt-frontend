@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home'
 import Ratings from '../components/Ratings'
 import About from '../components/About'
 import NotFound from '../components/NotFound'
@@ -12,11 +11,6 @@ export default new Router({
     {
       path: '/',
       name: 'Safe Motorcycle Helmets',
-      component: Home
-    },
-    {
-      path: '/ratings',
-      name: 'Motorcycle Helmet Ratings',
       component: Ratings
     },
     {
