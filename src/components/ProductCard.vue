@@ -5,14 +5,19 @@
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
         <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <i v-on:click="toggleRatingsModal" class="fa fa-info-circle" /></i>
       </div>
-      <div v-on:click="trackBuyButtonClick" class="col-12 col-lg buy-btn-col my-auto">
-        <a v-bind:href="formattedBuyURL" target="_blank" class="btn buy-product-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedPrice}}</strong></a>
-        <img src="//ir-na.amazon-adsystem.com/e/ir?t=crashtested-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+      <div class="col-12 col-lg buy-btn-col my-auto">
+        <div v-on:click="trackBuyButtonClick('amazon')">
+          <a v-bind:href="formattedAmazonBuyURL" target="_blank" class="btn amazon-buy-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedAmazonPrice}}</strong></a>
+          <img src="//ir-na.amazon-adsystem.com/e/ir?t=crashtested-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+        </div>
+        <div v-on:click="trackBuyButtonClick('revzilla')">
+          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fa fa-motorcycle"/> <strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
+        </div>
       </div>
     </div>
     <div class="row product-body">
-      <div v-on:click="trackBuyButtonClick" class="col-12 col-lg align-self-center">
-        <a target="_blank" v-bind:href="formattedBuyURL">
+      <div v-on:click="trackBuyButtonClick('revzilla')" class="col-12 col-lg align-self-center">
+        <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
           <img v-if="product.imageUrl" class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
           <i v-else class="fa fa-question-circle fa-5x missing-product-image"/>
         </a>
@@ -148,15 +153,24 @@ export default {
     }
   },
   computed: {
-    formattedPrice: function () {
-      const priceInUsd = this.product.priceInUsdMultiple / 100.0
-      return priceInUsd > 0 ? formatCurrency(priceInUsd) : 'a mystery price!'
+    formattedAmazonPrice: function () {
+      const priceInUSD = this.product.amazonPriceInUSDMultiple / 100.0
+      return priceInUSD > 0 ? formatCurrency(priceInUSD) : 'a mystery price!'
     },
-    formattedSubtype: function () {
-      return this.product.subtype.charAt(0).toUpperCase() + this.product.subtype.slice(1)
+    formattedRevzillaPrice: function () {
+      const priceInUSD = this.product.revzillaPriceInUSDMultiple / 100.0
+      return priceInUSD > 0 ? formatCurrency(priceInUSD) : 'a mystery price!'
     },
-    formattedBuyURL: function () {
-      const buyUrl = this.product.buyUrl
+    formattedRevzillaBuyURL: function () {
+      const buyUrl = this.product.revzillaBuyURL
+      if (buyUrl) {
+        return buyUrl
+      }
+
+      return 'http://www.jdoqocy.com/click-8505854-10889726'
+    },
+    formattedAmazonBuyURL: function () {
+      const buyUrl = this.product.amazonBuyURL
       if (buyUrl) {
         return buyUrl
       }
@@ -165,18 +179,23 @@ export default {
       const model = this.product.model
 
       return `https://www.amazon.com/gp/search?ie=UTF8&tag=crashtested-20&linkCode=ur2&linkId=2a2896b54f76421e38228d42e244bfbb&camp=1789&creative=9325&index=aps&keywords=${manufacturer} ${model}`
+    },
+    formattedSubtype: function () {
+      return this.product.subtype.charAt(0).toUpperCase() + this.product.subtype.slice(1)
     }
   },
   methods: {
-    trackBuyButtonClick: function () {
+    trackBuyButtonClick: function (destinationSite) {
       // Amplitude is globally defined, disabling ESLint so that it doesn't complain about an unknown global variable
       // eslint-disable-next-line
       amplitude.getInstance().logEvent('buyButtonClicked', {
         'uuid': this.product.uuid,
         'manufacturer': this.product.manufacturer,
         'model': this.product.model,
-        'priceInUsdMultiple': this.product.priceInUsdMultiple,
-        'safetyPercentage': this.product.safetyPercentage
+        'amazonPriceInUSDMultiple': this.product.amazonPriceInUSDMultiple,
+        'revzillaPriceInUSDMultiple': this.product.revzillaPriceInUSDMultiple,
+        'safetyPercentage': this.product.safetyPercentage,
+        'destinationSite': destinationSite
       })
     },
     toggleRatingsModal: function () {
@@ -273,34 +292,72 @@ export default {
   font-size: larger;
 }
 
-.buy-product-btn {
+.revzilla-buy-btn {
+  background: -webkit-linear-gradient(top,#f94a00,#f04900);
+  background: linear-gradient(to bottom,#f94a00,#f04900);
+  border-color: lightslategray;
+  color: #fff;
+  font-weight: 100;
+  white-space: normal;
+  margin-top: 3px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.revzilla-buy-btn:hover {
+  background: -webkit-linear-gradient(top,#f94a00,#f04900);
+  background: linear-gradient(to bottom,#f94a00,#f04900);
+  color: #fff;
+  font-weight: 100;
+}
+
+.revzilla-buy-btn:focus, .revzilla-buy-btn.focus {
+  box-shadow: 0 0 0 0.2rem #f04900;
+}
+
+.revzilla-buy-btn:not(:disabled):not(.disabled):active, .revzilla-buy-btn:not(:disabled):not(.disabled).active,
+.show > .revzilla-buy-btn.dropdown-toggle {
+  color: #fff;
+  background-color: #f04900;
+  border-color: #f04900;
+}
+
+.revzilla-buy-btn:not(:disabled):not(.disabled):active:focus, .revzilla-buy-btn:not(:disabled):not(.disabled).active:focus,
+.show > .revzilla-buy-btn.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #f04900;
+}
+
+.amazon-buy-btn {
   background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   border-color: lightslategray;
   color: #111;
   font-weight: 100;
+  white-space: normal;
+  width: 100%;
+  max-width: 300px;
 }
 
-.buy-product-btn:hover {
+.amazon-buy-btn:hover {
   background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   color: initial;
   font-weight: 100;
 }
 
-.buy-product-btn:focus, .buy-product-btn.focus {
+.amazon-buy-btn:focus, .amazon-buy-btn.focus {
   box-shadow: 0 0 0 0.2rem #f0c14b;
 }
 
-.buy-product-btn:not(:disabled):not(.disabled):active, .buy-product-btn:not(:disabled):not(.disabled).active,
-.show > .buy-product-btn.dropdown-toggle {
+.amazon-buy-btn:not(:disabled):not(.disabled):active, .amazon-buy-btn:not(:disabled):not(.disabled).active,
+.show > .amazon-buy-btn.dropdown-toggle {
   color: #111;
   background-color: #f7dfa5;
   border-color: #f0c14b;
 }
 
-.buy-product-btn:not(:disabled):not(.disabled):active:focus, .buy-product-btn:not(:disabled):not(.disabled).active:focus,
-.show > .buy-product-btn.dropdown-toggle:focus {
+.amazon-buy-btn:not(:disabled):not(.disabled):active:focus, .amazon-buy-btn:not(:disabled):not(.disabled).active:focus,
+.show > .amazon-buy-btn.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #f0c14b;
 }
 </style>
