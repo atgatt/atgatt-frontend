@@ -8,12 +8,12 @@
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('amazon')">
           <a v-bind:href="formattedAmazonBuyURL" target="_blank" class="btn amazon-buy-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedAmazonPrice}}</strong></a>
-          <img src="//ir-na.amazon-adsystem.com/e/ir?t=crashtested-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
         </div>
         <div v-on:click="trackBuyButtonClick('revzilla')">
           <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fa fa-motorcycle"/> <strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
         </div>
       </div>
+      <img src="//ir-na.amazon-adsystem.com/e/ir?t=crashtested-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
     </div>
     <div class="row product-body">
       <div v-on:click="trackBuyButtonClick('revzilla')" class="col-12 col-lg align-self-center">
