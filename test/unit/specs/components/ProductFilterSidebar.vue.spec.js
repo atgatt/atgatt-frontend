@@ -10,7 +10,7 @@ const expectedInitialFilters = {
     ECE: false,
     DOT: false
   },
-  usdPriceRange: [0, 145700],
+  usdPriceRange: [0, 97600],
   order: {
     field: 'document->>\'safetyPercentage\'',
     descending: true

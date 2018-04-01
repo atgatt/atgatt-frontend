@@ -119,7 +119,7 @@ function getDefaultData () {
     },
     usdPriceRangeSliderOptions: {
       min: 0,
-      max: 145700,
+      max: 97600,
       tooltip: 'hover',
       formatter: function (value) {
         return formatCurrency(parseInt(value / 100.0))
@@ -136,7 +136,7 @@ function getDefaultData () {
         ECE: false,
         DOT: false
       },
-      usdPriceRange: [0, 145700],
+      usdPriceRange: [0, 97600],
       order: {
         field: 'document->>\'safetyPercentage\'',
         descending: true
