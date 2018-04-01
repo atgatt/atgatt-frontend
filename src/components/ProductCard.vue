@@ -167,7 +167,10 @@ export default {
         return buyUrl
       }
 
-      return 'http://www.jdoqocy.com/click-8505854-10889726'
+      const manufacturer = this.product.manufacturer
+      const model = this.product.model
+
+      return `http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query=${manufacturer}+${model}`
     },
     formattedAmazonBuyURL: function () {
       const buyUrl = this.product.amazonBuyURL
