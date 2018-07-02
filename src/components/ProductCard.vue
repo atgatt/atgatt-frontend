@@ -7,7 +7,7 @@
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('amazon')">
-          <a v-bind:href="formattedAmazonBuyURL" target="_blank" class="btn amazon-buy-btn btn-success"><i class="fa fa-amazon"/> <strong>Buy on Amazon for {{formattedAmazonPrice}}</strong></a>
+          <a v-bind:href="formattedAmazonBuyURL" target="_blank" class="btn amazon-buy-btn btn-success"><i class="fa fa-shopping-cart"/> <strong>Buy on Amazon for {{formattedAmazonPrice}}</strong></a>
         </div>
         <div v-on:click="trackBuyButtonClick('revzilla')">
           <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fa fa-motorcycle"/> <strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
