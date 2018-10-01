@@ -40,7 +40,9 @@ export default {
         this.error = ''
         this.isButtonDisabled = true
 
-        await http.post(`${this.$environment.apiBaseUrl}/v1/marketing/email`, {'email': this.email})
+        await http.post(`${this.$environment.apiBaseURL}/v1/marketing/email`, {
+          'email': this.email
+        })
         this.hasSignedUp = true
       } catch (err) {
         if (err && err.response && err.response.data && err.response.data.message) {

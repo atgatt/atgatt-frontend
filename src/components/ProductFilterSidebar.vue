@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import VueSelect from 'vue-select'
 import vueSlider from 'vue-slider-component'
 import formatCurrency from '../lib/currency'
 
@@ -94,8 +95,8 @@ const sliderBackgroundColors = [
 function getDefaultData () {
   return {
     subtypeMultiselectOptions: [
-      {value: 'full', label: 'Full Face'},
-      {value: 'modular', label: 'Modular'}
+      { value: 'full', label: 'Full Face' },
+      { value: 'modular', label: 'Modular' }
     ],
     impactZoneSliderOptions: {
       min: 0,
@@ -148,7 +149,8 @@ function getDefaultData () {
 export default {
   name: 'ProductFilterSidebar',
   components: {
-    vueSlider
+    vueSlider,
+    'v-select': VueSelect
   },
   props: ['showFilters'],
   data () {

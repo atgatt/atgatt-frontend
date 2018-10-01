@@ -2,12 +2,12 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
-        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong> <small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
+        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong>&nbsp;<small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
         <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <i v-on:click="toggleRatingsModal" class="fa fa-info-circle" /></i>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('revzilla')">
-          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fa fa-motorcycle"/> <strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
+          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fa fa-motorcycle"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
         </div>
       </div>
     </div>
@@ -139,8 +139,17 @@
 
 <script>
 import formatCurrency from '../lib/currency'
+import ProductCertificationBadge from '../components/ProductCertificationBadge'
+import SharpImpactZone from '../components/SharpImpactZone'
+import Modal from '../components/common/Modal'
+
 export default {
   name: 'ProductCard',
+  components: {
+    'product-certification-badge': ProductCertificationBadge,
+    'sharp-impact-zone': SharpImpactZone,
+    'modal': Modal
+  },
   props: ['product'],
   data () {
     return {
