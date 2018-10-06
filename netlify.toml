@@ -1,0 +1,24 @@
+# NOTE: See https://www.netlify.com/docs/netlify-toml-reference/ for more examples of what can be configured in this file
+
+# Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.
+[build]
+  # This is the directory that you are publishing from (relative to root of your repo)
+  publish = "dist"
+
+# Production context: All deploys from the Production branch set in your site's deploy settings will inherit these settings.
+[context.production]
+  command = "NODE_ENV=production npm run test:unit && npm run build"
+
+# Branch Deploy context: All deploys that are not resulting from a Pull/Merge Request and not from the production branch will inherit these settings.
+[context.branch-deploy]
+  command = "NODE_ENV=production npm run test:unit && npm run build -- --mode staging"
+
+# Specific branch context: Deploys from this branch will take these settings and override their current ones.
+# For contexts of branches with special characters, enclose the branch name with quotes
+# [context."feature/some-feature-branch"]
+#   command = "echo 'some special feature branch'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
