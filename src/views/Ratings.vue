@@ -30,7 +30,7 @@
           <div class="col-4 d-lg-none d-xs-block">
             <div class="form-group">
               <label for="toggleFilters">Filters:</label>
-              <button id="toggleFilters" v-on:click="toggleFilters" class="btn btn-info"><i class="fa fa-filter" /> {{toggleFiltersText}}</button>
+              <button id="toggleFilters" v-on:click="toggleFilters" class="btn btn-info"><font-awesome-icon icon="filter" /> {{toggleFiltersText}}</button>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <button v-if="hasMore" class="btn btn-info" v-on:click="loadMoreAsync">Load More</button>
         </div>
         <div v-else class="col-12 product-results">
-          <span v-if="isLoaded"><i class="fa fa-warning no-results-icon" /> There are no products that match your current set of filters.</span>
+          <span v-if="isLoaded"><font-awesome-icon icon="exclamation-triangle" class="no-results-icon" /> There are no products that match your current set of filters.</span>
           <span v-else>Loading...</span>
         </div>
       </div>

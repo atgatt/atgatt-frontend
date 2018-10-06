@@ -7,7 +7,12 @@ import VueProgressBar from 'vue-progressbar'
 import '../node_modules/jquery/dist/jquery.slim.min'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/font-awesome/css/font-awesome.min.css'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { registerGlobalComponents } from './globals'
+library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle)
+registerGlobalComponents()
 
 Vue.config.productionTip = false
 
@@ -40,7 +45,7 @@ function startApp (environment) {
 }
 
 startApp({
-  apiBaseURL: process.env.VUE_APP_API_BASE_URL, // '/api-proxy',
-  amplitudeAPIKey: process.env.VUE_APP_AMPLITUDE_API_KEY, // '487025f65c0f02ce86dc6df875b01d24'
+  apiBaseURL: process.env.VUE_APP_API_BASE_URL,
+  amplitudeAPIKey: process.env.VUE_APP_AMPLITUDE_API_KEY,
   staticBaseURL: process.env.VUE_APP_STATIC_BASE_URL
 })

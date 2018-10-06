@@ -1,6 +1,6 @@
 <template>
     <li v-if="certification">
-        <i class="fa-li fa fa-check cert" />
+        <font-awesome-icon icon="check" class="fa-li cert" />
         <span class="badge badge-success">
             {{certificationName}}
             <span v-if="certification.stars">
@@ -9,7 +9,7 @@
         </span>
     </li>
     <li v-else>
-        <i class="fa-li fa fa-times cert-missing" />
+        <font-awesome-icon icon="times" class="fa-li cert-missing" />
         <span class="badge badge-danger">
             {{certificationName}}
         </span>

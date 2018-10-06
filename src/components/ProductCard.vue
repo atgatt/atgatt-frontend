@@ -3,11 +3,11 @@
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
         <h4 class="my-auto"><strong>{{product.manufacturer}}</strong>&nbsp;<small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
-        <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <i v-on:click="toggleRatingsModal" class="fa fa-info-circle" /></i>
+        <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <font-awesome-icon v-on:click="toggleRatingsModal" icon="info-circle"/></i>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('revzilla')">
-          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fa fa-motorcycle"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
+          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fas fa-motorcycle"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
         </div>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <div v-on:click="trackBuyButtonClick('revzilla')" class="col-12 col-lg align-self-center">
         <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
           <img v-if="product.imageUrl" class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
-          <i v-else class="fa fa-question-circle fa-5x missing-product-image"/>
+          <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
         </a>
       </div>
       <div class="col-12 col-lg align-self-center">

@@ -11,11 +11,11 @@
       </div>
       <div v-if="error">
         <small>
-          <i class="fa fa-times error-times"/> <span class="error-message">{{error}}</span>
+          <font-awesome-icon icon="times" class="error-times"/> <span class="error-message">{{error}}</span>
         </small>
       </div>
       <div v-else-if="hasSignedUp">
-        <i class="fa fa-check success-check"/> Thanks for signing up! We'll notify you when we're planning to release new features.
+        <font-awesome-icon icon="check" class="success-check"/> Thanks for signing up! We'll notify you when we're planning to release new features.
       </div>
     </div>
   </div>
@@ -23,6 +23,7 @@
 
 <script>
 import http from 'axios'
+
 export default {
   name: 'EmailSignup',
   data () {

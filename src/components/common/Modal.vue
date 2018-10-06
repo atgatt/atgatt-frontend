@@ -9,7 +9,7 @@
               default header - override me by using the slot property
             </slot>
             <button class="btn btn-primary modal-default-button" @click="$emit('close')">
-                <i class="fa fa-times" />
+                <font-awesome-icon icon="times" />
             </button>
           </div>
 

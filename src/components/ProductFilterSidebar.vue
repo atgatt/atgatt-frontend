@@ -6,7 +6,7 @@
           <h5>General</h5>
         </div>
         <div class="col reset-button-col">
-          <button type="button" v-on:click="resetFilters" class="btn btn-sm btn-secondary btn-block"><i class="fa fa-undo"/> Reset Filters</button>
+          <button type="button" v-on:click="resetFilters" class="btn btn-sm btn-secondary btn-block"><font-awesome-icon icon="undo" /> Reset Filters</button>
         </div>
       </div>
       <div class="form-group">

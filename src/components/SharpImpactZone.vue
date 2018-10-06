@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col impact-zone-text">
           <img v-if="certification" class="impact-zone-image" v-bind:src="url" />
-          <i v-else class="fa fa-question-circle fa-5x"/>
+          <font-awesome-icon v-else icon="question-circle" size="5x" />
         </div>
       </div>
       <div class="row">
@@ -17,7 +17,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <span>{{zoneLabelText}} <i class="fa fa-info-circle" /></span>
+              <span>{{zoneLabelText}} <font-awesome-icon icon="info-circle" /></span>
             </div>
           </div>
         </div>

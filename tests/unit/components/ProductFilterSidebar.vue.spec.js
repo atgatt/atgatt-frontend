@@ -1,5 +1,6 @@
 import ProductFilterSidebar from '../../../src/components/ProductFilterSidebar.vue'
 import { shallowMount } from '@vue/test-utils'
+import { registerGlobalComponents } from '../../../src/globals'
 const expectedInitialFilters = {
   manufacturer: null,
   model: null,
@@ -29,6 +30,7 @@ const expectedSliderBackgroundColors = [
 describe('ProductFilterSidebar.vue', () => {
   let wrapper = null
   let component = null
+  registerGlobalComponents()
 
   beforeEach(() => {
     wrapper = shallowMount(ProductFilterSidebar)

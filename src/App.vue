@@ -33,7 +33,7 @@ export default {
 
 <!-- global styles for the entire app -->
 <style>
-i.fa-info-circle {
+svg.fa-info-circle {
   color: skyblue;
   cursor: pointer;
 }
