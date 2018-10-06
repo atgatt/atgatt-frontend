@@ -117,6 +117,7 @@ export default {
       try {
         this.results = await this.fetchDataAsync(filters)
       } catch (err) {
+        // eslint-disable-next-line
         console.error('Got an exception while loading data: ', err)
         this.results = []
       }
