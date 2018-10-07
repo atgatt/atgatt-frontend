@@ -7,11 +7,11 @@
 
 # Production context: All deploys from the Production branch set in your site's deploy settings will inherit these settings.
 [context.production]
-  command = "NODE_ENV=production npm run test:unit && npm run build"
+  command = "npm run test:unit && npm run build"
 
 # Branch Deploy context: All deploys that are not resulting from a Pull/Merge Request and not from the production branch will inherit these settings.
 [context.branch-deploy]
-  command = "NODE_ENV=production npm run test:unit && npm run build -- --mode staging"
+  command = "npm run test:unit && npm run build -- --mode staging"
 
 # Specific branch context: Deploys from this branch will take these settings and override their current ones.
 # For contexts of branches with special characters, enclose the branch name with quotes
