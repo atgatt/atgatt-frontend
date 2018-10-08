@@ -7,14 +7,14 @@
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('revzilla')">
-          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><i class="fas fa-motorcycle"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
+          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="shopping-bag"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
         </div>
       </div>
     </div>
     <div class="row product-body">
       <div v-on:click="trackBuyButtonClick('revzilla')" class="col-12 col-lg align-self-center">
         <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-          <img v-if="product.imageUrl" class="product-image" width="200" height="200" v-bind:src="product.imageUrl"/>
+          <img v-if="product.imageKey" class="product-image" width="200" height="200" v-bind:src="imageURL"/>
           <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
         </a>
       </div>
@@ -159,7 +159,7 @@ export default {
   },
   computed: {
     formattedRevzillaPrice: function () {
-      const priceInUSD = this.product.revzillaPriceInUSDMultiple / 100.0
+      const priceInUSD = this.product.revzillaPriceCents / 100.0
       return priceInUSD > 0 ? formatCurrency(priceInUSD) : 'a mystery price!'
     },
     formattedRevzillaBuyURL: function () {
@@ -175,6 +175,9 @@ export default {
     },
     formattedSubtype: function () {
       return this.product.subtype.charAt(0).toUpperCase() + this.product.subtype.slice(1)
+    },
+    imageURL: function () {
+      return this.$environment.staticBaseURL + '/' + this.product.imageKey
     }
   },
   methods: {
@@ -185,7 +188,7 @@ export default {
         'uuid': this.product.uuid,
         'manufacturer': this.product.manufacturer,
         'model': this.product.model,
-        'revzillaPriceInUSDMultiple': this.product.revzillaPriceInUSDMultiple,
+        'revzillaPriceCents': this.product.revzillaPriceCents,
         'safetyPercentage': this.product.safetyPercentage,
         'destinationSite': destinationSite
       })

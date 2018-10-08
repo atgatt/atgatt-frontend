@@ -11,7 +11,7 @@
               <label for="sortBy">Sort By:</label>
               <select v-model="order.field" id="orderByField" class="form-control">
                 <option value="document->>'safetyPercentage'">Safety</option>
-                <option value="document->>'priceInUsdMultiple'">Price</option>
+                <option value="document->>'searchPriceCents'">Price</option>
                 <option value="document->>'manufacturer'">Manufacturer</option>
                 <option value="document->>'model'">Model</option>
               </select>
