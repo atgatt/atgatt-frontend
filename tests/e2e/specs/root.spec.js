@@ -3,6 +3,5 @@
 describe('Smoke Check', () => {
   it('Visits the app root url', () => {
     cy.visit('/')
-    throw new Error('ayyyylmao')
   })
 })
