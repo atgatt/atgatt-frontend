@@ -2,12 +2,12 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
-        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong>&nbsp;<small>{{product.model}}</small><small v-if="product.modelAlias"> ({{product.modelAlias}})</small></h4>
+        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong>&nbsp;<small>{{formattedModel}}</small><small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small></h4>
         <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <font-awesome-icon v-on:click="toggleRatingsModal" icon="info-circle"/></i>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('revzilla')">
-          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="shopping-bag"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
+          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="cart-plus"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
         </div>
       </div>
     </div>
@@ -178,6 +178,34 @@ export default {
     },
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
+    },
+    formattedModel: function () {
+      const aliases = this.product.modelAliases
+      let modelToUse = this.product.model
+      if (aliases && aliases.length) {
+        const aliasObjForDisplay = aliases.find(alias => alias.isForDisplay)
+        if (aliasObjForDisplay) {
+          modelToUse = aliasObjForDisplay.modelAlias
+        }
+      }
+      return modelToUse
+    },
+    formattedModelAliases: function () {
+      const aliases = this.product.modelAliases
+      if (aliases && aliases.length) {
+        const aliasObjsNotForDisplay = aliases.filter(alias => !alias.isForDisplay)
+        const aliasObjForDisplay = aliases.find(alias => alias.isForDisplay)
+
+        const aliasesNotForDisplay = aliasObjsNotForDisplay ? aliasObjsNotForDisplay.map(alias => alias.modelAlias) : []
+        let combinedAliases
+        if (aliasObjForDisplay) {
+          combinedAliases = [this.product.model, ...aliasesNotForDisplay]
+        } else {
+          combinedAliases = aliasesNotForDisplay
+        }
+        return combinedAliases.join(', ')
+      }
+      return null
     }
   },
   methods: {
@@ -285,6 +313,10 @@ export default {
 
 .certifications-label {
   font-size: larger;
+}
+
+.model-aliases {
+  color: darkgray;
 }
 
 .revzilla-buy-btn {
