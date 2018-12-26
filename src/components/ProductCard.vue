@@ -169,7 +169,7 @@ export default {
       }
 
       const manufacturer = this.product.manufacturer
-      const model = this.product.model
+      const model = this.formattedModel
 
       return `http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query=${manufacturer}+${model}`
     },
