@@ -9,7 +9,8 @@ describe('ProductCard.vue', () => {
       props: ['product'],
       propsData: {
         'product': { 'manufacturer': 'manu', 'model': 'model', 'certifications': { 'SHARP': null }, 'subtype': 'modular' }
-      }
+      },
+      stubs: ['router-link']
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()
@@ -25,7 +26,8 @@ describe('ProductCard.vue', () => {
         '$environment': {
           'staticBaseURL': 'http://static.mock.com'
         }
-      }
+      },
+      stubs: ['router-link']
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()
@@ -42,7 +44,8 @@ describe('ProductCard.vue', () => {
         '$environment': {
           'staticBaseURL': 'http://static.mock.com'
         }
-      }
+      },
+      stubs: ['router-link']
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()
@@ -60,7 +63,8 @@ describe('ProductCard.vue', () => {
         '$environment': {
           'staticBaseURL': 'http://static.mock.com'
         }
-      }
+      },
+      stubs: ['router-link']
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()
@@ -78,7 +82,8 @@ describe('ProductCard.vue', () => {
         '$environment': {
           'staticBaseURL': 'http://static.mock.com'
         }
-      }
+      },
+      stubs: ['router-link']
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()
@@ -96,7 +101,8 @@ describe('ProductCard.vue', () => {
         '$environment': {
           'staticBaseURL': 'http://static.mock.com'
         }
-      }
+      },
+      stubs: ['router-link']
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()

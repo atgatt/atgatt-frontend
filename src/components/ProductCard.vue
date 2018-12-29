@@ -2,7 +2,17 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
-        <h4 class="my-auto"><strong>{{product.manufacturer}}</strong>&nbsp;<small>{{formattedModel}}</small><small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small></h4>
+        <h4 class="my-auto">
+          <strong>{{product.manufacturer}}</strong>&nbsp;<small>{{formattedModel}}</small>
+          <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
+          <router-link
+            :to="{ name: 'Ratings', params: { initialManufacturer: this.product.manufacturer, initialModel: this.formattedModel }}"
+            target="_blank"
+            class="ratings-router-link"
+          >
+            <font-awesome-icon icon="external-link-alt" size="xs" />
+          </router-link>
+        </h4>
         <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <font-awesome-icon v-on:click="toggleRatingsModal" icon="info-circle"/></i>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
@@ -260,6 +270,10 @@ export default {
 .product-header {
   border-bottom: 1px solid #ccc;
   padding-bottom: 1rem;
+}
+
+.ratings-router-link {
+  padding-left: 0.5rem;
 }
 
 /* xs through md */

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="d-none d-lg-block col-lg-3 product-filter-sidebar">
-        <product-filter-sidebar v-on:filtersChanged="onFiltersChangedAsync" />
+        <product-filter-sidebar v-bind:initialManufacturer="initialManufacturer" v-bind:initialModel="initialModel" v-on:filtersChanged="onFiltersChangedAsync" />
       </div>
       <div class="col-12 col-lg-9 product-results">
         <div class="row sort-row">
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div v-show="showFilters" class="d-xs-block d-lg-none product-filter-sidebar">
-          <product-filter-sidebar v-bind:show-filters="showFilters" v-on:filtersChanged="onFiltersChangedAsync" />
+          <product-filter-sidebar v-bind:initialManufacturer="initialManufacturer" v-bind:initialModel="initialModel" v-bind:show-filters="showFilters" v-on:filtersChanged="onFiltersChangedAsync" />
         </div>
         <hr class="d-xs-block d-lg-none sort-separator" />
         <div v-if="results.length" v-for="result in results" v-bind:key="result.uuid">
@@ -60,6 +60,7 @@ import ProductFilterSidebar from '../components/ProductFilterSidebar'
 
 export default {
   name: 'Ratings',
+  props: ['initialManufacturer', 'initialModel'],
   components: {
     'product-card': ProductCard,
     'product-filter-sidebar': ProductFilterSidebar

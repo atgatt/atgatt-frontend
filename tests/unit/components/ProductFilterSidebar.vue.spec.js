@@ -39,8 +39,32 @@ describe('ProductFilterSidebar.vue', () => {
 
   it('should emit a filtersChanged event when it finishes loading', () => {
     component.$mount()
-    expect(wrapper.emitted().filtersChanged).toBeTruthy()
-    expect(component.filters).toEqual(expectedInitialFilters)
+    component.$nextTick(() => {
+      expect(wrapper.emitted().filtersChanged).toBeTruthy()
+      expect(component.filters).toEqual(expectedInitialFilters)
+    })
+  })
+
+  it('should filter by the manufacturer and model if they are supplied as props', () => {
+    wrapper = shallowMount(ProductFilterSidebar, {
+      props: ['initialManufacturer', 'initialModel'],
+      propsData: {
+        'initialManufacturer': 'manu',
+        'initialModel': 'somemodel'
+      }
+    })
+    component = wrapper.vm
+
+    component.$mount()
+    component.$nextTick(() => {
+      expect(wrapper.emitted().filtersChanged).toBeTruthy()
+
+      const expectedFiltersWithChangedModel = Object.assign({}, expectedInitialFilters)
+      expectedFiltersWithChangedModel.manufacturer = 'manu'
+      expectedFiltersWithChangedModel.model = 'somemodel'
+
+      expect(component.filters).toEqual(expectedFiltersWithChangedModel)
+    })
   })
 
   it('should set all of the SHARP impact zone ratings to zero and stars to 1 when toggleSHARP(true) is called', () => {

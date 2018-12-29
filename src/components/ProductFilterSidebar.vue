@@ -11,11 +11,11 @@
       </div>
       <div class="form-group">
         <label for="manufacturer">Manufacturer</label>
-        <input type="text" class="form-control" v-model="filters.manufacturer" id="manufacturer" placeholder="Start typing a manufacturer...">
+        <input type="text" class="form-control" v-model="filters.manufacturer" id="manufacturer-input" placeholder="Start typing a manufacturer...">
       </div>
       <div class="form-group">
         <label for="manufacturer">Model</label>
-        <input type="text" class="form-control" v-model="filters.model" id="model" placeholder="Start typing a model...">
+        <input type="text" class="form-control" v-model="filters.model" id="model-input" placeholder="Start typing a model...">
       </div>
       <div class="form-group">
         <label for="type">Type</label>
@@ -152,7 +152,7 @@ export default {
     vueSlider,
     'v-select': VueSelect
   },
-  props: ['showFilters'],
+  props: ['showFilters', 'initialManufacturer', 'initialModel'],
   data () {
     return getDefaultData()
   },
@@ -199,7 +199,13 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
+    if (this.initialManufacturer && this.initialModel) {
+      this.filters.manufacturer = this.initialManufacturer
+      this.filters.model = this.initialModel
+    }
+
+    await this.$nextTick()
     this.applyFilters()
   }
 }

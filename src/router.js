@@ -9,9 +9,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'Safe Motorcycle Helmets',
-      component: Ratings
+      path: '/helmets/buy/:initialManufacturer?-:initialModel?',
+      alias: '/',
+      component: Ratings,
+      props: true,
+      name: 'Ratings'
     },
     {
       path: '/about',
