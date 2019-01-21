@@ -28,7 +28,7 @@
       <div class="form-group">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.discontinued" type="checkbox" id="show-discontinued-checkbox"> Show discontinued products
+            <input class="form-check-input" v-model="filters.discontinued" type="checkbox" id="include-discontinued-checkbox"> Include discontinued products
           </label>
         </div>
       </div>
