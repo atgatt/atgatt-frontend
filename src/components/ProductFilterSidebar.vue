@@ -22,8 +22,15 @@
         <v-select multiple v-bind:value.sync="filters.subtypes" v-bind:options="subtypeMultiselectOptions" placeholder="Select one or more types..."></v-select>
       </div>
       <div class="form-group">
-        <label for="rear-impact-zone-rating-slider">Price Range</label>
+        <label for="price-slider">Price Range</label>
         <vue-slider ref="priceslider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" v-model="filters.discontinued" type="checkbox" id="show-discontinued-checkbox"> Show discontinued products
+          </label>
+        </div>
       </div>
       <h5>
         Required Certifications
@@ -50,11 +57,11 @@
             <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.rear"></vue-slider>
           </div>
           <div class="form-group">
-            <label for="rear-impact-zone-rating-slider">Top-Front Impact Rating</label>
+            <label for="top-front-impact-zone-rating-slider">Top-Front Impact Rating</label>
             <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.front"></vue-slider>
           </div>
           <div class="form-group">
-            <label for="rear-impact-zone-rating-slider">Top-Rear Impact Rating</label>
+            <label for="top-rear-impact-zone-rating-slider">Top-Rear Impact Rating</label>
             <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.rear"></vue-slider>
           </div>
         </div>
@@ -141,7 +148,8 @@ function getDefaultData () {
       order: {
         field: 'document->>\'safetyPercentage\'',
         descending: true
-      }
+      },
+      discontinued: false
     }
   }
 }

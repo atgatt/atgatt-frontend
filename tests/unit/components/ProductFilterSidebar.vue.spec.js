@@ -15,7 +15,8 @@ const expectedInitialFilters = {
   order: {
     field: 'document->>\'safetyPercentage\'',
     descending: true
-  }
+  },
+  discontinued: false
 }
 
 const expectedSliderBackgroundColors = [
