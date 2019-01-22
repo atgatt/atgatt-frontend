@@ -28,7 +28,7 @@
       <div class="form-group">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.discontinued" type="checkbox" id="include-discontinued-checkbox"> Include discontinued products
+            <input class="form-check-input" v-model="filters.excludeDiscontinued" type="checkbox" id="exclude-discontinued-checkbox"> Exclude discontinued products
           </label>
         </div>
       </div>
@@ -149,7 +149,7 @@ function getDefaultData () {
         field: 'document->>\'safetyPercentage\'',
         descending: true
       },
-      discontinued: false
+      excludeDiscontinued: false
     }
   }
 }
