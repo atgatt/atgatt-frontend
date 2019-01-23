@@ -13,7 +13,15 @@
             <font-awesome-icon icon="external-link-alt" size="xs" />
           </router-link>
         </h4>
-        <i>{{formattedSubtype}} - {{product.safetyPercentage}}% Safety Score <font-awesome-icon v-on:click="toggleRatingsModal" icon="info-circle"/></i>
+        <a href="#" class="badge badge-primary product-badge" v-on:click="toggleRatingsModal">
+          {{product.safetyPercentage}}% Safety Score
+        </a>
+        <span class="badge badge-secondary product-badge">
+          {{formattedSubtype}} {{formattedType}}
+        </span>
+        <span v-if="product.isDiscontinued" class="badge badge-danger product-badge">
+          Discontinued
+        </span>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('revzilla')">
@@ -183,6 +191,9 @@ export default {
 
       return `http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query=${manufacturer}+${model}`
     },
+    formattedType: function () {
+      return this.product.type.charAt(0).toUpperCase() + this.product.type.slice(1)
+    },
     formattedSubtype: function () {
       return this.product.subtype.charAt(0).toUpperCase() + this.product.subtype.slice(1)
     },
@@ -290,6 +301,10 @@ export default {
   .impact-zone-col {
     align-self: flex-start;
   }
+}
+
+.product-badge {
+  margin-right: 3px;
 }
 
 .product-body {
