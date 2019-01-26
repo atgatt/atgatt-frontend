@@ -5,13 +5,6 @@
         <h4 class="my-auto">
           <strong>{{product.manufacturer}}</strong>&nbsp;<small>{{formattedModel}}</small>
           <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
-          <router-link
-            :to="{ name: 'Ratings', params: { initialManufacturer: this.product.manufacturer, initialModel: this.formattedModel }}"
-            target="_blank"
-            class="ratings-router-link"
-          >
-            <font-awesome-icon icon="external-link-alt" size="xs" />
-          </router-link>
         </h4>
         <a href="#" class="badge badge-primary product-badge" v-on:click="toggleRatingsModal">
           {{product.safetyPercentage}}% Safety Score
@@ -22,10 +15,17 @@
         <span v-if="product.isDiscontinued" class="badge badge-danger product-badge">
           Discontinued
         </span>
+        <router-link
+          :to="{ name: 'Ratings', params: { initialManufacturer: this.product.manufacturer, initialModel: this.formattedModel }}"
+          target="_blank"
+          class="ratings-router-link"
+        >
+          <font-awesome-icon icon="external-link-alt" />
+        </router-link>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div v-on:click="trackBuyButtonClick('revzilla')">
-          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="cart-plus"/>&nbsp;<strong>Buy on RevZilla for {{formattedRevzillaPrice}}</strong></a>
+          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="cart-plus"/>&nbsp;<strong>{{formattedRevzillaBuyText}}</strong></a>
         </div>
       </div>
     </div>
@@ -161,6 +161,9 @@ import ProductCertificationBadge from '../components/ProductCertificationBadge'
 import SharpImpactZone from '../components/SharpImpactZone'
 import Modal from '../components/common/Modal'
 
+const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
+const REVZILLA_BUY_TEXT_PREFIX = 'Buy on RevZilla for'
+
 export default {
   name: 'ProductCard',
   components: {
@@ -176,11 +179,20 @@ export default {
     }
   },
   computed: {
-    formattedRevzillaPrice: function () {
+    formattedRevzillaBuyText: function () {
+      if (this.product.isDiscontinued) {
+        return `Buy another ${this.product.manufacturer} ${this.product.type} on RevZilla`
+      }
+
+      // Buy on RevZilla for {{formattedRevzillaPrice}}
       const priceInUSD = this.product.revzillaPriceCents / 100.0
-      return priceInUSD > 0 ? formatCurrency(priceInUSD) : 'a mystery price!'
+      return priceInUSD > 0 ? `${REVZILLA_BUY_TEXT_PREFIX} ${formatCurrency(priceInUSD)}` : `${REVZILLA_BUY_TEXT_PREFIX} a mystery price!`
     },
     formattedRevzillaBuyURL: function () {
+      if (this.product.isDiscontinued) {
+        return `${REVZILLA_SEARCH_URL}${this.product.manufacturer}+${this.product.type}`
+      }
+
       const buyUrl = this.product.revzillaBuyURL
       if (buyUrl) {
         return buyUrl
@@ -189,7 +201,7 @@ export default {
       const manufacturer = this.product.manufacturer
       const model = this.formattedModel
 
-      return `http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query=${manufacturer}+${model}`
+      return `${REVZILLA_SEARCH_URL}${manufacturer}+${model}`
     },
     formattedType: function () {
       return this.product.type.charAt(0).toUpperCase() + this.product.type.slice(1)
