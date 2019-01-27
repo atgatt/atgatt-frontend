@@ -38,8 +38,10 @@
           <product-filter-sidebar v-bind:initialManufacturer="initialManufacturer" v-bind:initialModel="initialModel" v-bind:show-filters="showFilters" v-on:filtersChanged="onFiltersChangedAsync" />
         </div>
         <hr class="d-xs-block d-lg-none sort-separator" />
-        <div v-if="results.length" v-for="result in results" v-bind:key="result.uuid">
-          <product-card v-bind:product="result" />
+        <div v-if="results.length">
+          <div v-for="result in results" v-bind:key="result.uuid">
+            <product-card v-bind:product="result" />
+          </div>
         </div>
         <div v-if="results.length" class="load-more-button">
           <button v-if="hasMore" class="btn btn-info" v-on:click="loadMoreAsync">Load More</button>
