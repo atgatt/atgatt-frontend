@@ -90,7 +90,7 @@
                 Our safety score is a weighted average of the crash test scores obtained from SHARP combined with the certifications obtained from SNELL, DOT, and ECE.
                 Specifically, we weight each certification as follows: <br /><br />
                 <code>
-                  Safety Score = 0.10 * ECE + 0.08 * DOT +  0.02 * SNELL + 0.8 * (SHARP-Left-Percentage * 0.20 + SHARP-Right-Percentage * 0.20 + SHARP-TopFront-Percentage * 0.20 + SHARP-TopRear-Percentage * 0.20 + SHARP-Rear-Percentage * 0.20)
+                  Safety Score = 0.10 * ECE + 0.08 * SNELL +  0.02 * DOT + 0.8 * (SHARP-Left-Percentage * 0.20 + SHARP-Right-Percentage * 0.20 + SHARP-TopFront-Percentage * 0.20 + SHARP-TopRear-Percentage * 0.20 + SHARP-Rear-Percentage * 0.20)
                 </code>
                 <br />
                 <br />
