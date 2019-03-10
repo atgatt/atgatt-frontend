@@ -1,13 +1,16 @@
 <template>
     <footer class="footer">
       <div class="footer-text">
-        <span class="text-muted">© {{currentYear}} CrashTested. Portions of the helmet data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>.</span>
+        <span class="text-muted">
+          © {{currentYear}} CrashTested. Portions of the helmet data © SHARP under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>. Blog powered by <a target="_blank" href="https://buttercms.com"><img width=75 height=25 src="https://cdn.buttercms.com/PGJPyIwaQ2KnOA8UyKfH" /></a>
+        </span>
       </div>
       <div>
         <router-link v-bind:to="'about'">About</router-link> —
         <router-link v-bind:to="'about'">Terms of Service</router-link> —
         <router-link v-bind:to="'about'">Privacy Policy</router-link>
       </div>
+
     </footer>
 </template>
 
