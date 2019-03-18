@@ -30,22 +30,6 @@ export default new Router({
       // this generates a separate chunk (notfound.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "notfound" */ './views/NotFound.vue')
-    },
-    {
-      path: '/blog',
-      name: 'Blog',
-      // route level code-splitting
-      // this generates a separate chunk (blog.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "blog" */ './views/Blog.vue')
-    },
-    {
-      path: '/blog/:slug',
-      name: 'Blog Post',
-      // route level code-splitting
-      // this generates a separate chunk (blogpost.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "blogpost" */ './components/BlogPost.vue')
     }
   ]
 })

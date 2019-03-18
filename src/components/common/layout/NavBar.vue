@@ -7,7 +7,6 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <nav-item route="/" text="Ratings" exact="true" />
-        <nav-item route="/blog" text="Blog" />
         <nav-item route="/about" text="About" />
       </ul>
     </div>

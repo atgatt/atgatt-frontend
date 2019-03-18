@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Butter from 'buttercms'
 import router from './router'
 
 import VueProgressBar from 'vue-progressbar'
@@ -31,13 +30,10 @@ function startApp (environment) {
     console.error('Failed to initialize amplitude: ', e)
   }
 
-  const butter = Butter(environment.butterAPIKey)
-
   // Set up environment variables middleware
   Vue.use({
     install: function (Vue, options) {
       Vue.prototype.$environment = environment
-      Vue.prototype.$butter = butter
     }
   })
 
