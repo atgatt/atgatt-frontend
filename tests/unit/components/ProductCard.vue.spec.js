@@ -8,7 +8,7 @@ describe('ProductCard.vue', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': { 'manufacturer': 'manu', 'model': 'model', 'certifications': { 'SHARP': null }, 'subtype': 'modular', 'type': 'helmet' }
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'type': 'helmet' }
       },
       stubs: ['router-link']
     })
@@ -22,7 +22,7 @@ describe('ProductCard.vue', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': { 'manufacturer': 'manu', 'model': 'model', 'certifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
       },
       mocks: {
         '$environment': {
@@ -40,7 +40,7 @@ describe('ProductCard.vue', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': [{ 'isForDisplay': false, 'modelAlias': 'donotdisplayme' }, { 'isForDisplay': true, 'modelAlias': 'displayme' }], 'certifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': [{ 'isForDisplay': false, 'modelAlias': 'donotdisplayme' }, { 'isForDisplay': true, 'modelAlias': 'displayme' }], 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
       },
       mocks: {
         '$environment': {
@@ -59,7 +59,7 @@ describe('ProductCard.vue', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': [{ 'isForDisplay': false, 'modelAlias': 'donotdisplayme' }, { 'isForDisplay': false, 'modelAlias': 'alsodontdisplayme' }], 'certifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': [{ 'isForDisplay': false, 'modelAlias': 'donotdisplayme' }, { 'isForDisplay': false, 'modelAlias': 'alsodontdisplayme' }], 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
       },
       mocks: {
         '$environment': {
@@ -78,7 +78,7 @@ describe('ProductCard.vue', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': [], 'certifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': [], 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
       },
       mocks: {
         '$environment': {
@@ -97,7 +97,7 @@ describe('ProductCard.vue', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],
       propsData: {
-        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': null, 'certifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'modelAliases': null, 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
       },
       mocks: {
         '$environment': {
