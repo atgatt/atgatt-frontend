@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <label for="type">Type</label>
-        <v-select multiple v-bind:value.sync="filters.subtypes" v-bind:options="subtypeMultiselectOptions" placeholder="Select one or more types..."></v-select>
+        <v-select ref="subtypesmultiselect" multiple v-model="filters.subtypes" v-bind:reduce="option => option.value" v-bind:options="subtypeMultiselectOptions" placeholder="Select one or more types..."></v-select>
       </div>
       <div class="form-group">
         <label for="price-slider">Price Range</label>
@@ -87,6 +87,8 @@
 
 <script>
 import VueSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css'
+
 import vueSlider from 'vue-slider-component'
 import formatCurrency from '../lib/currency'
 
@@ -191,6 +193,8 @@ export default {
     },
     resetFilters () {
       Object.assign(this.$data, getDefaultData())
+      // HACK: workaround for a vue-select bug - force the UI to be cleared once we click "reset" since it doesn't do this on its own
+      this.$nextTick(() => this.$refs.subtypesmultiselect.clearSelection())
     },
     toggleSHARP (isEnabled) {
       this.filters.certifications.SHARP = !isEnabled ? null : {
@@ -220,14 +224,6 @@ export default {
 </script>
 
 <style scoped>
-.v-select {
-  font-family: inherit;
-}
-
-.v-select input {
-  padding: .375rem .75rem;
-}
-
 .reset-button-col {
   text-align: right;
 }
