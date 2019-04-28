@@ -7,6 +7,7 @@ import VueProgressBar from 'vue-progressbar'
 import '../node_modules/jquery/dist/jquery.slim.min'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'vue-select/dist/vue-select.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'

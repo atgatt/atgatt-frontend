@@ -36,6 +36,7 @@ describe('ProductFilterSidebar.vue', () => {
   beforeEach(() => {
     wrapper = shallowMount(ProductFilterSidebar)
     component = wrapper.vm
+    component.$refs.subtypesmultiselect = { clearSelection: function () {} }
   })
 
   it('should emit a filtersChanged event when it finishes loading', () => {
