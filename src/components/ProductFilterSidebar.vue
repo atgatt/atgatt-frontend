@@ -33,54 +33,10 @@
         </div>
       </div>
       <h5>
-        Required Certifications
+        Requirements
       </h5>
-      <div class="form-group">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" v-model="isSHARPChecked" type="checkbox" id="sharp-checkbox"> SHARP
-          </label>
-        </div>
-        <div v-if="filters.certifications.SHARP" class="form-group">
-          <label for="min-sharp-stars-slider">Number of SHARP Stars</label>
-          <vue-slider ref="slider" id="min-sharp-stars-slider" v-bind="SHARPSliderOptions" v-model="filters.certifications.SHARP.stars"></vue-slider>
-          <div class="form-group">
-            <label for="left-impact-zone-rating-slider">Left Impact Rating</label>
-            <vue-slider ref="slider" id="left-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.left"></vue-slider>
-          </div>
-          <div class="form-group">
-            <label for="right-impact-zone-rating-slider">Right Impact Rating</label>
-            <vue-slider ref="slider" id="right-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.right"></vue-slider>
-          </div>
-          <div class="form-group">
-            <label for="rear-impact-zone-rating-slider">Rear Impact Rating</label>
-            <vue-slider ref="slider" id="rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.rear"></vue-slider>
-          </div>
-          <div class="form-group">
-            <label for="top-front-impact-zone-rating-slider">Top-Front Impact Rating</label>
-            <vue-slider ref="slider" id="top-front-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.front"></vue-slider>
-          </div>
-          <div class="form-group">
-            <label for="top-rear-impact-zone-rating-slider">Top-Rear Impact Rating</label>
-            <vue-slider ref="slider" id="top-rear-impact-zone-rating-slider" v-bind="impactZoneSliderOptions" v-model="filters.certifications.SHARP.impactZoneMinimums.top.rear"></vue-slider>
-          </div>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.certifications.ECE" type="checkbox" id="ece-checkbox"> ECE
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.certifications.SNELL" type="checkbox" id="snell-checkbox"> SNELL
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.certifications.DOT" type="checkbox" id="dot-checkbox"> DOT
-          </label>
-        </div>
-      </div>
+      <helmet-certification-filters v-if="shouldShowHelmetFilters" v-bind:certifications="filters.helmetCertifications" />
+      <jacket-certification-filters v-else v-bind:certifications="filters.jacketCertifications" />
     </form>
   </div>
 </template>
@@ -89,42 +45,12 @@
 import VueSelect from 'vue-select'
 import vueSlider from 'vue-slider-component'
 import formatCurrency from '../lib/currency'
+import HelmetCertificationFilters from './HelmetCertificationFilters'
+import JacketCertificationFilters from './JacketCertificationFilters'
 
-const sliderBackgroundColors = [
-  '#303030',
-  '#CC3628',
-  '#703D29',
-  '#ED9500',
-  '#FCEB00',
-  '#489B27'
-]
-
-function getDefaultData () {
-  return {
-    subtypeMultiselectOptions: [
-      { value: 'full', label: 'Full Face' },
-      { value: 'modular', label: 'Modular' }
-    ],
-    impactZoneSliderOptions: {
-      min: 0,
-      max: 5,
-      tooltip: 'hover',
-      sliderStyle: function (value) {
-        const backgroundColorIndex = value === 0 ? 0 : value
-        if (backgroundColorIndex > sliderBackgroundColors.length || backgroundColorIndex < 0) {
-          throw new Error('Background color index out of range')
-        }
-        const newBackgroundColor = sliderBackgroundColors[backgroundColorIndex]
-        return {
-          backgroundColor: newBackgroundColor
-        }
-      }
-    },
-    SHARPSliderOptions: {
-      min: 1,
-      max: 5,
-      tooltip: 'hover'
-    },
+function getDefaultData (type) {
+  const data = {
+    subtypeMultiselectOptions: [],
     usdPriceRangeSliderOptions: {
       min: 0,
       max: 140000,
@@ -133,17 +59,12 @@ function getDefaultData () {
         return formatCurrency(parseInt(value / 100.0))
       }
     },
-    isSHARPChecked: false,
     filters: {
       subtypes: [],
       manufacturer: null,
       model: null,
-      certifications: {
-        SHARP: null,
-        SNELL: false,
-        ECE: false,
-        DOT: false
-      },
+      helmetCertifications: null,
+      jacketCertifications: null,
       usdPriceRange: [0, 140000],
       order: {
         field: 'document->>\'safetyPercentage\'',
@@ -152,17 +73,52 @@ function getDefaultData () {
       excludeDiscontinued: false
     }
   }
+
+  switch (type) {
+    case 'helmet':
+      data.filters.helmetCertifications = {
+        SHARP: null,
+        SNELL: false,
+        ECE: false,
+        DOT: false
+      }
+
+      data.subtypeMultiselectOptions = [
+        { value: 'full', label: 'Full Face' },
+        { value: 'modular', label: 'Modular' }
+      ]
+      break
+    case 'jacket':
+      data.filters.jacketCertifications = {
+        shoulder: null,
+        elbow: null,
+        back: null,
+        chest: null,
+        fitsAirbag: false
+      }
+
+      data.subtypeMultiselectOptions = [
+        { value: 'leather', label: 'Leather' },
+        { value: 'goretex', label: 'Gore-Tex' },
+        { value: 'textile', label: 'Textile' }
+      ]
+      break
+  }
+
+  return data
 }
 
 export default {
   name: 'ProductFilterSidebar',
   components: {
     vueSlider,
-    'v-select': VueSelect
+    'v-select': VueSelect,
+    'helmet-certification-filters': HelmetCertificationFilters,
+    'jacket-certification-filters': JacketCertificationFilters
   },
-  props: ['showFilters', 'initialManufacturer', 'initialModel'],
+  props: ['showFilters', 'initialManufacturer', 'initialModel', 'type'],
   data () {
-    return getDefaultData()
+    return getDefaultData(this.type)
   },
   watch: {
     filters: {
@@ -170,11 +126,6 @@ export default {
         this.applyFilters()
       },
       deep: true
-    },
-    isSHARPChecked: {
-      handler (val) {
-        this.toggleSHARP(val)
-      }
     },
     showFilters: {
       handler (val) {
@@ -185,28 +136,19 @@ export default {
       }
     }
   },
+  computed: {
+    shouldShowHelmetFilters: function () {
+      return this.type === 'helmet'
+    }
+  },
   methods: {
     applyFilters () {
       this.$emit('filtersChanged', this.filters)
     },
     resetFilters () {
-      Object.assign(this.$data, getDefaultData())
+      Object.assign(this.$data, getDefaultData(this.type))
       // HACK: workaround for a vue-select bug - force the UI to be cleared once we click "reset" since it doesn't do this on its own
       this.$nextTick(() => this.$refs.subtypesmultiselect.clearSelection())
-    },
-    toggleSHARP (isEnabled) {
-      this.filters.certifications.SHARP = !isEnabled ? null : {
-        stars: 1,
-        impactZoneMinimums: {
-          left: 0,
-          right: 0,
-          top: {
-            front: 0,
-            rear: 0
-          },
-          rear: 0
-        }
-      }
     }
   },
   async mounted () {

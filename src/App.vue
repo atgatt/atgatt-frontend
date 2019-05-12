@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-bar />
-    <router-view />
+    <router-view v-bind:key="$route.path" />
     <app-footer />
     <vue-progress-bar />
   </div>

@@ -2,7 +2,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="d-none d-lg-block col-lg-3 product-filter-sidebar">
-        <product-filter-sidebar v-bind:initialManufacturer="initialManufacturer" v-bind:initialModel="initialModel" v-on:filtersChanged="onFiltersChangedAsync" />
+        <product-filter-sidebar
+          v-bind:initialManufacturer="initialManufacturer"
+          v-bind:initialModel="initialModel"
+          v-bind:type="type"
+          v-on:filtersChanged="onFiltersChangedAsync"
+        />
       </div>
       <div class="col-12 col-lg-9 product-results">
         <div class="row sort-row">
@@ -62,7 +67,7 @@ import ProductFilterSidebar from '../components/ProductFilterSidebar'
 
 export default {
   name: 'Ratings',
-  props: ['initialManufacturer', 'initialModel'],
+  props: ['initialManufacturer', 'initialModel', 'type'],
   components: {
     'product-card': ProductCard,
     'product-filter-sidebar': ProductFilterSidebar
@@ -101,6 +106,7 @@ export default {
       const request = Object.assign({}, filters)
       request.start = this.start
       request.limit = this.limit
+      request.type = this.type
 
       const order = Object.assign({}, this.order)
 

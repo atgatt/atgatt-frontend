@@ -16,7 +16,7 @@
           Discontinued
         </span>
         <router-link
-          :to="{ name: 'Ratings', params: { initialManufacturer: this.product.manufacturer, initialModel: this.formattedModel }}"
+          :to="{ path: `/${this.product.type}s/buy/${this.product.manufacturer}-${this.formattedModel}` }"
           target="_blank"
           class="ratings-router-link"
         >
