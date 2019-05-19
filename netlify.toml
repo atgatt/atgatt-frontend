@@ -9,6 +9,10 @@
 [context.production]
   command = "npm run test:unit && npm run build"
 
+# Deploy Preview Context: All preview deploys use these settings
+[context.deploy-preview]
+  command = "npm run test:unit && npm run build -- --mode staging"
+
 # Branch Deploy context: All deploys that are not resulting from a Pull/Merge Request and not from the production branch will inherit these settings.
 [context.branch-deploy]
   command = "npm run test:unit && npm run build -- --mode staging"

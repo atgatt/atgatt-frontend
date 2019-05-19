@@ -14,7 +14,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <span>{{zoneId | capitalize}} <font-awesome-icon icon="info-circle" /></span>
+            <span>{{zoneId | capitalize}}</span>
           </div>
         </div>
       </div>
@@ -65,7 +65,6 @@ export default {
 }
 
 .impact-zone {
-  cursor: pointer;
   padding-bottom: 1rem;
 }
 
