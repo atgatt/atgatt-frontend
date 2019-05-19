@@ -2,20 +2,19 @@
   <div class="impact-zone">
     <div class="row">
       <div class="col impact-zone-text">
-        <img v-if="certification" class="impact-zone-image" v-bind:src="url" />
-        <font-awesome-icon v-else icon="question-circle" size="5x" />
+        <img class="impact-zone-image" v-bind:src="zoneDetails.url" />
       </div>
     </div>
     <div class="row">
       <div class="col impact-zone-text">
         <div class="row">
           <div class="col">
-            <span class="zone-rating-text">{{zoneRatingText}}</span>
+            <span class="zone-rating-text">{{zoneDetails.text}}</span>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <span>{{zoneLabelText}} <font-awesome-icon icon="info-circle" /></span>
+            <span>{{zoneId | capitalize}} <font-awesome-icon icon="info-circle" /></span>
           </div>
         </div>
       </div>
@@ -24,15 +23,29 @@
 </template>
 
 <script>
+const APPROVED_TEXT = 'CE Approved'
+
 export default {
   name: 'JacketImpactZone',
-  props: ['certification'],
+  props: ['certification', 'zoneId'],
   computed: {
-    url () {
-      return null
-    },
-    zoneRatingText () {
-      return 'sometexthere'
+    zoneDetails () {
+      // TODO: this should probably move to the backend, which should return a number to map to the image instead of hardcoding black/empty/orange/red etc.
+      if (!this.certification) {
+        return { text: 'No Armor Support', url: require(`../assets/jackets/${this.zoneId}/black.jpg`) }
+      }
+
+      if (this.certification.isEmpty) {
+        return { text: 'Sold Separately', url: require(`../assets/jackets/empty.jpg`) }
+      }
+
+      const levelText = this.certification.isLevel2 ? 'CE Level 2' : 'CE Level 1'
+
+      if (this.certification.isApproved) {
+        return { text: levelText, subText: APPROVED_TEXT, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/green.jpg`) : require(`../assets/jackets/${this.zoneId}/orange.jpg`) }
+      }
+
+      return { text: levelText, subText: APPROVED_TEXT, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/yellow.jpg`) : require(`../assets/jackets/${this.zoneId}/red.jpg`) }
     }
   }
 }
