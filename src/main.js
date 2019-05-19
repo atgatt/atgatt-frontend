@@ -22,27 +22,12 @@ Vue.use(VueProgressBar)
 function startApp (environment) {
   // eslint-disable-next-line
   console.info('Starting app with environment: ', environment)
-  // Initialize analytics
-  try {
-    // eslint-disable-next-line
-    amplitude.getInstance().init(environment.amplitudeAPIKey)
-  } catch (e) {
-    // eslint-disable-next-line
-    console.error('Failed to initialize amplitude: ', e)
-  }
 
   // Set up environment variables middleware
   Vue.use({
     install: function (Vue, options) {
       Vue.prototype.$environment = environment
     }
-  })
-
-  // Set up global filters
-  Vue.filter('capitalize', function (value) {
-    if (!value) return ''
-    value = value.toString()
-    return value.charAt(0).toUpperCase() + value.slice(1)
   })
 
   // Have Vue render the app
@@ -54,7 +39,6 @@ function startApp (environment) {
 
 startApp({
   apiBaseURL: process.env.VUE_APP_API_BASE_URL,
-  amplitudeAPIKey: process.env.VUE_APP_AMPLITUDE_API_KEY,
   staticBaseURL: process.env.VUE_APP_STATIC_BASE_URL,
   butterAPIKey: process.env.VUE_APP_BUTTER_API_KEY
 })

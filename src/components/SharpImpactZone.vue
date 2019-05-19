@@ -17,14 +17,14 @@
           </div>
           <div class="row">
             <div class="col">
-              <span>{{zoneLabelText}} <font-awesome-icon icon="info-circle" /></span>
+              <span>{{zoneLabelText | capitalize}} <font-awesome-icon icon="info-circle" /></span>
             </div>
           </div>
         </div>
       </div>
     </div>
     <modal v-if="isModalVisible" v-on:close="toggleHelpModal">
-      <h1 slot="header">{{capitalizedZoneId}} Impact Zone</h1>
+      <h1 slot="header">{{zoneId | capitalize}} Impact Zone</h1>
       <div v-if="certification" slot="body">
         The color in the {{zoneId}} impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulatino scenario as tested by <a target="_blank" href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">SHARP</a>.
         Below is a chart explaining the different colors used in each zone:
@@ -130,14 +130,11 @@ export default {
       if (this.certification) {
         const rating = this.certification.impactZoneRatings[this.zoneId]
         if (!this.isTopZone) {
-          return require(`../assets/${this.zoneId}-${rating}.jpg`)
+          return require(`../assets/helmets/${this.zoneId}-${rating}.jpg`)
         }
-        return require(`../assets/${this.zoneId}-${rating.rear}-${rating.front}.jpg`)
+        return require(`../assets/helmets/${this.zoneId}-${rating.rear}-${rating.front}.jpg`)
       }
       return null
-    },
-    capitalizedZoneId: function () {
-      return this.zoneId.charAt(0).toUpperCase() + this.zoneId.slice(1)
     },
     zoneRatingText: function () {
       if (this.certification) {
@@ -154,7 +151,7 @@ export default {
       return null
     },
     zoneLabelText: function () {
-      return `${this.capitalizedZoneId} Impact`
+      return `${this.zoneId} Impact`
     },
     isTopZone: function () {
       return this.zoneId === 'top'

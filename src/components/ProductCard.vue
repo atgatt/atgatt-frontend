@@ -10,7 +10,7 @@
           {{product.safetyPercentage}}% Safety Score
         </a>
         <span class="badge badge-secondary product-badge">
-          {{formattedSubtype}} {{formattedType}}
+          {{product.subtype | capitalize}} {{product.type | capitalize}}
         </span>
         <span v-if="product.isDiscontinued" class="badge badge-danger product-badge">
           Discontinued
@@ -24,50 +24,37 @@
         </router-link>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
-        <div v-on:click="trackBuyButtonClick('revzilla')">
+        <div>
           <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="cart-plus"/>&nbsp;<strong>{{formattedRevzillaBuyText}}</strong></a>
         </div>
       </div>
     </div>
     <div class="row product-body">
-      <div v-on:click="trackBuyButtonClick('revzilla')" class="col-12 col-lg align-self-center">
+      <div class="col-12 col-lg align-self-center">
         <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
           <img v-if="product.imageKey" class="product-image" width="200" height="200" v-bind:src="imageURL"/>
           <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
         </a>
       </div>
       <div class="col-12 col-lg align-self-center">
-        <ul name="certifications-list" class="fa-ul certifications-list">
-          <label class="certifications-label d-none d-lg-block" for="certifications-list">Certifications</label>
-          <product-certification-badge v-bind:certification="product.helmetCertifications.SHARP" certificationName="SHARP" />
-          <product-certification-badge v-bind:certification="product.helmetCertifications.ECE" certificationName="ECE - 22.05" />
-          <product-certification-badge v-bind:certification="product.helmetCertifications.SNELL" certificationName="SNELL - M2015" />
-          <product-certification-badge v-bind:certification="product.helmetCertifications.DOT" certificationName="DOT" />
-        </ul>
+        <helmet-certification-badges v-bind:product="product" v-if="isHelmet" />
+        <jacket-certification-badges v-bind:product="product" v-else />
       </div>
       <div class="col-6 col-lg impact-zone-col">
-        <sharp-impact-zone
-          v-bind:certification="product.helmetCertifications.SHARP"
-          zoneId="top"
-        />
+        <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="top" />
+        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.chest" zoneId="chest" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
-        <sharp-impact-zone
-          v-bind:certification="product.helmetCertifications.SHARP"
-          zoneId="left"
-        />
+        <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="left" />
+        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.elbow" zoneId="elbow" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
-        <sharp-impact-zone
-          v-bind:certification="product.helmetCertifications.SHARP"
-          zoneId="right"
-        />
+        <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="right" />
+        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.shoulder" zoneId="shoulder" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
-        <sharp-impact-zone
-          v-bind:certification="product.helmetCertifications.SHARP"
-          zoneId="rear"
-        />
+        <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="rear" />
+        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.back" zoneId="back" />
       </div>
     </div>
     <modal v-if="isRatingsModalVisible" v-on:close="toggleRatingsModal">
@@ -157,9 +144,11 @@
 
 <script>
 import formatCurrency from '../lib/currency'
-import ProductCertificationBadge from '../components/ProductCertificationBadge'
+import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
+import JacketCertificationBadges from '../components/JacketCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
 import Modal from '../components/common/Modal'
+import JacketImpactZone from './JacketImpactZone'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 const REVZILLA_BUY_TEXT_PREFIX = 'Buy on RevZilla for'
@@ -167,8 +156,10 @@ const REVZILLA_BUY_TEXT_PREFIX = 'Buy on RevZilla for'
 export default {
   name: 'ProductCard',
   components: {
-    'product-certification-badge': ProductCertificationBadge,
+    'helmet-certification-badges': HelmetCertificationBadges,
+    'jacket-certification-badges': JacketCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
+    'jacket-impact-zone': JacketImpactZone,
     'modal': Modal
   },
   props: ['product'],
@@ -203,11 +194,8 @@ export default {
 
       return `${REVZILLA_SEARCH_URL}${manufacturer}+${model}`
     },
-    formattedType: function () {
-      return this.product.type.charAt(0).toUpperCase() + this.product.type.slice(1)
-    },
-    formattedSubtype: function () {
-      return this.product.subtype.charAt(0).toUpperCase() + this.product.subtype.slice(1)
+    isHelmet: function () {
+      return this.product.type === 'helmet'
     },
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
@@ -242,18 +230,6 @@ export default {
     }
   },
   methods: {
-    trackBuyButtonClick: function (destinationSite) {
-      // Amplitude is globally defined, disabling ESLint so that it doesn't complain about an unknown global variable
-      // eslint-disable-next-line
-      amplitude.getInstance().logEvent('buyButtonClicked', {
-        'uuid': this.product.uuid,
-        'manufacturer': this.product.manufacturer,
-        'model': this.product.model,
-        'revzillaPriceCents': this.product.revzillaPriceCents,
-        'safetyPercentage': this.product.safetyPercentage,
-        'destinationSite': destinationSite
-      })
-    },
     toggleRatingsModal: function () {
       this.isRatingsModalVisible = !this.isRatingsModalVisible
     },
@@ -350,10 +326,6 @@ export default {
 
 .card-row {
   padding-left: 0.4rem;
-}
-
-.certifications-label {
-  font-size: larger;
 }
 
 .model-aliases {

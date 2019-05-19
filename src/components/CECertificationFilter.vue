@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .disabled-check {
   cursor: not-allowed;
 }

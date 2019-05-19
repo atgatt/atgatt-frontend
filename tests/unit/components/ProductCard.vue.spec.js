@@ -14,8 +14,6 @@ describe('ProductCard.vue', () => {
     })
     let component = wrapper.vm
     expect(component).toBeTruthy()
-    expect(component.formattedSubtype).toBe('Modular')
-    expect(component.formattedType).toBe('Helmet')
   })
 
   it('should render the correct image url with the static base url as a prefix and the imageKey as a suffix', () => {
