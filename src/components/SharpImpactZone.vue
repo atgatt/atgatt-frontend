@@ -161,14 +161,7 @@ export default {
     toggleHelpModal: function () {
       this.isModalVisible = !this.isModalVisible
     }
-  },
-  mounted: function () {
-    document.addEventListener("keydown", (e) => {
-      if (this.isModalVisible && e.keyCode == 27) {
-        this.isModalVisible = false;
-      }
-    });
-  },
+  }
 }
 </script>
 
