@@ -26,7 +26,7 @@
     <modal v-if="isModalVisible" v-on:close="toggleHelpModal">
       <h1 slot="header">{{zoneId | capitalize}} Impact Zone</h1>
       <div v-if="certification" slot="body">
-        The color in the {{zoneId}} impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulatino scenario as tested by <a target="_blank" href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">SHARP</a>.
+        The color in the {{zoneId}} impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulation scenario as tested by <a target="_blank" href="https://sharp.dft.gov.uk/sharp-testing/#impact-zone">SHARP</a>.
         Below is a chart explaining the different colors used in each zone:
         <br /><br />
         <img v-if="certification" class="impact-zone-image" v-bind:src="url" />
@@ -161,7 +161,14 @@ export default {
     toggleHelpModal: function () {
       this.isModalVisible = !this.isModalVisible
     }
-  }
+  },
+  mounted: function () {
+    document.addEventListener("keydown", (e) => {
+      if (this.isModalVisible && e.keyCode == 27) {
+        this.isModalVisible = false;
+      }
+    });
+  },
 }
 </script>
 

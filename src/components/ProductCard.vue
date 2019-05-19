@@ -6,7 +6,7 @@
           <strong>{{product.manufacturer}}</strong>&nbsp;<small>{{formattedModel}}</small>
           <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
         </h4>
-        <a href="#" class="badge badge-primary product-badge" v-on:click="toggleRatingsModal">
+        <a href="#" class="badge badge-primary product-badge" v-on:click="toggleRatingsModal" @keydown.esc="closeRatingsModal">
           {{product.safetyPercentage}}% Safety Score
         </a>
         <span class="badge badge-secondary product-badge">
@@ -233,8 +233,8 @@ export default {
     toggleRatingsModal: function () {
       this.isRatingsModalVisible = !this.isRatingsModalVisible
     },
-    toggleSafetyModal: function () {
-      this.isSafetyModalVisible = !this.isSafetyModalVisible
+    closeRatingsModal: function () {
+      this.isRatingsModalVisible = false
     }
   }
 }
