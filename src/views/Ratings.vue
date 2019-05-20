@@ -6,9 +6,10 @@
       </div>
       <div class="col-12 col-lg-9 product-results">
         <div class="row sort-row">
+          <div class="d-none d-lg-block col-lg-6"></div>
           <div class="col-4 col-lg-3">
             <div class="form-group">
-              <label for="sortBy">Sort By:</label>
+              <label for="sortBy">Sort By</label>
               <select v-model="order.field" id="orderByField" class="form-control">
                 <option value="document->>'safetyPercentage'">Safety</option>
                 <option value="document->>'searchPriceCents'">Price</option>
@@ -17,10 +18,9 @@
               </select>
             </div>
           </div>
-          <div class="d-none d-lg-block col-lg-6"></div>
           <div class="col-4 col-lg-3">
             <div class="form-group">
-              <label for="orderByDirection">Direction:</label>
+              <label for="orderByDirection">Sort Order</label>
               <select v-model="order.descending" id="orderByDirection" class="form-control">
                 <option value="false">Lowest First</option>
                 <option value="true">Highest First</option>
@@ -189,4 +189,9 @@ export default {
 .no-results-icon {
   color: orange;
 }
+
+.form-control{
+  margin: 0 auto;
+}
+
 </style>
