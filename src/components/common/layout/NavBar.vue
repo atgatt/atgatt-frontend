@@ -8,7 +8,8 @@
       <ul class="navbar-nav mr-auto">
         <nav-item route="/" text="Helmet Ratings" exact="true" />
         <nav-item route="/jackets" text="Jacket Ratings" v-bind:isNew="true" />
-        <nav-item route="/about" text="About" />
+        <nav-item route="/about-helmet-ratings" text="About Helmet Ratings" />
+        <nav-item route="/about-us" text="About Us" />
       </ul>
     </div>
   </nav>

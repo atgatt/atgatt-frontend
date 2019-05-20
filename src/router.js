@@ -29,17 +29,15 @@ export default new Router({
       props: (route) => getRatingsProps(route, 'jacket')
     },
     {
-      path: '/about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/about-helmet-ratings',
+      component: () => import(/* webpackChunkName: "abouthelmetratings" */ './views/AboutHelmetRatings.vue')
+    },
+    {
+      path: '/about-us',
+      component: () => import(/* webpackChunkName: "aboutus" */ './views/AboutUs.vue')
     },
     {
       path: '*',
-      // route level code-splitting
-      // this generates a separate chunk (notfound.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "notfound" */ './views/NotFound.vue')
     }
   ]

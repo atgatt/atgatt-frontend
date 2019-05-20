@@ -6,9 +6,9 @@
         </span>
       </div>
       <div>
-        <router-link v-bind:to="'about'">About</router-link> —
-        <router-link v-bind:to="'about'">Terms of Service</router-link> —
-        <router-link v-bind:to="'about'">Privacy Policy</router-link>
+        <router-link v-bind:to="'about-us'">About</router-link> —
+        <router-link v-bind:to="'about-us'">Terms of Service</router-link> —
+        <router-link v-bind:to="'about-us'">Privacy Policy</router-link>
       </div>
 
     </footer>
