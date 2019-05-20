@@ -27,6 +27,7 @@ export default {
 <style scoped>
 .cert {
   color: #28a745;
+  margin-top: 5px;
 }
 
 .cert-missing {

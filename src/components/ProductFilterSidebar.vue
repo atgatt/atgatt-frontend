@@ -3,7 +3,7 @@
     <form>
       <div class="row">
         <div class="col">
-          <h5>General</h5>
+          <h5>Filters</h5>
         </div>
         <div class="col reset-button-col">
           <button type="button" v-on:click="resetFilters" class="btn btn-sm btn-secondary btn-block"><font-awesome-icon icon="undo" /> Reset Filters</button>
@@ -32,9 +32,9 @@
           </label>
         </div>
       </div>
-      <h5>
-        Requirements
-      </h5>
+      <label>
+        Certifications
+      </label>
       <helmet-certification-filters v-if="shouldShowHelmetFilters" v-bind:certifications="filters.helmetCertifications" />
       <jacket-certification-filters v-else v-bind:certifications="filters.jacketCertifications" />
     </form>
