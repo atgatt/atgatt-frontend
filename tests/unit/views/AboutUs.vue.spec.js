@@ -1,8 +1,8 @@
-import About from '../../../src/views/About.vue'
+import AboutUs from '../../../src/views/AboutUs.vue'
 import { mount } from '@vue/test-utils'
 import { registerGlobalComponents } from '../../../src/globals'
 
-describe('About.vue', () => {
+describe('AboutUs.vue', () => {
   registerGlobalComponents()
 
   it('should complete the progress bar when it finishes loading', () => {
@@ -12,7 +12,7 @@ describe('About.vue', () => {
         finished = true
       }
     }
-    mount(About, {
+    mount(AboutUs, {
       mocks: { $Progress }
     })
     expect(finished).toBe(true)
