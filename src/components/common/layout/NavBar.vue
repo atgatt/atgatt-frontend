@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <nav-item route="/" text="Helmet Ratings" exact="true" />
-        <nav-item route="/jackets" text="Jacket Ratings" />
+        <nav-item route="/jackets" text="Jacket Ratings" v-bind:isNew="true" />
         <nav-item route="/about" text="About" />
       </ul>
     </div>
