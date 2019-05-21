@@ -45,7 +45,7 @@
           <div class="card-header" role="tab" id="ratings-info-card">
             <h5 class="mb-0">
               <a class="collapsed" data-toggle="collapse" href="#collapse-ratings-info" role="button" aria-expanded="false" aria-controls="collapse-ratings-info">
-                What do each of the certifications mean for this helmet?
+                What do each of the certifications mean for each helmet?
               </a>
             </h5>
           </div>
@@ -82,7 +82,7 @@
           <div class="card-header" role="tab" id="score-info-card">
             <h5 class="mb-0">
               <a class="collapsed" data-toggle="collapse" href="#collapse-impact-score-info" role="button" aria-expanded="false" aria-controls="collapse-impact-score-info">
-                What does the score each impact zone indicate?
+                What does the score in each impact zone indicate?
               </a>
             </h5>
           </div>

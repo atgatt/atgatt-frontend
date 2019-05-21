@@ -9,6 +9,7 @@
         <nav-item route="/" text="Helmet Ratings" exact="true" />
         <nav-item route="/jackets" text="Jacket Ratings" v-bind:isNew="true" />
         <nav-item route="/about-helmet-ratings" text="About Helmet Ratings" />
+        <nav-item route="/about-jacket-ratings" text="About Jacket Ratings" />
         <nav-item route="/about-us" text="About Us" />
       </ul>
     </div>

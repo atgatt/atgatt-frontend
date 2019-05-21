@@ -33,6 +33,10 @@ export default new Router({
       component: () => import(/* webpackChunkName: "abouthelmetratings" */ './views/AboutHelmetRatings.vue')
     },
     {
+      path: '/about-jacket-ratings',
+      component: () => import(/* webpackChunkName: "aboutjacketratings" */ './views/AboutJacketRatings.vue')
+    },
+    {
       path: '/about-us',
       component: () => import(/* webpackChunkName: "aboutus" */ './views/AboutUs.vue')
     },
