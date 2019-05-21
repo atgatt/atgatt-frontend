@@ -6,7 +6,7 @@
       Some facts about CrashTested:
     </p>
     <ul>
-      <li>This app was built by a small team of Software Engineers working out of San Diego, California. Click <a href="mailto:hello@crashtested.co">here</a> to contact us or use the chatbox in the bottom-righthand corner of the screen to chat with us directly.</li>
+      <li>This app was built by a small team of Software Engineers working out of San Francisco, California. Click <a href="mailto:hello@crashtested.co">here</a> to contact us or use the chatbox in the bottom-righthand corner of the screen to chat with us directly.</li>
       <li>We source our ratings by aggregating data from widely known organizations that conduct crash tests, such as SHARP, SNELL, ECE, and DOT.</li>
       <li>We <strong>do not</strong> conduct our own crash tests.</li>
     </ul>
