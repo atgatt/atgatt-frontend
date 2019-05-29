@@ -25,8 +25,6 @@
 </template>
 
 <script>
-const APPROVED_TEXT = 'CE Approved'
-
 export default {
   name: 'JacketImpactZone',
   props: ['certification', 'zoneId'],
@@ -44,10 +42,10 @@ export default {
       const levelText = this.certification.isLevel2 ? 'CE Level 2' : 'CE Level 1'
 
       if (this.certification.isApproved) {
-        return { text: levelText, subText: APPROVED_TEXT, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/green.jpg`) : require(`../assets/jackets/${this.zoneId}/orange.jpg`) }
+        return { text: levelText, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/green.jpg`) : require(`../assets/jackets/${this.zoneId}/orange.jpg`) }
       }
 
-      return { text: levelText, subText: APPROVED_TEXT, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/yellow.jpg`) : require(`../assets/jackets/${this.zoneId}/red.jpg`) }
+      return { text: levelText, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/yellow.jpg`) : require(`../assets/jackets/${this.zoneId}/red.jpg`) }
     }
   }
 }
