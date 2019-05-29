@@ -1,24 +1,26 @@
 <template>
   <div class="impact-zone">
-    <div class="row">
-      <div class="col impact-zone-text">
-        <img class="impact-zone-image" v-bind:src="zoneDetails.url" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col impact-zone-text">
-        <div class="row">
-          <div class="col">
-            <span class="zone-rating-text">{{zoneDetails.text}}</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <span>{{zoneId | capitalize}}</span>
-          </div>
+    <router-link to="about-jacket-ratings" target="_blank">
+      <div class="row">
+        <div class="col impact-zone-text">
+          <img class="impact-zone-image" v-bind:src="zoneDetails.url" />
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col impact-zone-text">
+          <div class="row">
+            <div class="col">
+              <span class="zone-rating-text">{{zoneDetails.text}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span>{{zoneId | capitalize}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </router-link>
   </div>
 </template>
 
