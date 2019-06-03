@@ -22,7 +22,7 @@
               Airbag Score = 1 if supported, 0 if not supported <br />
               Leather Score = 1 if made out of leather, 0 if not made out of leather<br /><br />
 
-              Safety Score = 0.2125 * (Chest-CE-Score + Elbow-CE-Score + Back-CE-Score + Shoulder-CE-Score) + 0.05 * Leather-Score + 0.10 * Airbag-Score
+              Safety Score = 0.2125 * (Chest-CE-Score + Elbow-CE-Score + Back-CE-Score + Shoulder-CE-Score) + 0.10 * Leather-Score + 0.05 * Airbag-Score
             </code>
           </div>
         </div>
