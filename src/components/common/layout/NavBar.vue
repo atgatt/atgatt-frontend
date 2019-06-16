@@ -11,14 +11,7 @@
         <nav-item route="/about-helmet-ratings" text="About Helmet Ratings" />
         <nav-item route="/about-jacket-ratings" text="About Jacket Ratings" />
         <nav-item route="/about-us" text="About Us" />
-        <div class="nav-link" v-if="showLogin">
-          <div v-if="!isAuthenticated">
-            <a class="nav-link" href="#" @click.prevent="login">Login</a>
-          </div>
-          <div v-if="isAuthenticated">
-            <a class="nav-link" href="#" @click.prevent="logout">Log out</a>
-          </div>
-        </div>
+        <login/>
       </ul>
     </div>
   </nav>
@@ -26,36 +19,13 @@
 
 <script>
 import NavItem from './NavItem'
+import Login from './Login'
+
 export default {
   name: 'nav-bar',
   components: {
-    'nav-item': NavItem
-  },
-  data () {
-    return {
-      isAuthenticated: false,
-      showLogin: this.$environment.showLogin === 'true'
-    }
-  },
-  async created () {
-    try {
-      await this.$auth.renewTokens()
-    } catch (e) {
-      console.log(e)
-    }
-  },
-  methods: {
-    login () {
-      this.$auth.login()
-    },
-    logout () {
-      this.$auth.logOut()
-    },
-    handleLoginEvent (data) {
-      console.log(data)
-      this.isAuthenticated = data.loggedIn
-      this.profile = data.profile
-    }
+    'nav-item': NavItem,
+    'login': Login
   }
 }
 </script>

@@ -4,7 +4,7 @@ export default {
   install (Vue) {
     Vue.prototype.$auth = authService
 
-    Vue.mixin ({
+    Vue.mixin({
       created () {
         if (this.handleLoginEvent) {
           authService.addListener('loginEvent', this.handleLoginEvent)

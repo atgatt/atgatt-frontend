@@ -2,8 +2,8 @@ import auth0 from 'auth0-js'
 import EventEmitter from 'events'
 import authConfig from '../../auth_config.json'
 
-const localStorageKey = 'loggedIn'
-const loginEvent = 'loginEvent'
+const LOCAL_STORAGE_KEY = 'loggedIn'
+const LOGIN_EVENT = 'loginEvent'
 
 const webAuth = new auth0.WebAuth({
   domain: authConfig.domain,
@@ -46,9 +46,9 @@ class AuthService extends EventEmitter {
     // Convert the JWT expiry time from seconds to milliseconds
     this.tokenExpiry = new Date(this.profile.exp * 1000)
 
-    localStorage.setItem(localStorageKey, 'true')
+    localStorage.setItem(LOCAL_STORAGE_KEY, 'true')
 
-    this.emit(loginEvent, {
+    this.emit(LOGIN_EVENT, {
       loggedIn: true,
       profile: authResult.idTokenPayload,
       state: authResult.appState || {}
@@ -57,7 +57,7 @@ class AuthService extends EventEmitter {
 
   renewTokens () {
     return new Promise((resolve, reject) => {
-      if (localStorage.getItem(localStorageKey) !== 'true') {
+      if (localStorage.getItem(LOCAL_STORAGE_KEY) !== 'true') {
         console.log('Not logged in')
       }
 
@@ -73,7 +73,7 @@ class AuthService extends EventEmitter {
   }
 
   logOut () {
-    localStorage.removeItem(localStorageKey)
+    localStorage.removeItem(LOCAL_STORAGE_KEY)
 
     this.idToken = null
     this.tokenExpiry = null
@@ -83,13 +83,13 @@ class AuthService extends EventEmitter {
       returnTo: window.location.origin
     })
 
-    this.emit(loginEvent, { loggedIn: false })
+    this.emit(LOGIN_EVENT, { loggedIn: false })
   }
 
   isAuthenticated () {
     return (
       Date.now() < this.tokenExpiry &&
-      localStorage.getItem(localStorageKey) === 'true'
+      localStorage.getItem(LOCAL_STORAGE_KEY) === 'true'
     )
   }
 }

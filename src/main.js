@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import AuthPlugin from './lib/authPlugin'
+import AuthMiddleware from './lib/authPlugin'
 
 import VueProgressBar from 'vue-progressbar'
 
@@ -31,8 +31,7 @@ function startApp (environment) {
     }
   })
 
-  Vue.use(AuthPlugin)
-  Vue.config.productionTip = false
+  Vue.use(AuthMiddleware)
 
   // Have Vue render the app
   new Vue({
