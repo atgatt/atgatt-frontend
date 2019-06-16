@@ -3,7 +3,7 @@ import EventEmitter from 'events'
 import authConfig from '../../auth_config.json'
 
 const LOCAL_STORAGE_KEY = 'loggedIn'
-const LOGIN_EVENT = 'loginEvent'
+export const LOGIN_EVENT = 'loginEvent'
 
 const webAuth = new auth0.WebAuth({
   domain: authConfig.domain,

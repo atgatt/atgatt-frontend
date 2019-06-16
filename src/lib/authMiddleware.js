@@ -1,4 +1,4 @@
-import authService from './authService'
+import authService, { LOGIN_EVENT } from './authService'
 
 export default {
   install (Vue) {
@@ -7,13 +7,13 @@ export default {
     Vue.mixin({
       created () {
         if (this.handleLoginEvent) {
-          authService.addListener('loginEvent', this.handleLoginEvent)
+          authService.addListener(LOGIN_EVENT, this.handleLoginEvent)
         }
       },
 
       destroyed () {
         if (this.handleLoginEvent) {
-          authService.removeListener('loginEvent', this.handleLoginEvent)
+          authService.removeListener(LOGIN_EVENT, this.handleLoginEvent)
         }
       }
     })
