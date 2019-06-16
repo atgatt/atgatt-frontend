@@ -7,7 +7,7 @@ const LOGIN_EVENT = 'loginEvent'
 
 const webAuth = new auth0.WebAuth({
   domain: authConfig.domain,
-  redirectUri: `${window.location.origin}/about-us`,
+  redirectUri: `${window.location.origin}`,
   clientID: authConfig.clientId,
   responseType: 'token id_token',
   scope: 'openid profile email'
