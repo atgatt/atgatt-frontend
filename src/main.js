@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import AuthMiddleware from './lib/authPlugin'
+import AuthMiddleware from './lib/authMiddleware'
 
 import VueProgressBar from 'vue-progressbar'
 
