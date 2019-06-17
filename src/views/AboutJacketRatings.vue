@@ -37,7 +37,7 @@
           </div>
           <div id="collapse-impact-score-info" class="collapse show" role="tabpanel" aria-labelledby="score-info-card">
             <div class="card-body">
-              The color in each impact zone represents a particular impact rating, specifically referring to peak brain acceleration in a crash simulation scenario as tested by
+              The color in each impact zone represents a particular impact rating, specifically referring to the peak force transmitted in a crash simulation scenario as tested by
               CE, or in many cases, the manufacturer of the gear. Items that are not tested by CE independently receive a slightly lower score for this reason.
               Below is a chart explaining the different colors used in each zone:
               <br>
