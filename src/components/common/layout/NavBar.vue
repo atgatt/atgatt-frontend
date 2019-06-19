@@ -11,6 +11,7 @@
         <nav-item route="/about-helmet-ratings" text="About Helmet Ratings" />
         <nav-item route="/about-jacket-ratings" text="About Jacket Ratings" />
         <nav-item route="/about-us" text="About Us" />
+        <login/>
       </ul>
     </div>
   </nav>
@@ -18,10 +19,13 @@
 
 <script>
 import NavItem from './NavItem'
+import Login from './Login'
+
 export default {
   name: 'nav-bar',
   components: {
-    'nav-item': NavItem
+    'nav-item': NavItem,
+    'login': Login
   }
 }
 </script>
