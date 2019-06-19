@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js'
 import EventEmitter from 'events'
-import authConfig from '../../auth_config.json'
+import authConfig from '../../auth-config.json'
 
 const LOCAL_STORAGE_KEY = 'loggedIn'
 export const LOGIN_EVENT = 'loginEvent'
