@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import AuthMiddleware from './lib/authMiddleware'
+import initAuthMiddleware from './lib/authMiddleware'
 
 import VueProgressBar from 'vue-progressbar'
 
@@ -31,7 +31,7 @@ function startApp (environment) {
     }
   })
 
-  Vue.use(AuthMiddleware)
+  Vue.use(initAuthMiddleware(environment.auth0Domain, environment.auth0ClientID))
 
   // Have Vue render the app
   new Vue({
@@ -43,6 +43,7 @@ function startApp (environment) {
 startApp({
   apiBaseURL: process.env.VUE_APP_API_BASE_URL,
   staticBaseURL: process.env.VUE_APP_STATIC_BASE_URL,
-  butterAPIKey: process.env.VUE_APP_BUTTER_API_KEY,
-  showLogin: process.env.VUE_APP_SHOW_LOGIN
+  showLogin: process.env.VUE_APP_SHOW_LOGIN,
+  auth0Domain: process.env.VUE_APP_AUTH_DOMAIN,
+  auth0ClientID: process.env.VUE_APP_AUTH_CLIENT_ID
 })

@@ -1,26 +1,31 @@
 import auth0 from 'auth0-js'
 import EventEmitter from 'events'
-import authConfig from '../../auth-config.json'
 
-const LOCAL_STORAGE_KEY = 'loggedIn'
 export const LOGIN_EVENT = 'loginEvent'
+const LOCAL_STORAGE_KEY = 'loggedIn'
 
-const webAuth = new auth0.WebAuth({
-  domain: authConfig.domain,
-  redirectUri: `${window.location.origin}`,
-  clientID: authConfig.clientId,
-  responseType: 'token id_token',
-  scope: 'openid profile email'
-})
+export class AuthService extends EventEmitter {
+  idToken = null
+  profile = null
+  tokenExpiry = null
 
-class AuthService extends EventEmitter {
-  idToken = null;
-  profile = null;
-  tokenExpiry = null;
+  webAuth = null
+
+  constructor (domain, clientID) {
+    super()
+
+    this.webAuth = new auth0.WebAuth({
+      domain: domain,
+      redirectUri: `${window.location.origin}`,
+      clientID: clientID,
+      responseType: 'token id_token',
+      scope: 'openid profile email'
+    })
+  }
 
   // Starts the user login flow
   login (customState) {
-    webAuth.authorize({
+    this.webAuth.authorize({
       appState: customState
     })
   }
@@ -28,7 +33,7 @@ class AuthService extends EventEmitter {
   // Handles the callback request from Auth0
   handleAuthentication () {
     return new Promise((resolve, reject) => {
-      webAuth.parseHash((err, authResult) => {
+      this.webAuth.parseHash((err, authResult) => {
         if (err) {
           console.log(err)
         } else {
@@ -61,7 +66,7 @@ class AuthService extends EventEmitter {
         console.log('Not logged in')
       }
 
-      webAuth.checkSession({}, (err, authResult) => {
+      this.webAuth.checkSession({}, (err, authResult) => {
         if (err) {
           reject(err)
         } else {
@@ -79,7 +84,7 @@ class AuthService extends EventEmitter {
     this.tokenExpiry = null
     this.profile = null
 
-    webAuth.logout({
+    this.webAuth.logout({
       returnTo: window.location.origin
     })
 
@@ -93,5 +98,3 @@ class AuthService extends EventEmitter {
     )
   }
 }
-
-export default new AuthService()
