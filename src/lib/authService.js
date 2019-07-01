@@ -11,13 +11,14 @@ export class AuthService extends EventEmitter {
 
   webAuth = null
 
-  constructor (domain, clientID) {
+  constructor (domain, clientID, audience) {
     super()
 
     this.webAuth = new auth0.WebAuth({
       domain: domain,
       redirectUri: `${window.location.origin}`,
       clientID: clientID,
+      audience: audience,
       responseType: 'token id_token',
       scope: 'openid profile email'
     })

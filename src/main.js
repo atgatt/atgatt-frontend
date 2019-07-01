@@ -31,7 +31,7 @@ function startApp (environment) {
     }
   })
 
-  Vue.use(initAuthMiddleware(environment.auth0Domain, environment.auth0ClientID))
+  Vue.use(initAuthMiddleware(environment.auth0Domain, environment.auth0ClientID, environment.auth0Audience))
 
   // Have Vue render the app
   new Vue({
@@ -45,5 +45,6 @@ startApp({
   staticBaseURL: process.env.VUE_APP_STATIC_BASE_URL,
   showLogin: process.env.VUE_APP_SHOW_LOGIN,
   auth0Domain: process.env.VUE_APP_AUTH_DOMAIN,
-  auth0ClientID: process.env.VUE_APP_AUTH_CLIENT_ID
+  auth0ClientID: process.env.VUE_APP_AUTH_CLIENT_ID,
+  auth0Audience: process.env.VUE_APP_AUTH_AUDIENCE
 })
