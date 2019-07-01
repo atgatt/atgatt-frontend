@@ -11,7 +11,9 @@
         <nav-item route="/about-helmet-ratings" text="About Helmet Ratings" />
         <nav-item route="/about-jacket-ratings" text="About Jacket Ratings" />
         <nav-item route="/about-us" text="About Us" />
-        <login/>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <login />
       </ul>
     </div>
   </nav>
