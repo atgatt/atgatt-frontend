@@ -1,6 +1,6 @@
 <template>
   <div class="impact-zone">
-    <router-link to="about-jacket-ratings" target="_blank">
+    <router-link v-bind:to="linkURL" target="_blank">
       <div class="row">
         <div class="col impact-zone-text">
           <img class="impact-zone-image" v-bind:src="zoneDetails.url" />
@@ -26,26 +26,30 @@
 
 <script>
 export default {
-  name: 'JacketImpactZone',
-  props: ['certification', 'zoneId'],
+  name: 'CEImpactZone',
+  props: ['productType', 'certification', 'assetsSubDir', 'zoneId'],
   computed: {
     zoneDetails () {
+      // NOTE: webpack doesn't know what to do with dynamic strings, so we need to copy paste ""../assets" to every single call to require() :(
       // TODO: this should probably move to the backend, which should return a number to map to the image instead of hardcoding black/empty/orange/red etc.
       if (!this.certification) {
-        return { text: 'No Armor Support', url: require(`../assets/jackets/${this.zoneId}/black.jpg`) }
+        return { text: 'No Armor Support', url: require(`../assets/${this.assetsSubDir}/${this.zoneId}/black.jpg`) }
       }
 
       if (this.certification.isEmpty) {
-        return { text: 'Sold Separately', url: require(`../assets/jackets/empty.jpg`) }
+        return { text: 'Sold Separately', url: require(`../assets/${this.assetsSubDir}/empty.jpg`) }
       }
 
       const levelText = this.certification.isLevel2 ? 'CE Level 2' : 'CE Level 1'
 
       if (this.certification.isApproved) {
-        return { text: levelText, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/green.jpg`) : require(`../assets/jackets/${this.zoneId}/orange.jpg`) }
+        return { text: levelText, url: this.certification.isLevel2 ? require(`../assets/${this.assetsSubDir}/${this.zoneId}/green.jpg`) : require(`../assets/${this.assetsSubDir}/${this.zoneId}/orange.jpg`) }
       }
 
-      return { text: levelText, url: this.certification.isLevel2 ? require(`../assets/jackets/${this.zoneId}/yellow.jpg`) : require(`../assets/jackets/${this.zoneId}/red.jpg`) }
+      return { text: levelText, url: this.certification.isLevel2 ? require(`../assets/${this.assetsSubDir}/${this.zoneId}/yellow.jpg`) : require(`../assets/${this.assetsSubDir}/${this.zoneId}/red.jpg`) }
+    },
+    linkURL () {
+      return `about-${this.productType}-ratings`
     }
   }
 }

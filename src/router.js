@@ -12,6 +12,15 @@ function getRatingsProps (route, type) {
   }
 }
 
+function getRatingsRoute (type, pathPrefix) {
+  return {
+    path: `/${pathPrefix || type}/buy/:initialManufacturer?-:initialModel?`,
+    alias: `/${pathPrefix || type}`,
+    component: Ratings,
+    props: (route) => getRatingsProps(route, type)
+  }
+}
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -22,12 +31,10 @@ export default new Router({
       component: Ratings,
       props: (route) => getRatingsProps(route, 'helmet')
     },
-    {
-      path: '/jackets/buy/:initialManufacturer?-:initialModel?',
-      alias: '/jackets',
-      component: Ratings,
-      props: (route) => getRatingsProps(route, 'jacket')
-    },
+    getRatingsRoute('jacket', 'jackets'),
+    getRatingsRoute('pants'),
+    getRatingsRoute('boots'),
+    getRatingsRoute('gloves'),
     {
       path: '/about-helmet-ratings',
       component: () => import(/* webpackChunkName: "abouthelmetratings" */ './views/AboutHelmetRatings.vue')
@@ -35,6 +42,18 @@ export default new Router({
     {
       path: '/about-jacket-ratings',
       component: () => import(/* webpackChunkName: "aboutjacketratings" */ './views/AboutJacketRatings.vue')
+    },
+    {
+      path: '/about-pants-ratings',
+      component: () => import(/* webpackChunkName: "aboutpantsratings" */ './views/AboutPantsRatings.vue')
+    },
+    {
+      path: '/about-boots-ratings',
+      component: () => import(/* webpackChunkName: "aboutbootsratings" */ './views/AboutBootsRatings.vue')
+    },
+    {
+      path: '/about-gloves-ratings',
+      component: () => import(/* webpackChunkName: "aboutbootsratings" */ './views/AboutGlovesRatings.vue')
     },
     {
       path: '/about-us',

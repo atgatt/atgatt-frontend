@@ -16,6 +16,21 @@
   <changefreq>daily</changefreq>
 </url>
 <url>
+  <loc>https://crashtested.co/pants</loc>
+  <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://crashtested.co/boots</loc>
+  <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>https://crashtested.co/gloves</loc>
+  <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  <changefreq>daily</changefreq>
+</url>
+<url>
   <loc>https://crashtested.co/about-us</loc>
   <lastmod>2019-05-29T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
@@ -28,6 +43,21 @@
 <url>
   <loc>https://crashtested.co/about-jacket-ratings</loc>
   <lastmod>2018-05-29T00:00:00+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+<url>
+  <loc>https://crashtested.co/about-pants-ratings</loc>
+  <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+<url>
+  <loc>https://crashtested.co/about-boots-ratings</loc>
+  <lastmod>2019-08-11T00:00:00+00:00</lastmod>
+  <changefreq>yearly</changefreq>
+</url>
+<url>
+  <loc>https://crashtested.co/about-gloves-ratings</loc>
+  <lastmod>2019-08-11T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
 </url>
 

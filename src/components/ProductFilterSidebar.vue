@@ -36,7 +36,10 @@
         Certifications
       </label>
       <helmet-certification-filters v-if="shouldShowHelmetFilters" v-bind:certifications="filters.helmetCertifications" />
-      <jacket-certification-filters v-else v-bind:certifications="filters.jacketCertifications" />
+      <jacket-certification-filters v-else-if="shouldShowJacketFilters" v-bind:certifications="filters.jacketCertifications" />
+      <pants-certification-filters v-else-if="shouldShowPantsFilters" v-bind:certifications="filters.pantsCertifications" />
+      <single-zone-certification-filters v-else-if="shouldShowBootsFilters" v-bind:certifications="filters.bootsCertifications" />
+      <single-zone-certification-filters v-else v-bind:certifications="filters.glovesCertifications" />
     </form>
   </div>
 </template>
@@ -47,6 +50,8 @@ import vueSlider from 'vue-slider-component'
 import formatCurrency from '../lib/currency'
 import HelmetCertificationFilters from './HelmetCertificationFilters'
 import JacketCertificationFilters from './JacketCertificationFilters'
+import PantsCertificationFilters from './PantsCertificationFilters'
+import SingleZoneCertificationFilters from './SingleZoneCertificationFilters'
 
 function getDefaultData (type) {
   const data = {
@@ -103,6 +108,45 @@ function getDefaultData (type) {
         { value: 'textile', label: 'Textile' }
       ]
       break
+    case 'pants':
+      data.filters.pantsCertifications = {
+        tailbone: null,
+        hip: null,
+        knee: null
+      }
+
+      data.subtypeMultiselectOptions = [
+        { value: 'leather', label: 'Leather' },
+        { value: 'goretex', label: 'Gore-Tex' },
+        { value: 'covec', label: 'Covec' },
+        { value: 'nylon', label: 'Nylon' },
+        { value: 'denim', label: 'Denim' },
+        { value: 'textile', label: 'Other/Textile' }
+      ]
+      break
+
+    case 'boots':
+      data.filters.bootsCertifications = {
+        overall: null
+      }
+
+      data.subtypeMultiselectOptions = [
+        { value: 'leather', label: 'Leather' },
+        { value: 'goretex', label: 'Gore-Tex' },
+        { value: 'textile', label: 'Textile' }
+      ]
+      break
+    case 'gloves':
+      data.filters.glovesCertifications = {
+        overall: null
+      }
+
+      data.subtypeMultiselectOptions = [
+        { value: 'leather', label: 'Leather' },
+        { value: 'goretex', label: 'Gore-Tex' },
+        { value: 'textile', label: 'Textile' }
+      ]
+      break
   }
 
   return data
@@ -114,7 +158,9 @@ export default {
     vueSlider,
     'v-select': VueSelect,
     'helmet-certification-filters': HelmetCertificationFilters,
-    'jacket-certification-filters': JacketCertificationFilters
+    'jacket-certification-filters': JacketCertificationFilters,
+    'pants-certification-filters': PantsCertificationFilters,
+    'single-zone-certification-filters': SingleZoneCertificationFilters
   },
   props: ['showFilters', 'initialManufacturer', 'initialModel', 'type'],
   data () {
@@ -139,6 +185,18 @@ export default {
   computed: {
     shouldShowHelmetFilters: function () {
       return this.type === 'helmet'
+    },
+    shouldShowJacketFilters: function () {
+      return this.type === 'jacket'
+    },
+    shouldShowPantsFilters: function () {
+      return this.type === 'pants'
+    },
+    shouldShowBootsFilters: function () {
+      return this.type === 'boots'
+    },
+    shouldShowGlovesFilters: function () {
+      return this.type === 'gloves'
     }
   },
   methods: {

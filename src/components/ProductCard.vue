@@ -16,7 +16,7 @@
           Discontinued
         </span>
         <router-link
-          :to="{ path: `/${this.product.type}s/buy/${this.product.manufacturer}-${this.formattedModel}` }"
+          :to="{ path: `/${this.buyURLPrefix}/buy/${this.product.manufacturer}-${this.formattedModel}` }"
           target="_blank"
           class="ratings-router-link"
         >
@@ -37,24 +37,32 @@
         </a>
       </div>
       <div class="col-12 col-lg align-self-center">
-        <helmet-certification-badges v-bind:product="product" v-if="isHelmet" />
-        <jacket-certification-badges v-bind:product="product" v-else />
+        <helmet-certification-badges v-if="isHelmet" v-bind:product="product" />
+        <jacket-certification-badges v-else-if="isJacket" v-bind:product="product" />
+        <pants-certification-badges v-else-if="isPants" v-bind:product="product" />
+        <boots-certification-badges v-else-if="isBoots" v-bind:product="product" />
+        <gloves-certification-badges v-else v-bind:product="product" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="top" />
-        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.chest" zoneId="chest" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isJacket" v-bind:certification="product.jacketCertifications.chest" assetsSubDir="jackets" zoneId="chest" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isPants" v-bind:certification="product.pantsCertifications.tailbone" assetsSubDir="pants" zoneId="tailbone" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isBoots" v-bind:certification="product.bootsCertifications.overall" assetsSubDir="boots" zoneId="overall" />
+        <ce-impact-zone v-bind:productType="product.type" v-else v-bind:certification="product.glovesCertifications.overall" assetsSubDir="gloves" zoneId="overall" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="left" />
-        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.elbow" zoneId="elbow" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isJacket" v-bind:certification="product.jacketCertifications.elbow" assetsSubDir="jackets" zoneId="elbow" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isPants" v-bind:certification="product.pantsCertifications.knee" assetsSubDir="pants" zoneId="knee" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="right" />
-        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.shoulder" zoneId="shoulder" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isJacket" v-bind:certification="product.jacketCertifications.shoulder" assetsSubDir="jackets" zoneId="shoulder" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isPants" v-bind:certification="product.pantsCertifications.hip" assetsSubDir="pants" zoneId="hip" />
       </div>
       <div class="col-6 col-lg impact-zone-col">
         <sharp-impact-zone v-if="isHelmet" v-bind:certification="product.helmetCertifications.SHARP" zoneId="rear" />
-        <jacket-impact-zone v-else v-bind:certification="product.jacketCertifications.back" zoneId="back" />
+        <ce-impact-zone v-bind:productType="product.type" v-else-if="isJacket" v-bind:certification="product.jacketCertifications.back" assetsSubDir="jackets" zoneId="back" />
       </div>
     </div>
   </div>
@@ -64,8 +72,11 @@
 import formatCurrency from '../lib/currency'
 import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
 import JacketCertificationBadges from '../components/JacketCertificationBadges'
+import PantsCertificationBadges from '../components/PantsCertificationBadges'
+import BootsCertificationBadges from '../components/BootsCertificationBadges'
+import GlovesCertificationBadges from '../components/GlovesCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
-import JacketImpactZone from './JacketImpactZone'
+import CEImpactZone from './CEImpactZone'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 const REVZILLA_BUY_TEXT_PREFIX = 'Buy on RevZilla for'
@@ -75,8 +86,11 @@ export default {
   components: {
     'helmet-certification-badges': HelmetCertificationBadges,
     'jacket-certification-badges': JacketCertificationBadges,
+    'pants-certification-badges': PantsCertificationBadges,
+    'boots-certification-badges': BootsCertificationBadges,
+    'gloves-certification-badges': GlovesCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
-    'jacket-impact-zone': JacketImpactZone
+    'ce-impact-zone': CEImpactZone
   },
   props: ['product'],
   computed: {
@@ -104,8 +118,26 @@ export default {
 
       return `${REVZILLA_SEARCH_URL}${manufacturer}+${model}`
     },
+    buyURLPrefix: function () {
+      if (this.product.type.endsWith('s')) {
+        return this.product.type
+      }
+      return `${this.product.type}s`
+    },
     isHelmet: function () {
       return this.product.type === 'helmet'
+    },
+    isJacket: function () {
+      return this.product.type === 'jacket'
+    },
+    isPants: function () {
+      return this.product.type === 'pants'
+    },
+    isBoots: function () {
+      return this.product.type === 'boots'
+    },
+    isGloves: function () {
+      return this.product.type === 'gloves'
     },
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
