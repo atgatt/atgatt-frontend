@@ -2,8 +2,12 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
+        <router-link :to="{ path: `/${this.buyURLPrefix}/buy/${this.product.manufacturer}/${this.formattedModel}/${this.product.uuid}` }" >
+          <h4 class="my-auto">
+            <strong>{{`${product.manufacturer} ${formattedModel}`}}</strong>
+          </h4>
+        </router-link>
         <h4 class="my-auto">
-          <strong>{{product.manufacturer}}</strong>&nbsp;<small>{{formattedModel}}</small>
           <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
         </h4>
         <router-link :to="ratingsURL" class="badge badge-primary product-badge">
@@ -15,13 +19,6 @@
         <span v-if="product.isDiscontinued" class="badge badge-danger product-badge">
           Discontinued
         </span>
-        <router-link
-          :to="{ path: `/${this.buyURLPrefix}/buy/${this.product.manufacturer}-${this.formattedModel}` }"
-          target="_blank"
-          class="ratings-router-link"
-        >
-          <font-awesome-icon icon="external-link-alt" />
-        </router-link>
       </div>
       <div class="col-12 col-lg buy-btn-col my-auto">
         <div>
