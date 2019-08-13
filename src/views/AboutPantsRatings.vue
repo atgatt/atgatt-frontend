@@ -1,6 +1,6 @@
 <template>
   <div class="jumbotron">
-    <h1 class="display-3">About Jacket Ratings</h1>
+    <h1 class="display-3">About Pants Ratings</h1>
     <hr class="my-4">
     <div id="ratings-accordion" role="tablist">
       <div class="card">
@@ -13,13 +13,13 @@
         </div>
         <div id="collapse-score-info" class="collapse show" role="tabpanel" aria-labelledby="score-info-card">
           <div class="card-body">
-            Our safety score is a weighted average of the CE certifications achieved by the armor in each impact zone of a given jacket, plus a weight indicating whether or not the jacket has integrated airbag support, plus a bonus weight if the jacket is made out of leather.
+            Our safety score is a weighted average of the CE certifications achieved by the armor in each impact zone of a given product.
             Specifically, we weight each certification as follows: <br /><br />
             <code>
               CE Score For Each Zone = (0 if armor is not supported) OTHERWISE (0.5 if there's a slot for you to install armor) OTHERWISE (0.75 if CE level 1 armor is included) OTHERWISE (0.95 if CE level 2 armor is included) <br /><br />
               Add 0.05 to the CE Score if the armor is "CE Approved"<br /><br />
 
-              Safety Score = 0.33333 * (Chest-CE-Score + Elbow-CE-Score + Back-CE-Score + Shoulder-CE-Score)
+              Safety Score = 0.33333 * (Tailbone-CE-Score + Knee-CE-Score + Hip-CE-Score)
             </code>
           </div>
         </div>
