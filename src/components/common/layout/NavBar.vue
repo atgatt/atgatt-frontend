@@ -6,19 +6,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <nav-item route="/" text="Helmet Ratings" exact="true" />
-        <nav-item route="/jackets" text="Jacket Ratings" />
-        <nav-item route="/pants" text="Pants Ratings" v-bind:isNew="true" />
-        <nav-item route="/boots" text="Boots Ratings" v-bind:isNew="true" />
-        <nav-item route="/gloves" text="Gloves Ratings" v-bind:isNew="true" />
-        <nav-item route="/about-helmet-ratings" text="About Helmet Ratings" />
-        <nav-item route="/about-jacket-ratings" text="About Jacket Ratings" />
-        <nav-item route="/about-pants-ratings" text="About Pants Ratings" />
-        <nav-item route="/about-boots-ratings" text="About Boots Ratings" />
-        <nav-item route="/about-gloves-ratings" text="About Gloves Ratings" />
-        <nav-item route="/about-us" text="About Us" />
+        <nav-item route="/" text="Motorcycle Helmets" exact="true" />
+        <nav-item route="/jackets" text="Jackets" />
+        <nav-item route="/pants" text="Pants" v-bind:isNew="true" />
+        <nav-item route="/boots" text="Boots" v-bind:isNew="true" />
+        <nav-item route="/gloves" text="Gloves" v-bind:isNew="true" />
+        <nav-item route="/about-helmet-ratings" text="About Helmets" />
+        <nav-item route="/about-jacket-ratings" text="About Jackets" />
+        <nav-item route="/about-pants-ratings" text="About Pants" />
+        <nav-item route="/about-gloves-ratings" text="About Gloves" />
+        <nav-item route="/about-boots-ratings" text="About Boots" />
       </ul>
       <ul class="navbar-nav ml-auto">
+        <nav-item route="/about-us" text="About Us" />
         <login />
       </ul>
     </div>
