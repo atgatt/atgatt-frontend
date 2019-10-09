@@ -29,9 +29,7 @@
                                 {{getProductPrice}}
                             </td>
                             <td>
-                                <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-                                    Buy
-                                </a>
+                                <buy-on-revzilla v-bind:product="product"/>
                             </td>
                         </tr>
                     </tbody>
@@ -93,6 +91,7 @@ import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
 import JacketCertificationBadges from '../components/JacketCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from '../components/CEImpactZone'
+import BuyOnRevzilla from '../components/BuyOnRevzilla'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -102,7 +101,8 @@ export default {
     'helmet-certification-badges': HelmetCertificationBadges,
     'jacket-certification-badges': JacketCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
-    'jacket-impact-zone': CEImpactZone
+    'jacket-impact-zone': CEImpactZone,
+    'buy-on-revzilla': BuyOnRevzilla
   },
   props: ['uuid'],
   data () {

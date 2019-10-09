@@ -20,11 +20,7 @@
           Discontinued
         </span>
       </div>
-      <div class="col-12 col-lg buy-btn-col my-auto">
-        <div>
-          <a v-bind:href="formattedRevzillaBuyURL" target="_blank" class="btn revzilla-buy-btn btn-success"><font-awesome-icon icon="cart-plus"/>&nbsp;<strong>{{formattedRevzillaBuyText}}</strong></a>
-        </div>
-      </div>
+      <buy-on-revzilla v-bind:product="product"/>
     </div>
     <div class="row product-body">
       <div class="col-12 col-lg align-self-center">
@@ -66,7 +62,6 @@
 </template>
 
 <script>
-import formatCurrency from '../lib/currency'
 import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
 import JacketCertificationBadges from '../components/JacketCertificationBadges'
 import PantsCertificationBadges from '../components/PantsCertificationBadges'
@@ -74,9 +69,9 @@ import BootsCertificationBadges from '../components/BootsCertificationBadges'
 import GlovesCertificationBadges from '../components/GlovesCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from './CEImpactZone'
+import BuyOnRevzilla from '../components/BuyOnRevzilla'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
-const REVZILLA_BUY_TEXT_PREFIX = 'Buy on RevZilla for'
 
 export default {
   name: 'ProductCard',
@@ -87,19 +82,11 @@ export default {
     'boots-certification-badges': BootsCertificationBadges,
     'gloves-certification-badges': GlovesCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
-    'ce-impact-zone': CEImpactZone
+    'ce-impact-zone': CEImpactZone,
+    'buy-on-revzilla': BuyOnRevzilla
   },
   props: ['product'],
   computed: {
-    formattedRevzillaBuyText: function () {
-      if (this.product.isDiscontinued) {
-        return `Buy another ${this.product.manufacturer} ${this.product.type} on RevZilla`
-      }
-
-      // Buy on RevZilla for {{formattedRevzillaPrice}}
-      const priceInUSD = this.product.revzillaPriceCents / 100.0
-      return priceInUSD > 0 ? `${REVZILLA_BUY_TEXT_PREFIX} ${formatCurrency(priceInUSD)}` : `${REVZILLA_BUY_TEXT_PREFIX} a mystery price!`
-    },
     formattedRevzillaBuyURL: function () {
       if (this.product.isDiscontinued) {
         return `${REVZILLA_SEARCH_URL}${this.product.manufacturer}+${this.product.type}`
@@ -181,10 +168,6 @@ export default {
   margin-left: 0.5em;
 }
 
-.buy-btn-col {
-  text-align: right;
-}
-
 .impact-zone-col {
   align-self: center;
 }
@@ -264,39 +247,5 @@ export default {
 
 .model-aliases {
   color: darkgray;
-}
-
-.revzilla-buy-btn {
-  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
-  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
-  border-color: lightslategray;
-  color: #111;
-  font-weight: 100;
-  white-space: normal;
-  width: 100%;
-  max-width: 300px;
-}
-
-.revzilla-buy-btn:hover {
-  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
-  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
-  color: initial;
-  font-weight: 100;
-}
-
-.revzilla-buy-btn:focus, .revzilla-buy-btn.focus {
-  box-shadow: 0 0 0 0.2rem #f0c14b;
-}
-
-.revzilla-buy-btn:not(:disabled):not(.disabled):active, .revzilla-buy-btn:not(:disabled):not(.disabled).active,
-.show > .revzilla-buy-btn.dropdown-toggle {
-  color: #111;
-  background-color: #f7dfa5;
-  border-color: #f0c14b;
-}
-
-.revzilla-buy-btn:not(:disabled):not(.disabled):active:focus, .revzilla-buy-btn:not(:disabled):not(.disabled).active:focus,
-.show > .revzilla-buy-btn.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem #f0c14b;
 }
 </style>
