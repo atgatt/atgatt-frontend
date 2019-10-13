@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .buy-btn-col {
   text-align: right;
 }
@@ -70,18 +70,21 @@ export default {
   width: 100%;
   max-width: 300px;
 }
-
+.revzilla-buy-btn:hover {
+  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  color: initial;
+  font-weight: 100;
+}
 .revzilla-buy-btn:focus, .revzilla-buy-btn.focus {
   box-shadow: 0 0 0 0.2rem #f0c14b;
 }
-
 .revzilla-buy-btn:not(:disabled):not(.disabled):active, .revzilla-buy-btn:not(:disabled):not(.disabled).active,
 .show > .revzilla-buy-btn.dropdown-toggle {
   color: #111;
   background-color: #f7dfa5;
   border-color: #f0c14b;
 }
-
 .revzilla-buy-btn:not(:disabled):not(.disabled):active:focus, .revzilla-buy-btn:not(:disabled):not(.disabled).active:focus,
 .show > .revzilla-buy-btn.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #f0c14b;

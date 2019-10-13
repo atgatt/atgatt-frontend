@@ -26,7 +26,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{getProductPrice}}
+                                {{productPrice}}
                             </td>
                             <td>
                                 <buy-on-revzilla v-bind:product="product"/>
@@ -144,7 +144,7 @@ export default {
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
     },
-    getProductPrice: function () {
+    productPrice: function () {
       const priceInUSD = this.product.revzillaPriceCents / 100.0
       return priceInUSD > 0 ? `${formatCurrency(priceInUSD)}` : `N/A`
     }
@@ -191,7 +191,7 @@ export default {
 }
 
 .product-details {
-  background-color: #f4f4f3;
+  margin-right: 0;
 }
 
 .missing-product-image {
