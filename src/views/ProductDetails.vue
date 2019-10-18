@@ -5,7 +5,7 @@
                 <section class="prices-header">
                     <h5>Prices</h5>
                 </section>
-                <table class="prices-table col-11">
+                <table class="prices-table col-11 table-responsive">
                     <thead>
                         <th></th>
                         <th>Merchant</th>
@@ -82,6 +82,11 @@
             </div>
         </div>
     </div>
+    <div v-else-if="error">
+        <small>
+            <font-awesome-icon icon="times" class="error-times"/> <span class="error-message">{{error}}</span>
+        </small>
+    </div>
 </template>
 
 <script>
@@ -107,7 +112,8 @@ export default {
   props: ['uuid'],
   data () {
     return {
-      product: null
+      product: null,
+      error: ''
     }
   },
   async mounted () {
@@ -152,9 +158,16 @@ export default {
   methods: {
     getProductDetailsAsync: async function (uuid) {
       this.$Progress.start()
-
-      http.get(`${this.$environment.apiBaseURL}/v1/products/${uuid}`)
-        .then(response => { this.product = response.data })
+      try {
+        http.get(`${this.$environment.apiBaseURL}/v1/products/${uuid}`)
+          .then(response => { this.product = response.data })
+      } catch (err) {
+        if (err && err.response && err.response.data && err.response.data.message) {
+          this.error = err.response.data.message
+        } else {
+          this.error = 'The server encountered an internal error. Try again in a few moments.'
+        }
+      }
 
       this.$Progress.finish()
     }
@@ -200,8 +213,17 @@ export default {
 }
 
 .prices-table {
+  text-align: center;
   margin-left: 32px;
   margin-right: 48px;
   margin-top: 16px;
+}
+
+.error-message {
+    color: #d33342;
+}
+
+.error-times {
+    color: #d33342;
 }
 </style>
