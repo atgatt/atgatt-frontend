@@ -11,14 +11,9 @@
         <nav-item route="/pants" text="Pants" v-bind:isNew="true" />
         <nav-item route="/boots" text="Boots" v-bind:isNew="true" />
         <nav-item route="/gloves" text="Gloves" v-bind:isNew="true" />
-        <nav-item route="/about-helmet-ratings" text="About Helmets" />
-        <nav-item route="/about-jacket-ratings" text="About Jackets" />
-        <nav-item route="/about-pants-ratings" text="About Pants" />
-        <nav-item route="/about-boots-ratings" text="About Boots" />
-        <nav-item route="/about-gloves-ratings" text="About Gloves" />
       </ul>
       <ul class="navbar-nav ml-auto">
-        <nav-item route="/about-us" text="About Us" />
+        <nav-item route="/about" text="About" />
         <login />
       </ul>
     </div>
