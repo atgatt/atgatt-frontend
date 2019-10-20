@@ -5,35 +5,22 @@
                 <section class="prices-header">
                     <h5>Prices</h5>
                 </section>
-                <table class="prices-table col-11 table-responsive">
-                    <thead>
-                        <th></th>
-                        <th>Merchant</th>
-                        <th>Price</th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-                                    <img alt="product image" v-if="this.product.imageKey" class="product-image" width="100" height="100" v-bind:src="imageURL"/>
-                                    <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
-                                </a>
-                            </td>
-                            <td>
-                                <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-                                    <img alt="revzilla logo" class="product-image" width="259" height="49" src="../assets/revzilla.png"/>
-                                </a>
-                            </td>
-                            <td>
-                                {{productPrice}}
-                            </td>
-                            <td>
-                                <buy-on-revzilla v-bind:product="product"/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="row prices-details">
+                    <section class="col col-lg-4 prices-item">
+                        <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
+                            <img alt="product image" v-if="this.product.imageKey" class="product-image" width="100" height="100" v-bind:src="imageURL"/>
+                            <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
+                        </a>
+                    </section>
+                    <section class="col col-lg-4 prices-item">
+                        <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
+                            <img alt="revzilla logo" class="product-image" width="259" height="49" src="../assets/revzilla.png"/>
+                        </a>
+                    </section>
+                    <section class="col col-lg-4 prices-item">
+                        <buy-on-revzilla v-bind:product="product"/>
+                    </section>
+                </div>
             </div>
             <div class="col-12 col-lg-3">
                 <section class="product-name">
@@ -191,7 +178,7 @@ export default {
 
 .prices-header {
   margin-top: 32px;
-  margin-left: 32px;
+  margin-left: 48px;
   margin-right: 48px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -208,22 +195,47 @@ export default {
 }
 
 .missing-product-image {
-    min-width: 200px;
-    margin-left: 0.5em;
+  min-width: 200px;
+  margin-left: 0.5em;
 }
 
-.prices-table {
-  text-align: center;
+.prices-details {
   margin-left: 32px;
-  margin-right: 48px;
+  margin-right: 32px;
   margin-top: 16px;
 }
 
+.prices-item {
+  margin-top: 16px;
+}
+
+@media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
+  .prices-details {
+    text-align: center;
+  }
+
+  .product-name{
+    text-align: center;
+  }
+
+  .specification-item {
+    text-align: center;
+  }
+
+  .specification-header{
+    text-align: center;
+  }
+
+  .prices-header {
+    display: none;
+  }
+}
+
 .error-message {
-    color: #d33342;
+  color: #d33342;
 }
 
 .error-times {
-    color: #d33342;
+  color: #d33342;
 }
 </style>
