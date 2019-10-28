@@ -36,8 +36,28 @@ export default new Router({
     getRatingsRoute('boots'),
     getRatingsRoute('gloves'),
     {
-      path: '/about',
-      component: () => import(/* webpackChunkName: "aboutus" */ './views/About.vue')
+      path: '/about-helmet-ratings',
+      component: () => import(/* webpackChunkName: "abouthelmetratings" */ './views/AboutHelmetRatings.vue')
+    },
+    {
+      path: '/about-jacket-ratings',
+      component: () => import(/* webpackChunkName: "aboutjacketratings" */ './views/AboutJacketRatings.vue')
+    },
+    {
+      path: '/about-pants-ratings',
+      component: () => import(/* webpackChunkName: "aboutpantsratings" */ './views/AboutPantsRatings.vue')
+    },
+    {
+      path: '/about-boots-ratings',
+      component: () => import(/* webpackChunkName: "aboutbootsratings" */ './views/AboutBootsRatings.vue')
+    },
+    {
+      path: '/about-gloves-ratings',
+      component: () => import(/* webpackChunkName: "aboutbootsratings" */ './views/AboutGlovesRatings.vue')
+    },
+    {
+      path: '/about-us',
+      component: () => import(/* webpackChunkName: "aboutus" */ './views/AboutUs.vue')
     },
     {
       path: '*',
