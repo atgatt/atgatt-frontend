@@ -17,7 +17,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             About
           </a>
-          <div class="dropdown-menu app-navbar" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu app-navbar dropdown-menu-right" aria-labelledby="navbarDropdown">
             <nav-item route="/about-helmet-ratings" text="About Helmets" />
             <nav-item route="/about-jacket-ratings" text="About Jackets" />
             <nav-item route="/about-pants-ratings" text="About Pants" />
