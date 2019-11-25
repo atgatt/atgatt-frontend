@@ -11,9 +11,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'vue-select/dist/vue-select.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { registerGlobalComponents } from './globals'
-library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown)
+library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus)
 registerGlobalComponents()
 
 Vue.config.productionTip = false

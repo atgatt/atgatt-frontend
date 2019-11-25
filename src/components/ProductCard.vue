@@ -4,12 +4,9 @@
       <div class="col-12 col-lg my-auto">
         <router-link :to="{ path: `/${this.buyURLPrefix}/buy/${this.product.manufacturer}/${this.formattedModel}/${this.product.uuid}` }" >
           <h4 class="my-auto">
-            <strong>{{`${product.manufacturer} ${formattedModel}`}}</strong>
+            <strong>{{`${product.manufacturer} ${formattedModel}`}}</strong> <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
           </h4>
         </router-link>
-        <h4 class="my-auto">
-          <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
-        </h4>
         <router-link :to="ratingsURL" class="badge badge-primary product-badge">
           {{product.safetyPercentage}}% Safety Score
         </router-link>
@@ -20,7 +17,10 @@
           Discontinued
         </span>
       </div>
-      <buy-on-revzilla v-bind:product="product"/>
+      <div class="col-12 col-lg my-auto">
+        <buy-on-revzilla-button v-bind:product="product" />
+        <add-to-product-set-button v-bind:product="product" />
+      </div>
     </div>
     <div class="row product-body">
       <div class="col-12 col-lg align-self-center">
@@ -69,7 +69,8 @@ import BootsCertificationBadges from '../components/BootsCertificationBadges'
 import GlovesCertificationBadges from '../components/GlovesCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from './CEImpactZone'
-import BuyOnRevzilla from '../components/BuyOnRevzilla'
+import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
+import AddToProductSetButton from './AddToProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -83,7 +84,8 @@ export default {
     'gloves-certification-badges': GlovesCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
     'ce-impact-zone': CEImpactZone,
-    'buy-on-revzilla': BuyOnRevzilla
+    'buy-on-revzilla-button': BuyOnRevzillaButton,
+    'add-to-product-set-button': AddToProductSetButton
   },
   props: ['product'],
   computed: {

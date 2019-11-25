@@ -82,6 +82,10 @@ export default new Router({
     getDetailsRoute('boots'),
     getDetailsRoute('gloves'),
     {
+      path: '/gear-sets/:gearSetID',
+      component: () => import(/* webpackChunkName: "productsetdetails" */ './views/ProductSetDetails.vue')
+    },
+    {
       path: '*',
       component: () => import(/* webpackChunkName: "notfound" */ './views/NotFound.vue')
     }
