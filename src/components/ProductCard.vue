@@ -19,7 +19,7 @@
       </div>
       <div class="col-12 col-lg my-auto">
         <buy-on-revzilla-button v-bind:product="product" />
-        <replace-product-on-product-set-button v-if="this.useReplacementButton" v-bind:product="product" />
+        <modify-product-on-product-set-button v-if="this.useReplacementButton" v-bind:productType="this.product.type" isForReplacement="true" />
         <add-to-product-set-button v-else v-bind:product="product" />
       </div>
     </div>
@@ -72,7 +72,7 @@ import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from './CEImpactZone'
 import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
 import AddToProductSetButton from './AddToProductSetButton.vue'
-import ReplaceProductOnProductSetButton from './ReplaceProductOnProductSetButton.vue'
+import ModifyProductOnProductSetButton from './ModifyProductOnProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -88,7 +88,7 @@ export default {
     'ce-impact-zone': CEImpactZone,
     'buy-on-revzilla-button': BuyOnRevzillaButton,
     'add-to-product-set-button': AddToProductSetButton,
-    'replace-product-on-product-set-button': ReplaceProductOnProductSetButton
+    'modify-product-on-product-set-button': ModifyProductOnProductSetButton
   },
   props: ['product', 'useReplacementButton'],
   computed: {

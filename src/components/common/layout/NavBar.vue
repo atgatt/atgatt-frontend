@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <nav-item route="/" text="Motorcycle Helmets" exact="true" />
-        <nav-item route="/jackets" text="Jackets" />
-        <nav-item route="/pants" text="Pants" />
-        <nav-item route="/boots" text="Boots" />
-        <nav-item route="/gloves" text="Gloves" />
+        <nav-item route="/motorcycle-jackets" text="Jackets" />
+        <nav-item route="/motorcycle-pants" text="Pants" />
+        <nav-item route="/motorcycle-boots" text="Boots" />
+        <nav-item route="/motorcycle-gloves" text="Gloves" />
       </ul>
       <ul class="navbar-nav ml-auto">
         <my-gear-nav-item />

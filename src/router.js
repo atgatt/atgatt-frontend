@@ -32,7 +32,7 @@ function getDetailsProps (route, type) {
 
 function getDetailsRoute (type, pathPrefix) {
   return {
-    path: `/${pathPrefix || type}/buy/:initialManufacturer/:initialModel/:uuid`,
+    path: `/motorcycle-${pathPrefix || type}/buy/:initialManufacturer/:initialModel/:uuid`,
     component: ProductDetails,
     props: (route) => getDetailsProps(route, type)
   }

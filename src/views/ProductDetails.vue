@@ -19,6 +19,7 @@
                     </section>
                     <section class="col col-lg-4 prices-item">
                         <buy-on-revzilla-button v-bind:product="product"/>
+                        <add-to-product-set-button v-bind:product="product" />
                     </section>
                 </div>
             </div>
@@ -84,6 +85,7 @@ import JacketCertificationBadges from '../components/JacketCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from '../components/CEImpactZone'
 import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
+import AddToProductSetButtonVue from '../components/AddToProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -94,7 +96,8 @@ export default {
     'jacket-certification-badges': JacketCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
     'jacket-impact-zone': CEImpactZone,
-    'buy-on-revzilla-button': BuyOnRevzillaButton
+    'buy-on-revzilla-button': BuyOnRevzillaButton,
+    'add-to-product-set-button': AddToProductSetButtonVue
   },
   props: ['uuid'],
   data () {

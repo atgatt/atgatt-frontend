@@ -4,20 +4,20 @@
       <div class="col-12 col-lg my-auto">
       </div>
       <div class="col-12 col-lg my-auto">
-        <button v-on:click=";" class="btn revzilla-buy-btn"><font-awesome-icon icon="plus"/>&nbsp;
-          <strong>
-            &nbsp;Add {{ this.productType | capitalize }}
-          </strong>
-        </button>
+        <modify-product-on-product-set-button v-bind:productType="this.productType" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ModifyProductOnProductSetButton from './ModifyProductOnProductSetButton.vue'
 export default {
   name: 'PlaceholderProductCard',
-  props: ['productType']
+  props: ['productType'],
+  components: {
+    'modify-product-on-product-set-button': ModifyProductOnProductSetButton
+  }
 }
 </script>
 

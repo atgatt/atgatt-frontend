@@ -1,16 +1,17 @@
 <template>
     <div class="col-12 col-lg buy-btn-col my-auto">
         <div>
-            <button v-on:click="redirectByProductType" class="btn revzilla-buy-btn"><font-awesome-icon icon="exchange-alt"/>&nbsp;
+            <router-link :to="productTypeURL" class="btn revzilla-buy-btn"><font-awesome-icon v-bind:icon="actionIcon"/>&nbsp;
               <strong>
-                &nbsp;Replace
+                &nbsp;{{ productTypeText }}
               </strong>
-            </button>
+            </router-link>
         </div>
     </div>
 </template>
 
 <script>
+import { capitalize } from '../lib/text'
 export default {
   name: 'AddToProductSetButton',
   data () {
@@ -18,21 +19,28 @@ export default {
       'isLoading': false
     }
   },
-  props: ['product'],
-  methods: {
-    redirectByProductType () {
+  props: ['productType', 'isForReplacement'],
+  computed: {
+    productTypeURL () {
       let urlSuffix = ''
 
-      switch (this.product.type) {
+      switch (this.productType) {
         case 'helmet':
         case 'jacket':
-          urlSuffix = `${this.product.type}s`
+          urlSuffix = `${this.productType}s`
           break
         default:
-          urlSuffix = this.product.type
+          urlSuffix = this.productType
           break
       }
-      this.$router.push({ path: `/motorcycle-${urlSuffix}` })
+      return `/motorcycle-${urlSuffix}`
+    },
+    productTypeText () {
+      const capitalizedProductType = capitalize(this.productType)
+      return this.isForReplacement ? `Replace ${capitalizedProductType}` : `Add ${capitalizedProductType}`
+    },
+    actionIcon () {
+      return this.isForReplacement ? 'exchange-alt' : 'plus'
     }
   }
 }

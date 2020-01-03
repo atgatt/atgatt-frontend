@@ -1,8 +1,10 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <span v-if="this.error">{{ this.error }}</span>
     <span v-else-if="!this.isLoaded">Loading...</span>
-    <div v-if="this.isLoaded">
+    <div class="jumbotron" v-if="this.isLoaded">
+      <h1 class="display-3">Gear List</h1>
+      <span>Link: aaa</span>
       <product-card v-if="this.helmet" v-bind:product="this.helmet" useReplacementButton="true" />
       <placeholder-product-card productType="helmet" v-else />
 
