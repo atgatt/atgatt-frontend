@@ -3,12 +3,12 @@
         <div>
             <button v-if="!isLoading" v-on:click="upsertItemOnActiveGearSet" class="btn revzilla-buy-btn"><font-awesome-icon icon="plus"/>&nbsp;
               <strong>
-                &nbsp;Add to Gear Set
+                &nbsp;Add to My Gear
               </strong>
             </button>
             <button v-else disabled class="btn revzilla-buy-btn"><font-awesome-icon icon="plus"/>&nbsp;
               <strong>
-                <font-awesome-icon v-if="isLoading" icon="spinner" spin />&nbsp;Add to Gear Set
+                <font-awesome-icon v-if="isLoading" icon="spinner" spin />&nbsp;Add to My Gear
               </strong>
             </button>
         </div>
@@ -17,8 +17,8 @@
 
 <script>
 import http from 'axios'
+import { SOURCE_PRODUCT_SET_ID_KEY } from '../lib/constants'
 
-const SOURCE_PRODUCT_SET_ID_KEY = 'SOURCE_PRODUCT_SET_ID'
 export default {
   name: 'AddToProductSetButton',
   data () {
@@ -31,21 +31,38 @@ export default {
     async upsertItemOnActiveGearSet () {
       const sourceProductSetID = localStorage.getItem(SOURCE_PRODUCT_SET_ID_KEY) || null
       let resp = null
+      let didEncounterError = false
       try {
         this.isLoading = true
         resp = await http.post(`${this.$environment.apiBaseURL}/v1/product-sets`, {
-          'source_product_set_id': sourceProductSetID,
-          'product_id': this.product.id
+          'sourceProductSetID': sourceProductSetID,
+          'productID': this.product.uuid
+        })
+        this.$toasted.show('Added to gear set!', {
+          icon: { name: 'check' },
+          type: 'success',
+          theme: 'bubble',
+          position: 'top-right',
+          duration: 2500
         })
       } catch (err) {
+        this.$toasted.show('There was an error adding this product to your gear. Try again in a few moments.', {
+          icon: { name: 'exclamation-triangle' },
+          type: 'error',
+          theme: 'bubble',
+          position: 'top-right',
+          duration: 2500
+        })
+        didEncounterError = true
+      } finally {
         this.isLoading = false
-        alert('There was an error adding this product to a gear set. Try again in a few moments.')
-        return
       }
-      const createdProductSetID = resp.data.id
 
-      localStorage.setItem(SOURCE_PRODUCT_SET_ID_KEY, createdProductSetID)
-      this.$router.push({ path: `/gear-sets/${createdProductSetID}` })
+      if (resp && !didEncounterError) {
+        const createdProductSetID = resp.data.id
+        localStorage.setItem(SOURCE_PRODUCT_SET_ID_KEY, createdProductSetID)
+        this.$router.push({ path: `/motorcycle-gear/${createdProductSetID}` })
+      }
     }
   }
 }

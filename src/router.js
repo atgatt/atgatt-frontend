@@ -13,9 +13,9 @@ function getRatingsProps (route, type) {
   }
 }
 
-function getRatingsRoute (type, pathPrefix) {
+function getRatingsRoute (type, pathSuffix) {
   return {
-    path: `/${pathPrefix || type}/`,
+    path: `/motorcycle-${pathSuffix || type}/`,
     component: Ratings,
     props: (route) => getRatingsProps(route, type)
   }
@@ -43,7 +43,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/helmets/',
+      path: '/motorcycle-helmets/',
       alias: '/',
       component: Ratings,
       props: (route) => getRatingsProps(route, 'helmet')
@@ -82,8 +82,9 @@ export default new Router({
     getDetailsRoute('boots'),
     getDetailsRoute('gloves'),
     {
-      path: '/gear-sets/:gearSetID',
-      component: () => import(/* webpackChunkName: "productsetdetails" */ './views/ProductSetDetails.vue')
+      path: '/motorcycle-gear/:productSetID',
+      component: () => import(/* webpackChunkName: "productsetdetails" */ './views/ProductSetDetails.vue'),
+      props: true
     },
     {
       path: '*',

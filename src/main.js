@@ -10,19 +10,32 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'vue-select/dist/vue-select.css'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import { registerGlobalComponents } from './globals'
-library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus)
-registerGlobalComponents()
-
-Vue.config.productionTip = false
-
-Vue.use(VueProgressBar)
+import Toasted from 'vue-toasted'
 
 function startApp (environment) {
   // eslint-disable-next-line
   console.info('Starting app with environment: ', environment)
+
+  // Font awesome configuration
+  library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt)
+  dom.watch()
+
+  // Register global components
+  registerGlobalComponents()
+
+  // Disable production tip
+  Vue.config.productionTip = false
+
+  // Set up toast notifications middleware
+  Vue.use(Toasted, {
+    iconPack: 'fontawesome'
+  })
+
+  // Set up progress bar middleware
+  Vue.use(VueProgressBar)
 
   // Set up environment variables middleware
   Vue.use({

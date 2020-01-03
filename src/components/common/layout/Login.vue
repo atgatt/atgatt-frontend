@@ -31,6 +31,7 @@ export default {
     try {
       await this.$auth.renewTokens()
     } catch (e) {
+      // eslint-disable-next-line
       console.error('Failed to renew auth token: ', e)
     }
   },

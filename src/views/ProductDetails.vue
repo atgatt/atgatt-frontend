@@ -146,8 +146,8 @@ export default {
     getProductDetailsAsync: async function (uuid) {
       this.$Progress.start()
       try {
-        http.get(`${this.$environment.apiBaseURL}/v1/products/${uuid}`)
-          .then(response => { this.product = response.data })
+        const resp = await http.get(`${this.$environment.apiBaseURL}/v1/products/${uuid}`)
+        this.product = resp.data
       } catch (err) {
         if (err && err.response && err.response.data && err.response.data.message) {
           this.error = err.response.data.message

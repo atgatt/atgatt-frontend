@@ -19,7 +19,8 @@
       </div>
       <div class="col-12 col-lg my-auto">
         <buy-on-revzilla-button v-bind:product="product" />
-        <add-to-product-set-button v-bind:product="product" />
+        <replace-product-on-product-set-button v-if="this.useReplacementButton" v-bind:product="product" />
+        <add-to-product-set-button v-else v-bind:product="product" />
       </div>
     </div>
     <div class="row product-body">
@@ -71,6 +72,7 @@ import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from './CEImpactZone'
 import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
 import AddToProductSetButton from './AddToProductSetButton.vue'
+import ReplaceProductOnProductSetButton from './ReplaceProductOnProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -85,9 +87,10 @@ export default {
     'sharp-impact-zone': SharpImpactZone,
     'ce-impact-zone': CEImpactZone,
     'buy-on-revzilla-button': BuyOnRevzillaButton,
-    'add-to-product-set-button': AddToProductSetButton
+    'add-to-product-set-button': AddToProductSetButton,
+    'replace-product-on-product-set-button': ReplaceProductOnProductSetButton
   },
-  props: ['product'],
+  props: ['product', 'useReplacementButton'],
   computed: {
     formattedRevzillaBuyURL: function () {
       if (this.product.isDiscontinued) {
@@ -106,9 +109,9 @@ export default {
     },
     buyURLPrefix: function () {
       if (this.product.type.endsWith('s')) {
-        return this.product.type
+        return `motorcycle-${this.product.type}`
       }
-      return `${this.product.type}s`
+      return `motorcycle-${this.product.type}s`
     },
     isHelmet: function () {
       return this.product.type === 'helmet'
