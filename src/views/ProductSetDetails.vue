@@ -4,7 +4,9 @@
     <span v-else-if="!this.isLoaded">Loading...</span>
     <div class="jumbotron" v-if="this.isLoaded">
       <h1 class="display-3">Gear List</h1>
-      <span>Link: aaa</span>
+      <hr />
+      <font-awesome-icon icon="link" />&nbsp;<a :href="selfLink">{{ selfLink }}</a>
+      <hr />
       <product-card v-if="this.helmet" v-bind:product="this.helmet" useReplacementButton="true" />
       <placeholder-product-card productType="helmet" v-else />
 
@@ -44,6 +46,11 @@ export default {
       gloves: null,
       isLoaded: false,
       error: null
+    }
+  },
+  computed: {
+    selfLink () {
+      return window.location.href
     }
   },
   async mounted () {

@@ -2,8 +2,6 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
-      </div>
-      <div class="col-12 col-lg my-auto">
         <modify-product-on-product-set-button v-bind:productType="this.productType" />
       </div>
     </div>

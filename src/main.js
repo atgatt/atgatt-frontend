@@ -11,7 +11,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'vue-select/dist/vue-select.css'
 
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
-import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt, faLink } from '@fortawesome/free-solid-svg-icons'
 import { registerGlobalComponents } from './globals'
 import Toasted from 'vue-toasted'
 
@@ -20,7 +20,7 @@ function startApp (environment) {
   console.info('Starting app with environment: ', environment)
 
   // Font awesome configuration
-  library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt)
+  library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt, faLink)
   dom.watch()
 
   // Register global components

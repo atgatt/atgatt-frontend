@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-lg buy-btn-col my-auto">
+    <div :class="wrapperClass">
         <div>
             <router-link :to="productTypeURL" class="btn revzilla-buy-btn"><font-awesome-icon v-bind:icon="actionIcon"/>&nbsp;
               <strong>
@@ -35,6 +35,9 @@ export default {
       }
       return `/motorcycle-${urlSuffix}`
     },
+    wrapperClass () {
+      return this.isForReplacement ? 'col-12 col-lg buy-btn-col my-auto' : 'col-12 col-lg buy-btn-col-center my-auto'
+    },
     productTypeText () {
       const capitalizedProductType = capitalize(this.productType)
       return this.isForReplacement ? `Replace ${capitalizedProductType}` : `Add ${capitalizedProductType}`
@@ -53,6 +56,10 @@ export default {
 
 .buy-btn-col {
   text-align: right;
+}
+
+.buy-btn-col-center {
+  text-align: center;
 }
 
 .revzilla-buy-btn {
