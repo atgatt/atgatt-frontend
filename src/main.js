@@ -14,6 +14,7 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt, faLink } from '@fortawesome/free-solid-svg-icons'
 import { registerGlobalComponents } from './globals'
 import Toasted from 'vue-toasted'
+import http from 'axios'
 
 function startApp (environment) {
   // eslint-disable-next-line
@@ -37,10 +38,11 @@ function startApp (environment) {
   // Set up progress bar middleware
   Vue.use(VueProgressBar)
 
-  // Set up environment variables middleware
+  // Set up a few common services (environment variables middleware, http middleware)
   Vue.use({
     install: function (Vue, options) {
       Vue.prototype.$environment = environment
+      Vue.prototype.$http = http
     }
   })
 

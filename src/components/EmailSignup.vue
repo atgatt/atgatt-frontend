@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import http from 'axios'
-
 export default {
   name: 'EmailSignup',
   data () {
@@ -41,7 +39,7 @@ export default {
         this.error = ''
         this.isButtonDisabled = true
 
-        await http.post(`${this.$environment.apiBaseURL}/v1/marketing/email`, {
+        await this.$http.post(`${this.$environment.apiBaseURL}/v1/marketing/email`, {
           'email': this.email
         })
         this.hasSignedUp = true

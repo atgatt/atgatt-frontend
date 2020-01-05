@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import http from 'axios'
 import ProductCard from '../components/ProductCard.vue'
 import PlaceholderProductCard from '../components/PlaceholderProductCard.vue'
 
@@ -56,7 +55,7 @@ export default {
   async mounted () {
     let resp = null
     try {
-      resp = await http.get(`${this.$environment.apiBaseURL}/v1/product-sets/${this.productSetID}`)
+      resp = await this.$http.get(`${this.$environment.apiBaseURL}/v1/product-sets/${this.productSetID}`)
       this.helmet = resp.data.helmetProduct
       this.jacket = resp.data.jacketProduct
       this.pants = resp.data.pantsProduct

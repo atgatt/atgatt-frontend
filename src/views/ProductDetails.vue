@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import http from 'axios'
 import formatCurrency from '../lib/currency'
 import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
 import JacketCertificationBadges from '../components/JacketCertificationBadges'
@@ -149,7 +148,7 @@ export default {
     getProductDetailsAsync: async function (uuid) {
       this.$Progress.start()
       try {
-        const resp = await http.get(`${this.$environment.apiBaseURL}/v1/products/${uuid}`)
+        const resp = await this.$http.get(`${this.$environment.apiBaseURL}/v1/products/${uuid}`)
         this.product = resp.data
       } catch (err) {
         if (err && err.response && err.response.data && err.response.data.message) {

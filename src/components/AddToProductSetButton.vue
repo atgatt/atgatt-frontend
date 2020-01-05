@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import http from 'axios'
 import { SOURCE_PRODUCT_SET_ID_KEY } from '../lib/constants'
 
 export default {
@@ -34,7 +33,7 @@ export default {
       let didEncounterError = false
       try {
         this.isLoading = true
-        resp = await http.post(`${this.$environment.apiBaseURL}/v1/product-sets`, {
+        resp = await this.$http.post(`${this.$environment.apiBaseURL}/v1/product-sets`, {
           'sourceProductSetID': sourceProductSetID,
           'productID': this.product.uuid
         })
