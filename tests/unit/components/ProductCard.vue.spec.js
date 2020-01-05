@@ -109,4 +109,40 @@ describe('ProductCard.vue', () => {
     expect(component.formattedModel).toBe('model')
     expect(component.formattedModelAliases).toBeFalsy()
   })
+
+  it('should return an encoded model when the model contains special characters', () => {
+    let wrapper = shallowMount(ProductCard, {
+      props: ['product'],
+      propsData: {
+        'product': { 'manufacturer': 'Alpinestars', 'model': 'T-Missile Drystar Jacket For Tech Air Race Black/White/Red / XL [Blemished - Very Good]', 'modelAliases': null, 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+      },
+      mocks: {
+        '$environment': {
+          'staticBaseURL': 'http://static.mock.com'
+        }
+      },
+      stubs: ['router-link']
+    })
+    let component = wrapper.vm
+    expect(component).toBeTruthy()
+    expect(component.uriEncodedModel).toBe('T-Missile%20Drystar%20Jacket%20For%20Tech%20Air%20Race%20Black%2FWhite%2FRed%20%2F%20XL%20%5BBlemished%20-%20Very%20Good%5D')
+  })
+
+  it('should return an encoded manufacturer when the manufacturer contains special characters', () => {
+    let wrapper = shallowMount(ProductCard, {
+      props: ['product'],
+      propsData: {
+        'product': { 'manufacturer': 'T-Missile Drystar Jacket For Tech Air Race Black/White/Red / XL [Blemished - Very Good]', 'model': 'model', 'modelAliases': null, 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+      },
+      mocks: {
+        '$environment': {
+          'staticBaseURL': 'http://static.mock.com'
+        }
+      },
+      stubs: ['router-link']
+    })
+    let component = wrapper.vm
+    expect(component).toBeTruthy()
+    expect(component.uriEncodedManufacturer).toBe('T-Missile%20Drystar%20Jacket%20For%20Tech%20Air%20Race%20Black%2FWhite%2FRed%20%2F%20XL%20%5BBlemished%20-%20Very%20Good%5D')
+  })
 })
