@@ -33,7 +33,7 @@ export default {
       // NOTE: webpack doesn't know what to do with dynamic strings, so we need to copy paste ""../assets" to every single call to require() :(
       // TODO: this should probably move to the backend, which should return a number to map to the image instead of hardcoding black/empty/orange/red etc.
       if (!this.certification) {
-        return { text: 'No Armor Support', url: require(`../assets/${this.assetsSubDir}/${this.zoneId}/black.jpg`) }
+        return { text: 'Uncertified', url: require(`../assets/${this.assetsSubDir}/${this.zoneId}/black.jpg`) }
       }
 
       if (this.certification.isEmpty) {

@@ -69,7 +69,7 @@
                     <td>18 Kn (Back/Spine), 35 Kn (Everything else)</td>
                   </tr>
                   <tr>
-                    <th>Black (No Armor Support)</th>
+                    <th>Black (Uncertified)</th>
                     <td>N/A</td>
                   </tr>
                   <tr>

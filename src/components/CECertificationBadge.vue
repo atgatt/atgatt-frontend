@@ -12,7 +12,7 @@ export default {
   computed: {
     certificationName () {
       if (!this.certification) {
-        return `${this.regionName}: No Armor Support`
+        return `${this.regionName}: Uncertified`
       }
 
       if (this.certification.isEmpty) {
