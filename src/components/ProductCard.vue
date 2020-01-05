@@ -2,7 +2,7 @@
   <div class="product-card">
     <div class="row product-header">
       <div class="col-12 col-lg my-auto">
-        <router-link :to="{ path: `/${this.buyURLPrefix}/buy/${this.product.manufacturer}/${this.formattedModel}/${this.product.uuid}` }" >
+        <router-link :to="{ path: `/${this.buyURLPrefix}/buy/${this.uriEncodedManufacturer}/${this.uriEncodedModel}/${this.product.uuid}` }" >
           <h4 class="my-auto">
             <strong>{{`${product.manufacturer} ${formattedModel}`}}</strong> <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
           </h4>
@@ -141,6 +141,12 @@ export default {
         }
       }
       return modelToUse
+    },
+    uriEncodedModel: function () {
+      return encodeURIComponent(this.formattedModel)
+    },
+    uriEncodedManufacturer: function () {
+      return encodeURIComponent(this.product.manufacturer)
     },
     formattedModelAliases: function () {
       const aliases = this.product.modelAliases
