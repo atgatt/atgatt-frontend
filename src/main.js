@@ -10,24 +10,39 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import 'vue-select/dist/vue-select.css'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt, faLink } from '@fortawesome/free-solid-svg-icons'
 import { registerGlobalComponents } from './globals'
-library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown)
-registerGlobalComponents()
-
-Vue.config.productionTip = false
-
-Vue.use(VueProgressBar)
+import Toasted from 'vue-toasted'
+import http from 'axios'
 
 function startApp (environment) {
   // eslint-disable-next-line
   console.info('Starting app with environment: ', environment)
 
-  // Set up environment variables middleware
+  // Font awesome configuration
+  library.add(faTimes, faCheck, faQuestionCircle, faInfoCircle, faMotorcycle, faUndo, faFilter, faExclamationTriangle, faCartPlus, faExternalLinkAlt, faCaretDown, faPlus, faSpinner, faExchangeAlt, faLink)
+  dom.watch()
+
+  // Register global components
+  registerGlobalComponents()
+
+  // Disable production tip
+  Vue.config.productionTip = false
+
+  // Set up toast notifications middleware
+  Vue.use(Toasted, {
+    iconPack: 'fontawesome'
+  })
+
+  // Set up progress bar middleware
+  Vue.use(VueProgressBar)
+
+  // Set up a few common services (environment variables middleware, http middleware)
   Vue.use({
     install: function (Vue, options) {
       Vue.prototype.$environment = environment
+      Vue.prototype.$http = http
     }
   })
 

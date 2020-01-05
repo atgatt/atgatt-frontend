@@ -4,12 +4,9 @@
       <div class="col-12 col-lg my-auto">
         <router-link :to="{ path: `/${this.buyURLPrefix}/buy/${this.product.manufacturer}/${this.formattedModel}/${this.product.uuid}` }" >
           <h4 class="my-auto">
-            <strong>{{`${product.manufacturer} ${formattedModel}`}}</strong>
+            <strong>{{`${product.manufacturer} ${formattedModel}`}}</strong> <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
           </h4>
         </router-link>
-        <h4 class="my-auto">
-          <small class="model-aliases" v-if="formattedModelAliases"> ({{formattedModelAliases}})</small>
-        </h4>
         <router-link :to="ratingsURL" class="badge badge-primary product-badge">
           {{product.safetyPercentage}}% Safety Score
         </router-link>
@@ -20,7 +17,11 @@
           Discontinued
         </span>
       </div>
-      <buy-on-revzilla v-bind:product="product"/>
+      <div class="col-12 col-lg my-auto">
+        <buy-on-revzilla-button v-bind:product="product" />
+        <modify-product-on-product-set-button v-if="this.useReplacementButton" v-bind:productType="this.product.type" isForReplacement="true" />
+        <add-to-product-set-button v-else v-bind:product="product" />
+      </div>
     </div>
     <div class="row product-body">
       <div class="col-12 col-lg align-self-center">
@@ -69,7 +70,9 @@ import BootsCertificationBadges from '../components/BootsCertificationBadges'
 import GlovesCertificationBadges from '../components/GlovesCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
 import CEImpactZone from './CEImpactZone'
-import BuyOnRevzilla from '../components/BuyOnRevzilla'
+import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
+import AddToProductSetButton from './AddToProductSetButton.vue'
+import ModifyProductOnProductSetButton from './ModifyProductOnProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -83,9 +86,11 @@ export default {
     'gloves-certification-badges': GlovesCertificationBadges,
     'sharp-impact-zone': SharpImpactZone,
     'ce-impact-zone': CEImpactZone,
-    'buy-on-revzilla': BuyOnRevzilla
+    'buy-on-revzilla-button': BuyOnRevzillaButton,
+    'add-to-product-set-button': AddToProductSetButton,
+    'modify-product-on-product-set-button': ModifyProductOnProductSetButton
   },
-  props: ['product'],
+  props: ['product', 'useReplacementButton'],
   computed: {
     formattedRevzillaBuyURL: function () {
       if (this.product.isDiscontinued) {
@@ -104,9 +109,9 @@ export default {
     },
     buyURLPrefix: function () {
       if (this.product.type.endsWith('s')) {
-        return this.product.type
+        return `motorcycle-${this.product.type}`
       }
-      return `${this.product.type}s`
+      return `motorcycle-${this.product.type}s`
     },
     isHelmet: function () {
       return this.product.type === 'helmet'

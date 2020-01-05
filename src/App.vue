@@ -36,4 +36,8 @@ svg.fa-info-circle {
   color: skyblue;
   cursor: pointer;
 }
+
+.toasted > svg:first-child {
+  margin-right: 0.7rem;
+}
 </style>

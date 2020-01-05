@@ -36,6 +36,7 @@ export class AuthService extends EventEmitter {
     return new Promise((resolve, reject) => {
       this.webAuth.parseHash((err, authResult) => {
         if (err) {
+          // eslint-disable-next-line
           console.log(err)
         } else {
           this.localLogin(authResult)
@@ -64,6 +65,7 @@ export class AuthService extends EventEmitter {
   renewTokens () {
     return new Promise((resolve, reject) => {
       if (localStorage.getItem(LOCAL_STORAGE_KEY) !== 'true') {
+        // eslint-disable-next-line
         console.log('Not logged in')
       }
 

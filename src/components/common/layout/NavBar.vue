@@ -7,12 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <nav-item route="/" text="Motorcycle Helmets" exact="true" />
-        <nav-item route="/jackets" text="Jackets" />
-        <nav-item route="/pants" text="Pants" v-bind:isNew="true" />
-        <nav-item route="/boots" text="Boots" v-bind:isNew="true" />
-        <nav-item route="/gloves" text="Gloves" v-bind:isNew="true" />
+        <nav-item route="/motorcycle-jackets" text="Jackets" />
+        <nav-item route="/motorcycle-pants" text="Pants" />
+        <nav-item route="/motorcycle-boots" text="Boots" />
+        <nav-item route="/motorcycle-gloves" text="Gloves" />
       </ul>
       <ul class="navbar-nav ml-auto">
+        <my-gear-nav-item />
         <li class="dropdown nav-link">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             About
@@ -35,11 +36,13 @@
 <script>
 import NavItem from './NavItem'
 import Login from './Login'
+import MyGearNavItem from '../../MyGearNavItem.vue'
 
 export default {
   name: 'nav-bar',
   components: {
     'nav-item': NavItem,
+    'my-gear-nav-item': MyGearNavItem,
     'login': Login
   }
 }

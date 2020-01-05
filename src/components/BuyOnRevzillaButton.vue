@@ -13,7 +13,7 @@ const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/htt
 const REVZILLA_BUY_TEXT_PREFIX = 'Buy on RevZilla for'
 
 export default {
-  name: 'BuyOnRevzilla',
+  name: 'BuyOnRevzillaButton',
   props: ['product'],
   computed: {
     formattedModel: function () {

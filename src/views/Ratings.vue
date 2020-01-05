@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import http from 'axios'
 import ProductCard from '../components/ProductCard'
 import ProductFilterSidebar from '../components/ProductFilterSidebar'
 
@@ -109,7 +108,7 @@ export default {
       order.descending = order.descending === 'true' || order.descending === true
       request.order = order
 
-      const response = await http.post(`${this.$environment.apiBaseURL}/v1/products/filter`, request)
+      const response = await this.$http.post(`${this.$environment.apiBaseURL}/v1/products/filter`, request)
       return response.data
     },
     onFiltersChangedAsync: async function (filters) {
