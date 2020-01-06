@@ -2,7 +2,7 @@
     <footer class="footer">
       <div class="footer-text">
         <span class="text-muted">
-          © {{currentYear}} CrashTested. Portions of the helmet data © SHARP under the <a target="_blank" href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>.
+          © {{currentYear}} ATGATT LLC dba CrashTested. Portions of the helmet data © SHARP under the <a target="_blank" href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government License v3.0</a>.
         </span>
       </div>
       <div>
