@@ -28,7 +28,7 @@
       <div id="collapse-terms-of-service" class="collapse" role="tabpanel" aria-labelledby="terms-of-service-card" data-parent="#accordion">
         <div class="card-body">
               <h5>
-                Welcome to CrashTested! We (ATGATT LLC doing business as CrashTested) provide the website located at https://crashtested.co (the “Site”) and the services accessible via our Site and our mobile device application (“App”). To make these Terms easier to read, the Site, our services and App are collectively called the “Services.” Please read these Terms of Service (the “Terms”) carefully because they govern your use of our Services.
+                Welcome to CrashTested! We (ATGATT LLC) provide the website located at https://crashtested.co (the “Site”) and the services accessible via our Site and our mobile device application (“App”). To make these Terms easier to read, the Site, our services and App are collectively called the “Services.” Please read these Terms of Service (the “Terms”) carefully because they govern your use of our Services.
               </h5>
               <br />
               <h2>Agreement to Terms</h2>
