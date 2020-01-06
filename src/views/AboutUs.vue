@@ -6,7 +6,7 @@
       Some facts about CrashTested:
     </p>
     <ul>
-      <li>This app was built by a small team of Software Engineers working out of San Francisco, California. Click <a href="mailto:hello@crashtested.co">here</a> to contact us or use the chatbox in the bottom-righthand corner of the screen to chat with us directly.</li>
+      <li>This app was built by a small team of Software Engineers working out of San Francisco, California. Click <a href="mailto:hello@atgatt.co">here</a> to contact us or use the chatbox in the bottom-righthand corner of the screen to chat with us directly.</li>
       <li>We source our ratings by aggregating data from widely known organizations that conduct crash tests, such as SHARP, SNELL, ECE, and DOT.</li>
       <li>We <strong>do not</strong> conduct our own crash tests.</li>
     </ul>
@@ -78,7 +78,7 @@
                 Payment Methods. You may edit your Payment Method information by visiting our website and clicking on the "Your Account" link, available at the top of the pages of the CrashTested website. If a payment is not successfully settled, due to expiration, insufficient funds, or otherwise, and you do not edit your Payment Method information or cancel your account (see, "Cancellation" below), you remain responsible for any uncollected amounts and authorize us to continue billing the Payment Method, as it may be updated. This may result in a change to your payment billing dates. We may update your Payment Method with information provided by the applicable payment service provider, and you authorize us to continue to charge the membership fee to the updated Payment Method. For certain Payment Methods, the issuer of your Payment Method may charge you a foreign transaction fee or other charges. Check with your Payment Method service provider for details.
               </p>
               <h2>Feedback</h2>
-              <p>We welcome feedback, comments and suggestions for improvements to the Services (“Feedback”). You can submit Feedback by emailing us at hello@crashtested.co. You grant to us a non-exclusive, worldwide, perpetual, irrevocable, fully-paid, royalty-free, sublicenseable and transferable license under any and all intellectual property rights that you own or control to use, copy, modify, create derivative works based upon and otherwise exploit the Feedback for any purpose.</p>
+              <p>We welcome feedback, comments and suggestions for improvements to the Services (“Feedback”). You can submit Feedback by emailing us at hello@atgatt.co. You grant to us a non-exclusive, worldwide, perpetual, irrevocable, fully-paid, royalty-free, sublicenseable and transferable license under any and all intellectual property rights that you own or control to use, copy, modify, create derivative works based upon and otherwise exploit the Feedback for any purpose.</p>
               <h2>Content and Content Rights</h2>
               <p>
               For purposes of these Terms, (i) “Content” means text, graphics, images, music, software, audio, video, works of authorship of any kind, and information or other materials that are posted, generated, provided or otherwise made available through the Services; and (ii) “User Content” means any Content that users (including you) provide to be made available through the Services. Content includes without limitation User Content.
@@ -143,7 +143,7 @@
               Termination
               </h3>
               <p>
-              We may terminate your access to and use of the Services, at our sole discretion, at any time and without notice to you. You may cancel your Account at any time by sending an email to us at hello@crashtested.co. Upon any termination, discontinuation or cancellation of Services or your Account, all provisions of these Terms which by their nature should survive will survive, including, without limitation, ownership provisions, warranty disclaimers, limitations of liability, and dispute resolution provisions.
+              We may terminate your access to and use of the Services, at our sole discretion, at any time and without notice to you. You may cancel your Account at any time by sending an email to us at hello@atgatt.co. Upon any termination, discontinuation or cancellation of Services or your Account, all provisions of these Terms which by their nature should survive will survive, including, without limitation, ownership provisions, warranty disclaimers, limitations of liability, and dispute resolution provisions.
               </p>
               <h2>
               Warranty Disclaimers
@@ -185,7 +185,7 @@
               Agreement to Arbitrate
               </h3>
               <p>
-              You and CrashTested agree that any dispute, claim or controversy arising out of or relating to these Terms or the breach, termination, enforcement, interpretation or validity thereof or the use of the Services or Content (collectively, “Disputes”) will be settled by binding arbitration, except that each party retains the right: (i) to bring an individual action in small claims court and (ii) to seek injunctive or other equitable relief in a court of competent jurisdiction to prevent the actual or threatened infringement, misappropriation or violation of a party’s copyrights, trademarks, trade secrets, patents or other intellectual property rights (the action described in the foregoing clause (ii), an “IP Protection Action”). Without limiting the preceding sentence, you will also have the right to litigate any other Dispute if you provide CrashTested with written notice of your desire to do so by email at hello@crashtested.co within thirty (30) days following the date you first agree to these Terms (such notice, an “Arbitration Opt-out Notice”). If you don’t provide CrashTested with an Arbitration Opt-out Notice within the thirty (30) day period, you will be deemed to have knowingly and intentionally waived your right to litigate any Dispute except as expressly set forth in clauses (i) and (ii) above. The exclusive jurisdiction and venue of any IP Protection Action or, if you timely provide CrashTested with an Arbitration Opt-out Notice, will be the state and federal courts located in the Northern District of California and each of the parties hereto waives any objection to jurisdiction and venue in such courts. Unless you timely provide CrashTested with an Arbitration Opt-out Notice, you acknowledge and agree that you and CrashTested are each waiving the right to a trial by jury or to participate as a plaintiff or class member in any purported class action or representative proceeding. Further, unless both you and CrashTested otherwise agree in writing, the arbitrator may not consolidate more than one person’s claims, and may not otherwise preside over any form of any class or representative proceeding. If this specific paragraph is held unenforceable, then the entirety of this “Dispute Resolution” section will be deemed void. Except as provided in the preceding sentence, this “Dispute Resolution” section will survive any termination of these Terms.
+              You and CrashTested agree that any dispute, claim or controversy arising out of or relating to these Terms or the breach, termination, enforcement, interpretation or validity thereof or the use of the Services or Content (collectively, “Disputes”) will be settled by binding arbitration, except that each party retains the right: (i) to bring an individual action in small claims court and (ii) to seek injunctive or other equitable relief in a court of competent jurisdiction to prevent the actual or threatened infringement, misappropriation or violation of a party’s copyrights, trademarks, trade secrets, patents or other intellectual property rights (the action described in the foregoing clause (ii), an “IP Protection Action”). Without limiting the preceding sentence, you will also have the right to litigate any other Dispute if you provide CrashTested with written notice of your desire to do so by email at hello@atgatt.co within thirty (30) days following the date you first agree to these Terms (such notice, an “Arbitration Opt-out Notice”). If you don’t provide CrashTested with an Arbitration Opt-out Notice within the thirty (30) day period, you will be deemed to have knowingly and intentionally waived your right to litigate any Dispute except as expressly set forth in clauses (i) and (ii) above. The exclusive jurisdiction and venue of any IP Protection Action or, if you timely provide CrashTested with an Arbitration Opt-out Notice, will be the state and federal courts located in the Northern District of California and each of the parties hereto waives any objection to jurisdiction and venue in such courts. Unless you timely provide CrashTested with an Arbitration Opt-out Notice, you acknowledge and agree that you and CrashTested are each waiving the right to a trial by jury or to participate as a plaintiff or class member in any purported class action or representative proceeding. Further, unless both you and CrashTested otherwise agree in writing, the arbitrator may not consolidate more than one person’s claims, and may not otherwise preside over any form of any class or representative proceeding. If this specific paragraph is held unenforceable, then the entirety of this “Dispute Resolution” section will be deemed void. Except as provided in the preceding sentence, this “Dispute Resolution” section will survive any termination of these Terms.
               </p>
               <h3>
               Arbitration Rules
@@ -221,7 +221,7 @@
               Changes
               </h2>
               <p>
-              Notwithstanding the provisions of the “Modification” section above, if CrashTested changes this “Dispute Resolution” section after the date you first accepted these Terms (or accepted any subsequent changes to these Terms), you may reject any such change by sending us written notice (including by email to hello@crashtested.co) within 30 days of the date such change became effective, as indicated in the “Last Updated” date above or in the date of CrashTested’s email to you notifying you of such change. By rejecting any change, you are agreeing that you will arbitrate any Dispute between you and CrashTested in accordance with the provisions of this “Dispute Resolution” section as of the date you first accepted these Terms (or accepted any subsequent changes to these Terms).
+              Notwithstanding the provisions of the “Modification” section above, if CrashTested changes this “Dispute Resolution” section after the date you first accepted these Terms (or accepted any subsequent changes to these Terms), you may reject any such change by sending us written notice (including by email to hello@atgatt.co) within 30 days of the date such change became effective, as indicated in the “Last Updated” date above or in the date of CrashTested’s email to you notifying you of such change. By rejecting any change, you are agreeing that you will arbitrate any Dispute between you and CrashTested in accordance with the provisions of this “Dispute Resolution” section as of the date you first accepted these Terms (or accepted any subsequent changes to these Terms).
               </p>
               <h2>
               General Terms
@@ -236,7 +236,7 @@
               Contact Information
               </h2>
               <p>
-              If you have any questions about these Terms or the Services, please contact CrashTested at hello@crashtested.co.
+              If you have any questions about these Terms or the Services, please contact CrashTested at hello@atgatt.co.
               </p>
         </div>
       </div>
@@ -308,7 +308,7 @@
             Information Shared with Our Services Providers
             </h2>
             <p>
-            We may engage third party service providers to work with us to administer and provide the Services. These third-party services providers have access to your PII only for the purpose of performing services on our behalf. We may also share your PII with our marketing service providers to help us better market our products and services to you. Our marketing service providers may use your PII only for the purpose of helping us better market our products and services to you and are prohibited from transferring your PII to others. If you don’t want sip and om to use your information for these purposes, you can opt out by contacting us at hello@crashtested.co.
+            We may engage third party service providers to work with us to administer and provide the Services. These third-party services providers have access to your PII only for the purpose of performing services on our behalf. We may also share your PII with our marketing service providers to help us better market our products and services to you. Our marketing service providers may use your PII only for the purpose of helping us better market our products and services to you and are prohibited from transferring your PII to others. If you don’t want sip and om to use your information for these purposes, you can opt out by contacting us at hello@atgatt.co.
             </p>
             <h2>
             Information Shared with Third Parties
@@ -344,7 +344,7 @@
             Modifying Your Information
             </h2>
             <p>
-            You can access and modify the PII associated with your Account through your Account settings or by contacting us at hello@crashtested.co. If you want us to delete your PII and your Account, please contact us at hello@crashtested.co with your request. We’ll take steps to delete your information as soon we can, but some information may remain in archived/backup copies for our records or as otherwise required by law.
+            You can access and modify the PII associated with your Account through your Account settings or by contacting us at hello@atgatt.co. If you want us to delete your PII and your Account, please contact us at hello@atgatt.co with your request. We’ll take steps to delete your information as soon we can, but some information may remain in archived/backup copies for our records or as otherwise required by law.
             </p>
         </div>
       </div>
