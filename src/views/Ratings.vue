@@ -47,7 +47,12 @@
           <button v-if="hasMore" class="btn btn-info" v-on:click="loadMoreAsync">Load More</button>
         </div>
         <div v-else class="col-12 product-results">
-          <span v-if="isLoaded"><font-awesome-icon icon="exclamation-triangle" class="no-results-icon" /> There are no products that match your current set of filters.</span>
+          <span v-if="isLoaded">
+            <p>
+              <font-awesome-icon icon="exclamation-triangle" class="no-results-icon" />
+              There are no products that match filters in our system. <a href="mailto:bakatz91@gmail.com?Subject=Missing%20Product" target="_top">Send us a note</a> and we can add it shortly!
+            </p>
+          </span>
           <span v-else>Loading...</span>
         </div>
       </div>
