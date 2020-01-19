@@ -47,7 +47,12 @@
           <button v-if="hasMore" class="btn btn-info" v-on:click="loadMoreAsync">Load More</button>
         </div>
         <div v-else class="col-12 product-results">
-          <span v-if="isLoaded"><font-awesome-icon icon="exclamation-triangle" class="no-results-icon" /> There are no products that match your current set of filters.</span>
+          <span v-if="isLoaded">
+            <p>
+              <font-awesome-icon icon="exclamation-triangle" class="no-results-icon" />
+              There are no products that match your search criteria. <a href="mailto:hello@atgatt.co?Subject=Missing%20Product" target="_top">Send us a note</a> with the manufacturer and model of the missing product and we will add it shortly!
+            </p>
+          </span>
           <span v-else>Loading...</span>
         </div>
       </div>
