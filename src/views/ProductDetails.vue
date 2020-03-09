@@ -22,7 +22,18 @@
                         <add-to-product-set-button v-bind:product="product" />
                     </section>
                 </div>
+                <div class="col-12 col-lg-12" v-if="this.product.description">
+                    <section class="description-header">
+                        <h5>Description</h5>
+                    </section>
+                    <section class="description-content">
+                        <div>
+                            <i>{{this.product.description}}</i>
+                        </div>
+                    </section>
+                </div>
             </div>
+
             <div class="col-12 col-lg-3">
                 <section class="product-name">
                     <h6>{{this.product.type | capitalize}}</h6>
@@ -181,9 +192,23 @@ export default {
 .prices-header {
   margin-top: 32px;
   margin-left: 48px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.description-header {
+  margin-top: 32px;
+  margin-left: 48px;
   margin-right: 48px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+}
+
+.description-content {
+    margin-top: 32px;
+    margin-left: 48px;
+    margin-bottom: 32px;
+    margin-right: 48px;
 }
 
 .specification-item {
@@ -213,6 +238,14 @@ export default {
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
   .prices-details {
+    text-align: center;
+  }
+
+  .description-content {
+    text-align: center;
+  }
+
+  .description-header {
     text-align: center;
   }
 
