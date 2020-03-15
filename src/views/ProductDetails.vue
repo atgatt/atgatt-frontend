@@ -28,7 +28,11 @@
                     </section>
                     <section class="description-content">
                         <div>
-                            <i>{{this.product.description}}</i>
+                            <i>{{formattedDescription}}</i>
+                            <span>
+                                <a href="#" id="readmore" v-show="!this.isReadMore" v-on:click="triggerReadMore(true)">Read More</a>
+                                <a href="#" id="readless" v-show="isReadMore" v-on:click="triggerReadMore(false)">Read Less</a>
+                            </span>
                         </div>
                     </section>
                 </div>
@@ -89,7 +93,6 @@
 </template>
 
 <script>
-import formatCurrency from '../lib/currency'
 import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
 import JacketCertificationBadges from '../components/JacketCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
@@ -98,6 +101,7 @@ import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
 import AddToProductSetButtonVue from '../components/AddToProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
+const MAX_DESCRIPTION_LENGTH = 1000
 
 export default {
   name: 'ProductDetails',
@@ -113,7 +117,8 @@ export default {
   data () {
     return {
       product: null,
-      error: ''
+      error: '',
+      isReadMore: false
     }
   },
   async mounted () {
@@ -150,9 +155,13 @@ export default {
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
     },
-    productPrice: function () {
-      const priceInUSD = this.product.revzillaPriceCents / 100.0
-      return priceInUSD > 0 ? `${formatCurrency(priceInUSD)}` : `N/A`
+    formattedDescription: function () {
+      const description = this.product.description
+      if (!this.isReadMore && description.length > MAX_DESCRIPTION_LENGTH) {
+        return description.substring(0, MAX_DESCRIPTION_LENGTH) + '...'
+      }
+
+      return description
     }
   },
   methods: {
@@ -170,6 +179,9 @@ export default {
       }
 
       this.$Progress.finish()
+    },
+    triggerReadMore: function (b) {
+      this.isReadMore = b
     }
   }
 }
