@@ -30,8 +30,8 @@
                         <div>
                             <i>{{formattedDescription}}</i>
                             <span>
-                                <a href="#" id="readmore" v-show="!this.isReadMore" v-on:click="triggerReadMore(true)">Read More</a>
-                                <a href="#" id="readless" v-show="isReadMore" v-on:click="triggerReadMore(false)">Read Less</a>
+                                <a href="#" id="isReadMoreClicked" v-show="!this.isReadMore" v-on:click="triggerReadMore(true)">Read More</a>
+                                <a href="#" id="isReadLessClicked" v-show="isReadMore" v-on:click="triggerReadMore(false)">Read Less</a>
                             </span>
                         </div>
                     </section>
