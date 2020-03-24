@@ -22,7 +22,22 @@
                         <add-to-product-set-button v-bind:product="product" />
                     </section>
                 </div>
+                <div class="col-12 col-lg-12" v-if="this.product.description">
+                    <section class="description-header">
+                        <h5>Description</h5>
+                    </section>
+                    <section class="description-content">
+                        <div>
+                            <i>{{formattedDescription}}</i>
+                            <span>
+                                <a href="#" id="isReadMoreClicked" v-show="!this.isReadMore" v-on:click="triggerReadMore(true)">Read More</a>
+                                <a href="#" id="isReadLessClicked" v-show="isReadMore" v-on:click="triggerReadMore(false)">Read Less</a>
+                            </span>
+                        </div>
+                    </section>
+                </div>
             </div>
+
             <div class="col-12 col-lg-3">
                 <section class="product-name">
                     <h6>{{this.product.type | capitalize}}</h6>
@@ -78,7 +93,6 @@
 </template>
 
 <script>
-import formatCurrency from '../lib/currency'
 import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
 import JacketCertificationBadges from '../components/JacketCertificationBadges'
 import SharpImpactZone from '../components/SharpImpactZone'
@@ -87,6 +101,7 @@ import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
 import AddToProductSetButtonVue from '../components/AddToProductSetButton.vue'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
+const MAX_DESCRIPTION_LENGTH = 1000
 
 export default {
   name: 'ProductDetails',
@@ -102,7 +117,8 @@ export default {
   data () {
     return {
       product: null,
-      error: ''
+      error: '',
+      isReadMore: false
     }
   },
   async mounted () {
@@ -139,9 +155,13 @@ export default {
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
     },
-    productPrice: function () {
-      const priceInUSD = this.product.revzillaPriceCents / 100.0
-      return priceInUSD > 0 ? `${formatCurrency(priceInUSD)}` : `N/A`
+    formattedDescription: function () {
+      const description = this.product.description
+      if (!this.isReadMore && description.length > MAX_DESCRIPTION_LENGTH) {
+        return description.substring(0, MAX_DESCRIPTION_LENGTH) + '...'
+      }
+
+      return description
     }
   },
   methods: {
@@ -159,6 +179,9 @@ export default {
       }
 
       this.$Progress.finish()
+    },
+    triggerReadMore: function (b) {
+      this.isReadMore = b
     }
   }
 }
@@ -181,9 +204,23 @@ export default {
 .prices-header {
   margin-top: 32px;
   margin-left: 48px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.description-header {
+  margin-top: 32px;
+  margin-left: 48px;
   margin-right: 48px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+}
+
+.description-content {
+    margin-top: 32px;
+    margin-left: 48px;
+    margin-bottom: 32px;
+    margin-right: 48px;
 }
 
 .specification-item {
@@ -213,6 +250,14 @@ export default {
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
   .prices-details {
+    text-align: center;
+  }
+
+  .description-content {
+    text-align: center;
+  }
+
+  .description-header {
     text-align: center;
   }
 
