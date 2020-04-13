@@ -30,8 +30,8 @@
                         <div>
                             <i>{{formattedDescription}}</i>
                             <span>
-                                <a href="#" id="isReadMoreClicked" v-show="!this.isReadMore" v-on:click="triggerReadMore(true)">Read More</a>
-                                <a href="#" id="isReadLessClicked" v-show="isReadMore" v-on:click="triggerReadMore(false)">Read Less</a>
+                                <a href="#" id="isReadMoreClicked" v-show="!this.isReadMoreClicked" v-on:click="triggerReadMore(true)">Read More</a>
+                                <a href="#" id="isReadLessClicked" v-show="this.isReadMoreClicked" v-on:click="triggerReadMore(false)">Read Less</a>
                             </span>
                         </div>
                     </section>
@@ -118,7 +118,7 @@ export default {
     return {
       product: null,
       error: '',
-      isReadMore: false
+      isReadMoreClicked: false
     }
   },
   async mounted () {
@@ -157,7 +157,7 @@ export default {
     },
     formattedDescription: function () {
       const description = this.product.description
-      if (!this.isReadMore && description.length > MAX_DESCRIPTION_LENGTH) {
+      if (!this.isReadMoreClicked && description.length > MAX_DESCRIPTION_LENGTH) {
         return description.substring(0, MAX_DESCRIPTION_LENGTH) + '...'
       }
 
@@ -181,7 +181,7 @@ export default {
       this.$Progress.finish()
     },
     triggerReadMore: function (b) {
-      this.isReadMore = b
+      this.isReadMoreClicked = b
     }
   }
 }
