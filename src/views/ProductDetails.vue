@@ -1,6 +1,6 @@
 <template>
     <div v-if="product">
-        <div class="row product-details">
+        <div class="jumbotron">
             <product-card v-bind:product="product" use-replacement-button="false"/>
         </div>
         <div class="row product-details">
@@ -198,6 +198,7 @@ export default {
 @media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
   .description-content {
     text-align: center;
+    margin: 1px 1px;
   }
 
   .description-header {
