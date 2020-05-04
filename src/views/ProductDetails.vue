@@ -1,6 +1,6 @@
 <template>
-    <div v-if="product">
-        <div class="jumbotron">
+    <div class="jumbotron" v-if="product">
+        <div>
             <product-card v-bind:product="product" use-replacement-button="false"/>
         </div>
         <div class="row product-details">
