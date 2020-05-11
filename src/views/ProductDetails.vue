@@ -1,32 +1,15 @@
 <template>
-    <div v-if="product">
+    <div class="jumbotron" v-if="product">
+        <div>
+            <product-card v-bind:product="product" use-replacement-button="false"/>
+        </div>
         <div class="row product-details">
             <div class="col-12 col-lg-9">
-                <section class="prices-header">
-                    <h5>Prices</h5>
-                </section>
-                <div class="row prices-details">
-                    <section class="col col-lg-4 prices-item">
-                        <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-                            <img alt="product image" v-if="this.product.imageKey" class="product-image" width="100" height="100" v-bind:src="imageURL"/>
-                            <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
-                        </a>
-                    </section>
-                    <section class="col col-lg-4 prices-item">
-                        <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-                            <img alt="revzilla logo" class="product-image" width="259" height="49" src="../assets/revzilla.png"/>
-                        </a>
-                    </section>
-                    <section class="col col-lg-4 prices-item">
-                        <buy-on-revzilla-button v-bind:product="product"/>
-                        <add-to-product-set-button v-bind:product="product" />
-                    </section>
-                </div>
-                <div class="col-12 col-lg-12" v-if="this.product.description">
+                <div class="col-12 col-lg-12">
                     <section class="description-header">
                         <h5>Description</h5>
                     </section>
-                    <section class="description-content">
+                    <section class="description-content" v-if="this.product.description">
                         <div>
                             <i>{{formattedDescription}}</i>
                             <span>
@@ -35,15 +18,13 @@
                             </span>
                         </div>
                     </section>
+                    <div class="description-content" v-if="!this.product.description">
+                        <i>No description found.</i>
+                    </div>
                 </div>
             </div>
 
             <div class="col-12 col-lg-3">
-                <section class="product-name">
-                    <h6>{{this.product.type | capitalize}}</h6>
-                    <h3>{{`${this.product.manufacturer} ${formattedModel}`}}</h3>
-                </section>
-
                 <section class="specification-header">
                     <h5>Specifications</h5>
                 </section>
@@ -93,12 +74,9 @@
 </template>
 
 <script>
-import HelmetCertificationBadges from '../components/HelmetCertificationBadges'
-import JacketCertificationBadges from '../components/JacketCertificationBadges'
-import SharpImpactZone from '../components/SharpImpactZone'
-import CEImpactZone from '../components/CEImpactZone'
 import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
 import AddToProductSetButtonVue from '../components/AddToProductSetButton.vue'
+import ProductCard from '../components/ProductCard'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 const MAX_DESCRIPTION_LENGTH = 1000
@@ -106,12 +84,9 @@ const MAX_DESCRIPTION_LENGTH = 1000
 export default {
   name: 'ProductDetails',
   components: {
-    'helmet-certification-badges': HelmetCertificationBadges,
-    'jacket-certification-badges': JacketCertificationBadges,
-    'sharp-impact-zone': SharpImpactZone,
-    'jacket-impact-zone': CEImpactZone,
     'buy-on-revzilla-button': BuyOnRevzillaButton,
-    'add-to-product-set-button': AddToProductSetButtonVue
+    'add-to-product-set-button': AddToProductSetButtonVue,
+    'product-card': ProductCard
   },
   props: ['uuid'],
   data () {
@@ -197,17 +172,6 @@ export default {
   border-bottom-width: 1px;
 }
 
-.product-name {
-    margin: 32px 48px;
-}
-
-.prices-header {
-  margin-top: 32px;
-  margin-left: 48px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-}
-
 .description-header {
   margin-top: 32px;
   margin-left: 48px;
@@ -217,10 +181,7 @@ export default {
 }
 
 .description-content {
-    margin-top: 32px;
-    margin-left: 48px;
-    margin-bottom: 32px;
-    margin-right: 48px;
+  margin: 32px 48px;
 }
 
 .specification-item {
@@ -230,38 +191,17 @@ export default {
 }
 
 .product-details {
-  margin-right: 0;
-}
-
-.missing-product-image {
-  min-width: 200px;
-  margin-left: 0.5em;
-}
-
-.prices-details {
-  margin-left: 32px;
-  margin-right: 32px;
-  margin-top: 16px;
-}
-
-.prices-item {
-  margin-top: 16px;
+  margin: 32px 48px;
+  justify-content: center;
 }
 
 @media only screen and (min-device-width : 0px) and (max-device-width : 991px) {
-  .prices-details {
-    text-align: center;
-  }
-
   .description-content {
     text-align: center;
+    margin: 1px 1px;
   }
 
   .description-header {
-    text-align: center;
-  }
-
-  .product-name{
     text-align: center;
   }
 
@@ -271,10 +211,6 @@ export default {
 
   .specification-header{
     text-align: center;
-  }
-
-  .prices-header {
-    display: none;
   }
 }
 
