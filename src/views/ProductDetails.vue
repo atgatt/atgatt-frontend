@@ -1,7 +1,7 @@
 <template>
     <div class="jumbotron" v-if="product">
         <div>
-            <product-card v-bind:product="product" use-replacement-button="false"/>
+            <product-card v-bind:product="product" />
         </div>
         <div class="row product-details">
             <div class="col-12 col-lg-9">
@@ -11,10 +11,10 @@
                     </section>
                     <section class="description-content" v-if="this.product.description">
                         <div>
-                            <i>{{formattedDescription}}</i>
+                            <i>{{formattedDescription}}&nbsp;</i>
                             <span>
-                                <a href="#" id="isReadMoreClicked" v-show="!this.isReadMoreClicked" v-on:click="triggerReadMore(true)">Read More</a>
-                                <a href="#" id="isReadLessClicked" v-show="this.isReadMoreClicked" v-on:click="triggerReadMore(false)">Read Less</a>
+                                <a href="#" id="isReadMoreClicked" v-show="!this.isReadMoreClicked" v-on:click="triggerReadMore(true)">(Read More)</a>
+                                <a href="#" id="isReadLessClicked" v-show="this.isReadMoreClicked" v-on:click="triggerReadMore(false)">(Read Less)</a>
                             </span>
                         </div>
                     </section>
