@@ -13,7 +13,7 @@
 <script>
 import { capitalize } from '../lib/text'
 export default {
-  name: 'AddToProductSetButton',
+  name: 'ModifyProductOnProductSetButton',
   data () {
     return {
       'isLoading': false
