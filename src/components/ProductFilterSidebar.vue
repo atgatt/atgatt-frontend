@@ -10,25 +10,25 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="manufacturer">Manufacturer</label>
-        <input type="text" class="form-control" v-model="filters.manufacturer" id="manufacturer-input" placeholder="Start typing a manufacturer...">
+        <label>Manufacturer</label>
+        <input type="text" class="form-control" v-model="filters.manufacturer" placeholder="Start typing a manufacturer...">
       </div>
       <div class="form-group">
-        <label for="manufacturer">Model</label>
-        <input type="text" class="form-control" v-model="filters.model" id="model-input" placeholder="Start typing a model...">
+        <label>Model</label>
+        <input type="text" class="form-control" v-model="filters.model" placeholder="Start typing a model...">
       </div>
       <div class="form-group">
         <label for="type">Type</label>
         <v-select ref="subtypesmultiselect" multiple v-model="filters.subtypes" v-bind:reduce="option => option.value" v-bind:options="subtypeMultiselectOptions" placeholder="Select one or more types..."></v-select>
       </div>
       <div class="form-group">
-        <label for="price-slider">Price Range</label>
-        <vue-slider ref="priceslider" id="price-slider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
+        <label>Price Range</label>
+        <vue-slider ref="priceslider" v-bind="usdPriceRangeSliderOptions" v-model="filters.usdPriceRange"></vue-slider>
       </div>
       <div class="form-group">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" v-model="filters.excludeDiscontinued" type="checkbox" id="exclude-discontinued-checkbox"> Exclude discontinued products
+            <input class="form-check-input" v-model="filters.excludeDiscontinued" type="checkbox"> Exclude discontinued products
           </label>
         </div>
       </div>

@@ -6,59 +6,52 @@
           class="form-check-input"
           v-model="isSHARPChecked"
           type="checkbox"
-          id="sharp-checkbox"
         > SHARP Certification
       </label>
     </div>
     <div v-if="certifications.SHARP" class="form-group">
-      <label for="min-sharp-stars-slider">Number of SHARP Stars</label>
+      <label>Number of SHARP Stars</label>
       <vue-slider
         ref="slider"
-        id="min-sharp-stars-slider"
         v-bind="SHARPSliderOptions"
         v-model="certifications.SHARP.stars"
       ></vue-slider>
       <div class="form-group">
-        <label for="left-impact-zone-rating-slider">Left Impact Rating</label>
+        <label>Left Impact Rating</label>
         <vue-slider
           ref="slider"
-          id="left-impact-zone-rating-slider"
           v-bind="impactZoneSliderOptions"
           v-model="certifications.SHARP.impactZoneMinimums.left"
         ></vue-slider>
       </div>
       <div class="form-group">
-        <label for="right-impact-zone-rating-slider">Right Impact Rating</label>
+        <label>Right Impact Rating</label>
         <vue-slider
           ref="slider"
-          id="right-impact-zone-rating-slider"
           v-bind="impactZoneSliderOptions"
           v-model="certifications.SHARP.impactZoneMinimums.right"
         ></vue-slider>
       </div>
       <div class="form-group">
-        <label for="rear-impact-zone-rating-slider">Rear Impact Rating</label>
+        <label>Rear Impact Rating</label>
         <vue-slider
           ref="slider"
-          id="rear-impact-zone-rating-slider"
           v-bind="impactZoneSliderOptions"
           v-model="certifications.SHARP.impactZoneMinimums.rear"
         ></vue-slider>
       </div>
       <div class="form-group">
-        <label for="top-front-impact-zone-rating-slider">Top-Front Impact Rating</label>
+        <label>Top-Front Impact Rating</label>
         <vue-slider
           ref="slider"
-          id="top-front-impact-zone-rating-slider"
           v-bind="impactZoneSliderOptions"
           v-model="certifications.SHARP.impactZoneMinimums.top.front"
         ></vue-slider>
       </div>
       <div class="form-group">
-        <label for="top-rear-impact-zone-rating-slider">Top-Rear Impact Rating</label>
+        <label>Top-Rear Impact Rating</label>
         <vue-slider
           ref="slider"
-          id="top-rear-impact-zone-rating-slider"
           v-bind="impactZoneSliderOptions"
           v-model="certifications.SHARP.impactZoneMinimums.top.rear"
         ></vue-slider>
@@ -70,7 +63,6 @@
           class="form-check-input"
           v-model="certifications.ECE"
           type="checkbox"
-          id="ece-checkbox"
         > ECE Certification
       </label>
     </div>
@@ -80,7 +72,6 @@
           class="form-check-input"
           v-model="certifications.SNELL"
           type="checkbox"
-          id="snell-checkbox"
         > SNELL Certification
       </label>
     </div>
@@ -90,7 +81,6 @@
           class="form-check-input"
           v-model="certifications.DOT"
           type="checkbox"
-          id="dot-checkbox"
         > DOT Certification
       </label>
     </div>
@@ -113,7 +103,7 @@ export default {
   components: {
     vueSlider
   },
-  props: ['certifications'],
+  props: ['id', 'certifications'],
   data () {
     return {
       impactZoneSliderOptions: {
