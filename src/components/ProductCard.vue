@@ -26,7 +26,7 @@
     <div class="row product-body">
       <div class="col-12 col-lg align-self-center">
         <a target="_blank" v-bind:href="formattedRevzillaBuyURL">
-          <img v-if="product.imageKey" class="product-image" width="200" height="200" v-bind:src="imageURL"/>
+          <img v-if="product.imageKey" class="product-image" width="200" height="200" v-bind:src="imageURL" v-bind:alt="this.altText" />
           <font-awesome-icon v-else icon="question-circle" size="5x" class="missing-product-image" />
         </a>
       </div>
@@ -73,6 +73,7 @@ import CEImpactZone from './CEImpactZone'
 import BuyOnRevzillaButton from '../components/BuyOnRevzillaButton'
 import AddToProductSetButton from './AddToProductSetButton.vue'
 import ModifyProductOnProductSetButton from './ModifyProductOnProductSetButton.vue'
+import { capitalize } from '../lib/text'
 
 const REVZILLA_SEARCH_URL = 'http://www.anrdoezrs.net/links/8505854/type/dlg/https://www.revzilla.com/search?_utf8=%E2%9C%93&query='
 
@@ -130,6 +131,9 @@ export default {
     },
     imageURL: function () {
       return this.$environment.staticBaseURL + '/' + this.product.imageKey
+    },
+    altText: function () {
+      return capitalize(`${this.product.manufacturer} ${this.formattedModel} motorcycle ${this.product.type}`)
     },
     formattedModel: function () {
       const aliases = this.product.modelAliases

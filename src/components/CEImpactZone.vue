@@ -3,7 +3,7 @@
     <router-link v-bind:to="linkURL" target="_blank">
       <div class="row">
         <div class="col impact-zone-text">
-          <img class="impact-zone-image" v-bind:src="zoneDetails.url" />
+          <img class="impact-zone-image" v-bind:src="zoneDetails.url" v-bind:alt="this.altText" />
         </div>
       </div>
       <div class="row">
@@ -50,6 +50,9 @@ export default {
     },
     linkURL () {
       return `about-${this.productType}-ratings`
+    },
+    altText () {
+      return `Motorcycle ${this.productType} with a ${this.zoneDetails.text} ${this.zoneId}`
     }
   }
 }

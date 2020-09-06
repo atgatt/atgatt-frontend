@@ -34,6 +34,24 @@ describe('ProductCard.vue', () => {
     expect(component.imageURL).toBe('http://static.mock.com/img/helmets/lul.jpg')
   })
 
+  it('should return the correct and capitalized alt text', () => {
+    let wrapper = shallowMount(ProductCard, {
+      props: ['product'],
+      propsData: {
+        'product': { 'manufacturer': 'manu', 'model': 'model', 'helmetCertifications': { 'SHARP': null }, 'subtype': 'modular', 'imageKey': 'img/helmets/lul.jpg', 'type': 'helmet' }
+      },
+      mocks: {
+        '$environment': {
+          'staticBaseURL': 'http://static.mock.com'
+        }
+      },
+      stubs: ['router-link']
+    })
+    let component = wrapper.vm
+    expect(component).toBeTruthy()
+    expect(component.altText).toBe('Manu model motorcycle helmet')
+  })
+
   it('should return the isForDisplay model alias as the model to be displayed when isForDisplay is true', () => {
     let wrapper = shallowMount(ProductCard, {
       props: ['product'],

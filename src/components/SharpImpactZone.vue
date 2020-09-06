@@ -4,7 +4,7 @@
       <div class="impact-zone">
         <div class="row">
           <div class="col impact-zone-text">
-            <img v-if="certification" class="impact-zone-image" v-bind:src="url" />
+            <img v-if="certification" class="impact-zone-image" v-bind:src="url" v-bind:alt="this.altText" />
             <font-awesome-icon v-else icon="question-circle" size="5x" />
           </div>
         </div>
@@ -12,8 +12,7 @@
           <div class="col impact-zone-text">
             <div class="row">
               <div class="col">
-                <span class="zone-rating-text" v-if="isTopZone && topZoneRatingText">{{topZoneRatingText[0]}}, {{topZoneRatingText[1]}}</span>
-                <span class="zone-rating-text" v-else>{{zoneRatingText}}</span>
+                <span class="zone-rating-text">{{zoneRatingText}}</span>
               </div>
             </div>
             <div class="row">
@@ -36,32 +35,32 @@ export default {
     url: function () {
       if (this.certification) {
         const rating = this.certification.impactZoneRatings[this.zoneId]
-        if (!this.isTopZone) {
-          return require(`../assets/helmets/${this.zoneId}-${rating}.jpg`)
+        if (this.isTopZone) {
+          return require(`../assets/helmets/${this.zoneId}-${rating.rear}-${rating.front}.jpg`)
         }
-        return require(`../assets/helmets/${this.zoneId}-${rating.rear}-${rating.front}.jpg`)
+        return require(`../assets/helmets/${this.zoneId}-${rating}.jpg`)
       }
       return null
     },
     zoneRatingText: function () {
-      if (this.certification) {
-        const rating = this.certification.impactZoneRatings[this.zoneId]
-        return `${rating}/5`
+      if (!this.certification) {
+        return null
       }
-      return null
-    },
-    topZoneRatingText: function () {
-      if (this.certification) {
-        const rating = this.certification.impactZoneRatings[this.zoneId]
-        return [`${rating.front}/5 Front`, `${rating.rear}/5 Rear`]
+
+      const rating = this.certification.impactZoneRatings[this.zoneId]
+      if (this.isTopZone) {
+        return `${rating.front}/5 Front, ${rating.rear}/5 Rear`
       }
-      return null
+      return `${rating}/5`
     },
     zoneLabelText: function () {
       return `${this.zoneId} Impact`
     },
     isTopZone: function () {
       return this.zoneId === 'top'
+    },
+    altText: function () {
+      return `Motorcycle helmet (${this.zoneId}) with a SHARP score of ${this.zoneRatingText}`
     }
   }
 }
