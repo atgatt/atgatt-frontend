@@ -1,6 +1,5 @@
 # atgatt-frontend
 # This repository hosts the code that used to power atgatt.co's frontend website, powered by Vue.js 2.x.
-# If you found this code helpful, please consider a sponsorship: https://github.com/sponsors/bakatz
 
 ## Project setup
 ```
